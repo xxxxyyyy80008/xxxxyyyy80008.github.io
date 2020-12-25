@@ -1,4 +1,4 @@
-## Max Information Coefficient (MIC)
+<h2> Max Information Coefficient (MIC) </h2>
 
 ### Part I: package installation
 
