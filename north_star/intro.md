@@ -17,14 +17,18 @@ This project aims to use data analytics and machine learning techniques to explo
 ## 13F-HR filings
 
 ### Example page
+
 Viking Global Investors LP [13F-HR](https://sec.report/Document/0001103804-20-000007/).
 
 ### Simple report
+
 Example of a simple report
 
 
 ## Corporate bond issuance
+
 Analysis of corporate bons issuance
 
 ## IPO lockup
+
 Analysis of IPO lockup
