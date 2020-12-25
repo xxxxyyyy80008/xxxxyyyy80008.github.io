@@ -1,0 +1,18 @@
+# Setup
+title:               XXXX YYYY 
+tagline:             'Machine Learning | Data Analytics'
+description:         '<a href="https://github.com/xxxxyyyy80008" target="_blank">XXXX YYYY</a> Machine Learning | Data Analytics'
+url:                 https://xxxxyyyy80008.github.io/
+baseurl:             ''
+paginate:            5
+permalink:           pretty
+
+# About/contact
+author:
+  name:              XXXX YYYY 
+  url:               https://xxxxyyyy80008.github.io/
+
+# Gems
+plugins:
+  - jekyll-paginate
+
