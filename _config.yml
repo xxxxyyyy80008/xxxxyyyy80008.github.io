@@ -1,7 +1,7 @@
 # Setup
 title:               XXXX YYYY 
 tagline:             'Machine Learning | Data Analytics'
-description:         '<a href="https://xxxxyyyy80008.github.io/" target="_blank">XXXX YYYY</a> Machine Learning | Data Analytics'
+description:         '<a href="https://xxxxyyyy80008.github.io/" target="_blank">XXXX YYYY</a> <br> Machine Learning | Data Analytics'
 url:                 https://xxxxyyyy80008.github.io/
 baseurl:             ''
 paginate:            5
