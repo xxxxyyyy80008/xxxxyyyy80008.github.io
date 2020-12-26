@@ -1,4 +1,4 @@
-# North Star
+<h2> North Star</h2>
 
 <h4> North Start Project: </h4>
 This project aims to use data analytics and machine learning techniques to explore the value hidden inside SEC filings and consequently generate meaningful insights and make predictions that will facilitate good investment decisions.
