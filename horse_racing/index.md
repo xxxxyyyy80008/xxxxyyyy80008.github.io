@@ -1,4 +1,4 @@
-## Horse Racing 
+<h2> Horse Racing </h2>
 
 ***
 
