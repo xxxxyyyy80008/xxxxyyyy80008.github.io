@@ -2,9 +2,9 @@
 
 #### tsfresh Introduction Series
 
-1. Prologue of tsfresh [tsfresh Prologue](2020-12-30-tsfresh0.md "tsfresh Prologue")
-1. tsfresh quick walk through - Part I [Part I](2020-12-30-tsfresh1.md "Part I")
-1. tsfresh quick walk through - Part II [Part II](2020-12-31-tsfresh2.md "Part II")
+1. Prologue of tsfresh [tsfresh Prologue](2020-12-30-tsfresh0.md)
+1. tsfresh quick walk through - Part I [Part I](2020-12-30-tsfresh1.md)
+1. tsfresh quick walk through - Part II [Part II](2020-12-31-tsfresh2.md)
 
 #### Imbalanced classification 
 
