@@ -1,3 +1,0 @@
-# tsfresh 
-
-source: `{{ page.path }}`
