@@ -1,18 +1,31 @@
-# Setup
-title:               XXXX YYYY 
-tagline:             'Machine Learning | Data Analytics'
-description:         '<a href="https://xxxxyyyy80008.github.io/" target="_blank">XXXX YYYY</a> <br> Machine Learning | Data Analytics'
-url:                 https://xxxxyyyy80008.github.io/
-baseurl:             ''
-paginate:            5
-permalink:           pretty
+title: jekyll-rtd-theme
+description: Just another documentation theme compatible with GitHub Pages
 
-# About/contact
-author:
-  name:              XXXX YYYY 
-  url:               https://xxxxyyyy80008.github.io/
+theme: null
 
-# Gems
+# debug:
+#   compress: true
+#   dist: false
+#   shortcodes: true
+
+readme_index:
+  with_frontmatter: true
+
 plugins:
-  - jekyll-paginate
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
 
+exclude:
+  - Makefile
+  - CNAME
+  - LICENSE
+  - update.sh
+  - Gemfile
+  - Gemfile.lock
+  - requirements.txt
+  - node_modules
+  - package.json
+  - package-lock.json
+  - webpack.config.js
+  - jekyll-rtd-theme.gemspec
