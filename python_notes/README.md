@@ -1,4 +1,8 @@
-<h2> Python Notes </h2>
+---
+sort: 1
+---
+
+#  Python Notes
 
 #### tsfresh Introduction Series
 
