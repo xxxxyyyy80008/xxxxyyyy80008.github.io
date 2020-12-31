@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# Random Python Notes
+# Python Notes
 
 
 
