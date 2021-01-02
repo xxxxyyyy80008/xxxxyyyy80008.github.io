@@ -4,9 +4,7 @@ title: Temporal Convolutional Network (TCN)
 ---
 
 
-<div>
-  Notes on **Temporal Convolutional Network (TCN)**
-</div>
+### Notes on **Temporal Convolutional Network (TCN)**
 
 ***
 1. An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling
