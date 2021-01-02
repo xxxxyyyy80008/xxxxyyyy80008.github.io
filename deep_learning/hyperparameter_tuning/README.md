@@ -3,7 +3,7 @@ sort: 2
 title: Hyperparameter Tuning
 ---
 
-** My top 2 hyperparameter tuning packages (in python): **
+### My top 2 hyperparameter tuning packages (in python): 
 
 1. hyperopt:
  - [github page](https://github.com/hyperopt/hyperopt)
