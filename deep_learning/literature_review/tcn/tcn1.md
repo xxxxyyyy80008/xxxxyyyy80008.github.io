@@ -1,5 +1,4 @@
 ---
-sort: 1
 title: An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling
 ---
 
