@@ -1,5 +1,5 @@
 ---
-sort: 1
+title: North Star Project
 ---
 
 # North Star Project Introduction
