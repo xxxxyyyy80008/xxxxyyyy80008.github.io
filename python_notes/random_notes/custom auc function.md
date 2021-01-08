@@ -1,7 +1,6 @@
 ---
-sort: 1
+title: custom auc fuction for xgboost/lightgbm models
 ---
-# custom auc fuction for xgboost/lightgbm models
 
 ### Sep 10, 2020
 
