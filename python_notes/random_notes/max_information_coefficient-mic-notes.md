@@ -1,9 +1,9 @@
 ---
-sort: 3
+title: Max Information Coefficient (MIC)
 ---
-# Max Information Coefficient (MIC)
 
-<h2> Max Information Coefficient (MIC) </h2>
+
+### Max Information Coefficient (MIC)
 
 ### Part I: package installation
 
