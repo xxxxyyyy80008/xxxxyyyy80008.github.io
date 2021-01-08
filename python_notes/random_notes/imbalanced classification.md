@@ -1,7 +1,6 @@
 ---
-sort: 2
+title: Imbalanced Binary Classification
 ---
-# Imbalanced Binary Classification
 
 <h2> imbalanced binary classification </h2>
 
@@ -15,7 +14,7 @@ sort: 2
 
 <h4> inventory of evaluation metrics </h4>
 
-This article <a href="https://www.sciencedirect.com/science/article/pii/S0031320319300950" >"The impact of class imbalance in classification performance metrics based on the binary confusion matrix"</a> details the list of available metrics for classification problems in general and shows what metrics work for imbalanced datasets
+[This article](https://www.sciencedirect.com/science/article/pii/S0031320319300950) `"The impact of class imbalance in classification performance metrics based on the binary confusion matrix"` details the list of available metrics for classification problems in general and shows what metrics work for imbalanced datasets
 
 *The authors of the paper concludes that:*
 
@@ -35,7 +34,7 @@ This article <a href="https://www.sciencedirect.com/science/article/pii/S0031320
 
 <h3> XGBoost setup</h3>
 
-<a href=https://xgboost.readthedocs.io/en/latest/tutorials/param_tuning.html>On this page</a>, it shows how to configurate XGBosst to deal with imbalanced dataset.
+[On this page](https://xgboost.readthedocs.io/en/latest/tutorials/param_tuning.html), it shows how to configurate XGBosst to deal with imbalanced dataset.
 
 For common cases such as ads clickthrough log, the dataset is extremely imbalanced. This can affect the training of XGBoost model, and there are two ways to improve it.
 
@@ -51,7 +50,7 @@ For common cases such as ads clickthrough log, the dataset is extremely imbalanc
 
 - Control the balance of positive and negative weights, useful for unbalanced classes. 
 - A typical value to consider: sum(negative instances) / sum(positive instances). 
-- Also, see Higgs Kaggle competition demo for examples: https://github.com/dmlc/xgboost/tree/master/demo/kaggle-higgs
+- Also, see [Higgs Kaggle competition demo for examples](https://github.com/dmlc/xgboost/tree/master/demo/kaggle-higgs)
 
 <h3>Precision-Recall-Gain Curves </h3>
 
@@ -73,9 +72,9 @@ https://www.hpl.hp.com/techreports/2009/HPL-2009-359.pdf
 
 <h3>re-sampling </h3>
 
-- Under-sampling and Over-sampling are the two popular categories. Here is the <a href=https://github.com/scikit-learn-contrib/imbalanced-learn>python package </a> that facilitates the re-sampling.
+- Under-sampling and Over-sampling are the two popular categories. [Here](https://github.com/scikit-learn-contrib/imbalanced-learn) is the python package that facilitates the re-sampling.
 
-- <a href=https://stats.stackexchange.com/questions/222558/classification-evaluation-metrics-for-highly-imbalanced-data> On this stackexchange page </a>, *geekoverdose* noted that "I've seen both cases where doing and not doing up-/or downsampling resulted in the better final outcomes, so this is something you might need to try out (but don't manipulate your test set(s)!)."
+- [On this stackexchange page](https://stats.stackexchange.com/questions/222558/classification-evaluation-metrics-for-highly-imbalanced-data), *geekoverdose* noted that "I've seen both cases where doing and not doing up-/or downsampling resulted in the better final outcomes, so this is something you might need to try out (but don't manipulate your test set(s)!)."
 
 > Yes, your assumptions about Kappa seem about right. Kappa as single, scalar metrics is mostly and advantage over other single, scalar metrics like accuracy, which will not reflect prediction performance of smaller classes (shadowed by performance of any much bigger class). Kappa solves this problem more elegantly, as you pointed out.
 
