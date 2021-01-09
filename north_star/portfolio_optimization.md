@@ -2,7 +2,9 @@
 title: Portfolio Optimization
 ---
 
-### Jan 8, 2021
+## Portfolio Optimization 
+
+*Jan 8, 2021*
 
 I was watching a portfolio management video on [youtube](https://www.youtube.com/watch?v=8TJQhQ2GZ0Y
 ) while eating my breakfast this morning, and I started thinking “what if I apply machine learning into portfolio construction and optimization”. With this in mind, I did some Google search and found that a lot of efforts have been made by machine learning practitioners and quant enthusiasts. 
