@@ -6,6 +6,8 @@ date: Jan 9, 2020
 
 ## Simple LightGBM model with tsfresh features
 
+*Jan 9, 2020*
+
 This notebook continues with the `tsfresh` [feature engineering notebooks](https://xxxxyyyy80008.github.io/python_notes/tsfresh/) and starts a simple LightGBM modeling to demostrate model training process with `tsfresh` features.
 
 ### Outline of this notebook
