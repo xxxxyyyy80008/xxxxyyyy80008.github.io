@@ -5,13 +5,13 @@ title: Simple LightGBM model with tsfresh features
 
 ## Simple LightGBM model with tsfresh features
 
-This notebook continues with the `tsfresh` [feature engineering notebooks](insert url) and starts a simple LightGBM modeling to demostrate model training process with `tsfresh` features.
+This notebook continues with the `tsfresh` [feature engineering notebooks](https://xxxxyyyy80008.github.io/python_notes/tsfresh/) and starts a simple LightGBM modeling to demostrate model training process with `tsfresh` features.
 
 ### Outline of this notebook
 
-1. read data from the csv file that is generated [here](insert url)
+1. read data from the csv file that is generated [here](https://xxxxyyyy80008.github.io/python_notes/tsfresh/)
 1. select a few features
-1. create a sliding window list based on setup described [here](insert url)
+1. create a sliding window list
 1. setup simple light gbm model training
 
 ### load data
@@ -481,6 +481,9 @@ for i, (x1_, y1_, x2_, y2_) in enumerate(slide_list):
  - set the boosting rounds at 600: `num_boost_round= 600`
  - set the `learning rate` iterating through a list `[0.05, 0.1, 0.15, 0.2, 0.25, 0.3]`
 
+Given the trading strategy is "buy a stock when the prediciton says the *the price is going to increase at least 5% in the next 30 trading days*", the best result - described as "how many times when my prediction tells me to buy and the price indeed increases 5% or more in the following 30 trading days" - is 52% when `learning rate` is 0.2 and predicted label is set as 1 when the predicted probability is `>0.85`.
+
+![slide window](img/best_pred.png)
 
 ```python
 import lightgbm as lgb
