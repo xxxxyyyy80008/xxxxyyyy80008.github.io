@@ -1,6 +1,7 @@
 ---
 sort: 1
 title: Simple LightGBM model with tsfresh features
+date: Jan 9, 2020
 ---
 
 ## Simple LightGBM model with tsfresh features
@@ -9,7 +10,7 @@ This notebook continues with the `tsfresh` [feature engineering notebooks](https
 
 ### Outline of this notebook
 
-1. read data from the csv file that is generated [here](https://xxxxyyyy80008.github.io/python_notes/tsfresh/)
+1. read data from the csv file that is generated [here](https://xxxxyyyy80008.github.io/python_notes/tsfresh/2020-12-31-tsfresh3.html)
 1. select a few features
 1. create a sliding window list
 1. setup simple light gbm model training
