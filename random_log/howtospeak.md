@@ -8,5 +8,4 @@ date: Mar 2, 2021
 
 came across this video and loved it.
 
-url: https://www.youtube.com/watch?v=Unzc731iCUY
-
+[youtube video](https://www.youtube.com/watch?v=Unzc731iCUY)\
