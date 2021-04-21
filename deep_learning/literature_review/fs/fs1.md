@@ -23,7 +23,7 @@ title: Accurate and fast feature selection workflow for high-dimensional omics d
  >  - The most-common approach - the univariate filtering -  is to use a variable ranking method to filter out the least promising variables before using a multivariate method. 
  >  - However, correlation filters could prompt some loss of relevant features that are meaningless by themselves but that can be useful in combination. To overcome this effect, a set of algorithms has been proposed to combine the original variables into a new and smaller subset of features, such as Principal Component Analysis (PCA) and Linear Discriminant Analysis. 
 - The proposed FS workflow to perform FS in high-dimensional omics big data. The workflow combined univariate/multivariate correlation filters with wrapper feature backward elimination and it was applied to regression and classification problems. 
- >  - ![title](../img/pone.0189875.g001.tif)
+ >  - ![title](../img/fs1_flow.png)
  >  - First, a univariate correlation filter can be used before applying any wrapper approach, to determine the relation between each feature and the class or predicted variable. 
  >  - Then, a second filtering step (Correlation Matrix (CM) or PCA), can follow, in order to determine the dependencies between the different dataset features. 
  >  - Finally, backward elimination is achieved by wrapping a ML method, such as Random Forest and SVM around each example.
