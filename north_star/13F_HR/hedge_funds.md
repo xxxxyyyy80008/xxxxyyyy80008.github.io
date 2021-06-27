@@ -16,4 +16,4 @@ title: Hedge Funds List
 1. Pershing Square Capital Management, L.P. [sec page](https://www.sec.gov/edgar/browse/?CIK=1336528)
  - 2021 Q1 Report: [Excel](reports/0001336528_03-31-2021.xlsx) , [PDF](reports/0001336528_03-31-2021.pdf)
 1. ARIEL INVESTMENTS, LLC [sec page](https://www.sec.gov/edgar/browse/?CIK=936753)
-> 2021 Q1 Report| [Excel](reports/0001067983_03-31-2021.xlsx) | [PDF](reports/0001067983_03-31-2021.pdf)
+> 2021 Q1 Report | [Excel](reports/0001067983_03-31-2021.xlsx) | [PDF](reports/0001067983_03-31-2021.pdf)
