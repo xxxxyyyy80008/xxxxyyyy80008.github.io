@@ -1,0 +1,18 @@
+title: XXXX YYYY
+description: Machine Learning | Data Science | Data Analytics | Predictive Modeling 
+
+theme: null
+
+# debug:
+#   compress: true
+#   dist: false
+#   shortcodes: true
+
+readme_index:
+  with_frontmatter: true
+
+plugins:
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
+
