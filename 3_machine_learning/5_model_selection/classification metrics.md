@@ -26,7 +26,7 @@
 ![imbalanced_behavior](img/binary_metrics.png)
 
 
-**list of metrics**
-![word](docs/classification evaluation metrics.docx) | [pdf](docs/classification evaluation metrics.pdf)
+download formulas: 
+[word](docs/classification evaluation metrics.docx) | [pdf](docs/classification evaluation metrics.pdf)
 
 
