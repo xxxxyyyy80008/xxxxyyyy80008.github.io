@@ -8,7 +8,7 @@ title: Technical Indicators
 
 | Indicator  |Type   |Class   |
 | ------------ | ------------ | ------------ |
-|MAMA   | Average Price  |Overlay   |
+|EMA   | Average Price  |Overlay   |
 
 reference:
 - [fidelity technical indicator guide](https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/overview)
