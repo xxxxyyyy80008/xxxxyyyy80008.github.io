@@ -6,9 +6,10 @@ title: Technical Indicators
 
 #### Technical Indicators
 
-| Indicator  |Type   |Class   |
-| ------------ | ------------ | ------------ |
-|EMA   | Average Price  |Overlay   |
+| Indicator  |Description   |
+| ------------ | ------------ | 
+|EMA   | Average Price  |
+
 
 reference:
 - [fidelity technical indicator guide](https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/overview)
@@ -16,7 +17,7 @@ reference:
 
 #### Signal Processing
 
-| Indicator  |Type    |
+| Indicator  |Description    |
 | ------------ | ------------ |
 | Entropy  |  NA  |
 
