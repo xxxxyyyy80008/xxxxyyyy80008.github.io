@@ -1,6 +1,6 @@
 ---
 sort: 3
-title: Technical Indicators
+title: Technical Indicators and Signals
 ---
 
 
