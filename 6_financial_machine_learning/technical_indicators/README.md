@@ -4,23 +4,18 @@ title: Technical Indicators
 ---
 
 
-#### Technical Indicators
+### Technical Indicators and Signals
 
-| Indicator  |Description   |
-| ------------ | ------------ | 
-|EMA   | Average Price  |
+|Type | Indicator  |Description   |
+| ------------ | ------------ | ------------ | 
+|Technical Indicator|EMA   | Average Price  |
+|Signal Processing| Entropy  |  NA  |
 
 
 reference:
 - [fidelity technical indicator guide](https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/overview)
 - [best technical indicators](http://etfhq.com/blog/2010/05/25/best-technical-indicators/)
-
-#### Signal Processing
-
-| Indicator  |Description    |
-| ------------ | ------------ |
-| Entropy  |  NA  |
-
+- [tsfresh](https://tsfresh.readthedocs.io/en/latest/)
 
 
 ------------
