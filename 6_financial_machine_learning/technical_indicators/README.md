@@ -9,7 +9,7 @@ title: Technical Indicators and Signals
 |Type | Indicator  |Description   |
 | ------------ | ------------ | ------------ | 
 |Technical Indicator|EMA   | Average Price  |
-|Signal Processing| [Entropy](a_1_1_entropy/a_1_1_entropy.md)  |  NA  |
+|Signal Processing| [Entropy](a_1_1_entropy/README.md)  |  NA  |
 
 
 reference:
