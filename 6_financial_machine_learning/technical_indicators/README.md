@@ -6,10 +6,11 @@ title: Technical Indicators and Signals
 
 ### Technical Indicators and Signals
 
-|Type | Indicator  |Description   |
-| ------------ | ------------ | ------------ | 
-|Technical Indicator|EMA   | Average Price  |
-|Signal Processing| [Entropy](a_1_1_entropy/README.md)  |  NA  |
+|Type | Indicator  |
+| ------------ | ------------ | 
+|Technical Indicator|EMA   | 
+|Technical Indicator|Bollinger Bands|
+|Signal Processing| Entropy  | 
 
 
 reference:
