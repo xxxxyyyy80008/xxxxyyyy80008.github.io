@@ -9,7 +9,7 @@ title: Technical Indicators
 
  | Type  |Indicator   |
 | ------------ | ------------ | 
-|Technical Indicator    | VAMA: A New Adaptive Moving Average  |
+|Technical Indicator    | VAMA: A New Adaptive Moving Average [url](/b_3_vama/) |
 |Technical Indicator  | Bollinger Bands   |
 |Signal Processing| Entropy|
 
