@@ -30,12 +30,6 @@ title: Examples of visualizations
 ####  Chart Index
 
 
-| Chart Type | Templates | 
 | ------ | ------ | 
-| 1. [Line Chart](examples/3_s01.md)| [*Excel*](templates/1_line_chart.xlsx) [*Python*](python/1_line_chart/1_line_chart.md)| 
-| 2. Waterfall Chart | [*Excel*](templates/2_waterfall_chart.xlsx)| 
-| 3. Scatterplot | [*Excel*](templates/3_scatterplot_chart.xlsx)| 
-| 4. Bullet Bar Chart| [*Excel*](templates/4_bullet_bar_chart.xlsx)| 
-| 5. Dumbbell Chart |  [*Excel*](templates/5_dumbbell.xlsx)| 
-| 6. [Heatmap](examples/3_s06.md) |  ...| 
-
+| 1. [Line Chart](examples/3_s01.md)| 2. Waterfall Chart | 3. Scatterplot | 
+| 4. Bullet Bar Chart|  5. Dumbbell Chart | 6. [Heatmap](examples/3_s06.md) |
