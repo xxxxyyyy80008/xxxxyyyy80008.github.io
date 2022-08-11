@@ -9,8 +9,8 @@ title: Technical Indicators
 
  | Type  |Indicator   |
 | ------------ | ------------ | 
-|Technical Indicator    | VAMA: A New Adaptive Moving Average [url](b_3_vama/) |
-|Technical Indicator  | Bollinger Bands   |
+|Technical Indicator    | [VAMA: A New Adaptive Moving Average](b_3_vama/) |
+|Technical Indicator  | [Bollinger Bands](b_4_bbands/) |
 |Signal Processing| Entropy|
 
 **References**
@@ -21,5 +21,4 @@ title: Technical Indicators
 - [tradingview](https://www.tradingview.com/support/folders/43000547458-i-d-like-to-learn-more-about-indicators/)
 
 
-------------
-{% include list.liquid all=true %}
+
