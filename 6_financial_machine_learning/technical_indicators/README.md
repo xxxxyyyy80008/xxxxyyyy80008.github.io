@@ -20,3 +20,5 @@ title: Technical Indicators
 - [etfhq](http://etfhq.com/blog/2010/05/25/best-technical-indicators/)
 - [tsfresh](https://tsfresh.readthedocs.io/en/latest/)
 - [tradingview](https://www.tradingview.com/support/folders/43000547458-i-d-like-to-learn-more-about-indicators/)
+- [thinkorswim tech indicators](https://tlc.thinkorswim.com/center/reference/Tech-Indicators)
+- [Technical Analysis of STOCKS & COMMODITIES, The Traders’ Magazine: TRADERS’ TIPS](http://traders.com/Documentation/FEEDbk_docs/2008/12/TradersTips.html)
