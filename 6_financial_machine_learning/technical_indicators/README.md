@@ -12,6 +12,7 @@ title: Technical Indicators
 |Technical Indicator |3   | [VAMA: A New Adaptive Moving Average](b_3_vama/) |
 |Technical Indicator |4 | [Bollinger Bands](b_4_bbands/) |
 |Technical Indicator |7 | [Commodity Channel Index (CCI)](b_7_cci/) |
+|Technical Indicator |27 | [KDJ](b_27_kdj/) |
 |Signal Processing| 1|Entropy|
 
 **References**
