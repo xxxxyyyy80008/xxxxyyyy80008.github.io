@@ -1,4 +1,4 @@
-## How to merge or concatenate dictionaries in Python
+### How to merge or concatenate dictionaries in Python
 
 **Reference:**
 - [Python Program to Merge Dictionaries (with Examples)](https://favtutor.com/blogs/merge-dictionaries-python)
@@ -12,7 +12,7 @@
 *the following content is copied from the reference page*
 
 
-| #  |  method | code  | output  |
+| no.  |  method | code  | output  |
 | :------------ | :------------ | :------------ | :------------ |
 |  1 |  update | dict_1 = {'John': 15, 'Rick': 10, 'Misa' : 12 }<br>dict_2 = {'Bonnie': 18,'Rick': 20,'Matt' : 16 }<br>dict_1.update(dict_2)<br>print(dict_1)<br>   |  {'John': 15, 'Rick': 20, 'Misa': 12, 'Bonnie': 18, 'Matt': 16} |
 |  **2** |  ` ** ` operator |  dict_1 = {'John': 15, 'Rick': 10, 'Misa' : 12 }<br>  dict_2 = {'Bonnie': 18,'Rick': 20,'Matt' : 16 }<br>  dict_3 = {`**`dict_1,`**`dict_2}<br>  print(dict_3) <br>  |  {'John': 15, 'Rick': 20, 'Misa': 12, 'Bonnie': 18, 'Matt': 16} |
