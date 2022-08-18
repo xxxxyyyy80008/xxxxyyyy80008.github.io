@@ -1,4 +1,4 @@
-## How to merge/concatenate 
+## How to merge or concatenate dictionaries in Python
 
 **Reference:**
 - [Python Program to Merge Dictionaries (with Examples)](https://favtutor.com/blogs/merge-dictionaries-python)
@@ -9,7 +9,7 @@
 ![png](img/merge_dicts.png)
 
 
-*the following content is copied from the reference page**
+*the following content is copied from the reference page*
 
 
 | #  |  method | code  | output  |
