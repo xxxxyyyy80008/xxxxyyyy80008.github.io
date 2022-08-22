@@ -1,5 +1,4 @@
 ---
-sort: 1
 title: Quantative Finance Packages in Python - Aug 2022
 ---
 
@@ -24,7 +23,7 @@ packages that faciliates data scraping of various financial instruments
 |  **2**| **[akshare](https://github.com/akfamily/akshare)**  | an very efficient and easy to use library for a comprehensive list  of data sources (including stock prices of various markets such as CN and US) and functions. |
 |  3 | [wallstreet](https://github.com/mcdallas/wallstreet)  |  Wallstreet is a Python 3 library for monitoring and analyzing real time Stock and Option data. Quotes are provided from the Google Finance API. |
 
-###Visualization
+### Visualization
 
 |  # |name   |description   |
 | ------------ | ------------ | ------------ |
@@ -33,6 +32,7 @@ packages that faciliates data scraping of various financial instruments
 | 3  |  [finvizfinance](https://github.com/lit26/finvizfinance) | finvizfinance is a package which collects financial information from FinViz website. The package provides the information of the following: Stock charts, fundamental & technical information, insider information and stock news; Forex charts and performance; Crypto charts and performance  |
 
 ### Feature engineering
+
 |  # |name   |description   |
 | ------------ | ------------ | ------------ |
 |  1 |[finta](https://github.com/peerchemist/finta)   |  lightweight library for technical indicators |
@@ -43,6 +43,7 @@ packages that faciliates data scraping of various financial instruments
 
 
 ### Backtesting and risk analysis
+
 |  # |name   |description   |
 | ------------ | ------------ | ------------ |
 |  1 |[ffn](https://github.com/pmorissette/ffn)   |  this is a lightweight package with a short list of functions (such as calculation of information ratio, max drawdown) for backtesting.  |
