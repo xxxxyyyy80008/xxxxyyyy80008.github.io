@@ -21,7 +21,7 @@ packages that faciliates data scraping of various financial instruments
 |  # |name   |description   |
 | ------------ | ------------ | ------------ |
 |  1 |  [yfinance](https://github.com/ranaroussi/yfinance) |  yfinance offers a threaded and Pythonic way to download market data from Yahoo!finance. |
-|  **2**| **[akshare]**(https://github.com/akfamily/akshare)  | an very efficient and easy to use library for a comprehensive list  of data sources (including stock prices of various markets such as CN and US) and functions. |
+|  **2**| **[akshare](https://github.com/akfamily/akshare)**  | an very efficient and easy to use library for a comprehensive list  of data sources (including stock prices of various markets such as CN and US) and functions. |
 |  3 | [wallstreet](https://github.com/mcdallas/wallstreet)  |  Wallstreet is a Python 3 library for monitoring and analyzing real time Stock and Option data. Quotes are provided from the Google Finance API. |
 
 ###Visualization
