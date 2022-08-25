@@ -1,3 +1,7 @@
+---
+title: Python Class method vs Static method in Python
+---
+
 ### Python Class method (@classmethod) vs Static method (@staticmethod ) in Python
 
 *Aug 25, 2022*
