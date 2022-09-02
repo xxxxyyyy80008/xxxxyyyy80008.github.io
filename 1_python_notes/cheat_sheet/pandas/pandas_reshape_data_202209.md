@@ -4,9 +4,9 @@
 **This is a Summary and Visual Explanation based on [this page](https://pandas.pydata.org/docs/user_guide/reshaping.html)**
 
 
-**Rferences**
+**References**
 
-- [ttps://pandas.pydata.org/docs/user_guide/reshaping.html](https://pandas.pydata.org/docs/user_guide/reshaping.html)
+- [https://pandas.pydata.org/docs/user_guide/reshaping.html](https://pandas.pydata.org/docs/user_guide/reshaping.html)
 
 
 
