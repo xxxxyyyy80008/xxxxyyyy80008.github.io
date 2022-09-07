@@ -67,7 +67,7 @@ The basic packages for data processing, mathematical and scitific calculations.
 | Package | Description | 
 | ------  | ------      |
 | [ta-lib](https://github.com/mrjbq7/ta-lib) | This is a popular package for engineering technical features for time series data. Note that this package requires *Visual Studio Community 2015* be installed on the machine first|
-| [finta](https://github.com/peerchemist/finta) | This package is a nice alternative if installing ta-lib is not possible due to various reasons |
+| [finta](https://github.com/peerchemist/finta) | This package is a nice alternative if installing ta-lib is not possible due to various reasons. **unfortunately, this package is archived by its creator in early Sep 2022.** |
 | [tsfresh](https://tsfresh.readthedocs.io/en/latest/text/introduction.html) | tsfresh is used for systematic feature engineering from time-series and other sequential data|
 
 ####  anomaly detection
