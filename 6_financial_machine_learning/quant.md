@@ -35,7 +35,7 @@ packages that faciliates data scraping of various financial instruments
 
 |  # |name   |description   |
 | ------------ | ------------ | ------------ |
-|  1 |[finta](https://github.com/peerchemist/finta)   |  lightweight library for technical indicators |
+|  1 |[finta](https://github.com/peerchemist/finta)   |  lightweight library for technical indicators. **unfortunately, this package is archived by its creator in early Sep 2022.**|
 |  2 |  [ta-lib](https://github.com/mrjbq7/ta-lib)|  the core is build in C++ and wrapped by python. **finta** is becoming more comprehensive (in terms of technical indicators included) than ta-lib | 
 |  3 |  [ta](https://github.com/bukosabino/ta) | almost all the technical indicators in this packages are also in finta  |
 |4|[MyTT](https://github.com/mpquant/MyTT/blob/ea4f14857ecc46a3739a75ce2e6974b9057a6102/MyTT.py#L32)|it has some technical indicators not included in finta so far.|
