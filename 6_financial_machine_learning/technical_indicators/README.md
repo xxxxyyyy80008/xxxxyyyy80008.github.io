@@ -9,7 +9,7 @@ title: Technical Indicators
 |:------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | b_001 | [Awesome Oscillator (AO)](b_001_1_ao_intro/b_001_1_ao_intro.md)                                                                                                             |
 | b_002 | [FRAMA: Fractal Adaptive Moving Average](b_002_1_frama_intro/b_002_1_frama_intro.md)                                                                                                    |
-| b_003 | [b_003_1_vama_intro](b_003_1_vama_intro/b_003_1_vama_intro.md)                                                                                                       |
+| b_003 | [VAMA: A New Adaptive Moving Average](b_003_1_vama_intro/b_003_1_vama_intro.md)                                                                                                       |
 | b_004 | [Bollinger Bands](b_004_1_bbands_intro/b_004_1_bbands_intro.md)                                                                                                 |
 | b_005 | [Moving Average Convergence/Divergence (MACD)](b_005_1_macd_intro/b_005_1_macd_intro.md)                                                                                                       |
 | b_006 | [Relative Strength Index (RSI), Stochastic RSI (STOCH RSI), Inverse Fisher Transform applied on RSI (IFT RSI)](b_006_1_rsi_intro/b_006_1_rsi_intro.md)                                                                                                          |
