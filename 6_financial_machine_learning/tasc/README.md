@@ -25,10 +25,10 @@ title: TASC - The Traders Tips section
 | b_046  | [TradersTips 2021-11](https://traders.com/Documentation/FEEDbk_docs/2021/11/TradersTips.html)  |  [MADH (moving average difference with Hann) by John Ehlers ](../technical_indicators/b_046_1_madh_intro_tasc202111/b_046_1_madh_intro_tasc202111.md) |
 | b_047  | [TradersTips 2009-10](https://traders.com/documentation/feedbk_docs/2009/10/traderstips.html)  |  [Volume-Weighted Moving Average Convergence/Divergence ](../technical_indicators/b_047_1_vw_macd_intro_tasc200910/b_047_1_vw_macd_intro_tasc200910.md) |
 | c_001  | [TradersTips 2019-05](https://traders.com/documentation/feedbk_docs/2019/05/traderstips.html)  |  [Backtesting A Mean-Reversion Strategy In Python.](../technical_indicators/c_001_tasc201905/c_001_tasc201905.md) |
-| c_002  | [TradersTips 2019-10](https://traders.com/documentation/feedbk_docs/2019/10/traderstips.html)  |  [Combining Bollinger Bands With Candlesticks](../technical_indicators/c_002_tasc201905.md) |
-| c_003  | [TradersTips 2018-04](https://traders.com/documentation/feedbk_docs/2018/04/traderstips.html)  |   [A trading system that combines the AMA and KAMA ](../technical_indicators/c_003_tasc201905.md) |
-| c_004  | [TradersTips 2021-04](https://traders.com/Documentation/FEEDbk_docs/2021/04/TradersTips.html)  |  [Detecting High-Volume Breakouts: volume positive negative (VPN)](../technical_indicators/c_004_tasc202104.md) |
-| c_005  | [TradersTips 2021-08](https://traders.com/Documentation/FEEDbk_docs/2021/08/TradersTips.html)  |  [Moving average bands (MAB) and moving average band width (MABW)](../technical_indicators/c_005_tasc202108.md) |
-| c_006  | [TradersTips 2017-10](https://traders.com/Documentation/FEEDbk_docs/2017/10/TradersTips.html)  |  [A Candlestick Strategy With Soldiers And Crows](../technical_indicators/c_006_tasc201710.md) |
-| c_007  | [TradersTips 2017-12](https://traders.com/Documentation/FEEDbk_docs/2017/12/TradersTips.html)  |  [Weekly & Daily MACD ](../technical_indicators/c_007_tasc201712.md) |
-| d_001  |  - | [combine b_38/b_39/b_40](../technical_indicators/d_001_b38-b39-b40.md)  |
+| c_002  | [TradersTips 2019-10](https://traders.com/documentation/feedbk_docs/2019/10/traderstips.html)  |  [Combining Bollinger Bands With Candlesticks](../technical_indicators/c_002_tasc201905/c_002_tasc201905.md) |
+| c_003  | [TradersTips 2018-04](https://traders.com/documentation/feedbk_docs/2018/04/traderstips.html)  |   [A trading system that combines the AMA and KAMA ](../technical_indicators/c_003_tasc201905/c_003_tasc201905.md) |
+| c_004  | [TradersTips 2021-04](https://traders.com/Documentation/FEEDbk_docs/2021/04/TradersTips.html)  |  [Detecting High-Volume Breakouts: volume positive negative (VPN)](../technical_indicators/c_004_tasc202104/c_004_tasc202104.md) |
+| c_005  | [TradersTips 2021-08](https://traders.com/Documentation/FEEDbk_docs/2021/08/TradersTips.html)  |  [Moving average bands (MAB) and moving average band width (MABW)](../technical_indicators/c_005_tasc202108/c_005_tasc202108.md) |
+| c_006  | [TradersTips 2017-10](https://traders.com/Documentation/FEEDbk_docs/2017/10/TradersTips.html)  |  [A Candlestick Strategy With Soldiers And Crows](../technical_indicators/c_006_tasc201710/c_006_tasc201710.md) |
+| c_007  | [TradersTips 2017-12](https://traders.com/Documentation/FEEDbk_docs/2017/12/TradersTips.html)  |  [Weekly & Daily MACD ](../technical_indicators/c_007_tasc201712/c_007_tasc201712.md) |
+| d_001  |  - | [combine b_38/b_39/b_40](../technical_indicators/d_001_b38-b39-b40/d_001_b38-b39-b40.md)  |
