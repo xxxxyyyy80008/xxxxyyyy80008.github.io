@@ -29,7 +29,7 @@ step 2: calculate the %K line:
 step 3: calculate the %D line:
 
 
-![png](img/kdj3.png)
+![png](../img/kdj3.png)
 
 step 4: calculate the %J line:
 
