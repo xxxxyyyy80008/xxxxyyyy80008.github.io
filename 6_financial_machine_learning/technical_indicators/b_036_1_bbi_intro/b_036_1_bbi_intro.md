@@ -2,8 +2,8 @@
 
 **References**
 
-[tradingview: BBI-Bollinger-Bands](https://www.tradingview.com/script/hKQvERLU-BBI-Bollinger-Bands/)
-[MyTT](https://github.com/mpquant/MyTT/blob/ea4f14857ecc46a3739a75ce2e6974b9057a6102/MyTT.py)
+- [tradingview: BBI-Bollinger-Bands](https://www.tradingview.com/script/hKQvERLU-BBI-Bollinger-Bands/)
+- [MyTT](https://github.com/mpquant/MyTT/blob/ea4f14857ecc46a3739a75ce2e6974b9057a6102/MyTT.py)
 
 
 **Definition**
