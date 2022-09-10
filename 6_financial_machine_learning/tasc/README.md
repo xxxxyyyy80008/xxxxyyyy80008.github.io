@@ -9,7 +9,7 @@ title: TASC - The Traders Tips section
 
 | code  | TASC  |  Description |   Python |
 | ------------ | ------------ | ------------ | ------------ |
-| b_019  | [TradersTips 2010-01](https://traders.com/Documentation/FEEDbk_docs/2010/01/TradersTips.html)  |  The Vortex Indicator |   [vortex](b_019_1_vortex_intro_tasc201001/b_019_1_vortex_intro_tasc201001.md) |
+| b_019  | [TradersTips 2010-01](https://traders.com/Documentation/FEEDbk_docs/2010/01/TradersTips.html)  |  The Vortex Indicator |   [vortex](../technical_indicators/b_019_1_vortex_intro_tasc201001/b_019_1_vortex_intro_tasc201001.md) |
 | b_023  | [TradersTips 2019-07](https://traders.com/documentation/feedbk_docs/2019/07/traderstips.html)  |  Exponential Deviation Bands |   [exponential-deviation-bands](b_023_1_exponential-deviation-bands_intro_tasc201907/b_023_1_exponential-deviation-bands_intro_tasc201907.md) |
 | b_026  | [TradersTips 2020-03](https://traders.com/Documentation/FEEDbk_docs/2020/03/TradersTips.html)  |  RSMK: a new relative strength indicator|   [rsmk](b_026_1_rsmk_intro_tasc202003/b_026_1_rsmk_intro_tasc202003.md) |
 | b_030  | [TradersTips 2011-09](http://traders.com/documentation/feedbk_docs/2011/09/traderstips.html)   | Tom Demark Indicator|   [demark](b_030_1_demark_intro_tasc201109/b_030_1_demark_intro_tasc201109.md) |
