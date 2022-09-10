@@ -1,4 +1,4 @@
-## Volume-Weighted Moving Average Convergence/Divergence (VW_MACD)
+## MACD-V: Volatility Normalised Momentum
 
 **References**
 
