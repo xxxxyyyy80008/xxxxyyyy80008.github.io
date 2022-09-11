@@ -18,7 +18,7 @@
 **Calculation**
 
 ---
-![png](img/er_calculation.png)
+![png](../img/er_calculation.png)
 
 
 
