@@ -32,7 +32,7 @@ title: Technical Indicators
 | b_023 | [Exponential Deviation Bands](b_023_1_exponential-deviation-bands_intro_tasc201907/b_023_1_exponential-deviation-bands_intro_tasc201907.md) |
 | b_024 | [Schaff Trend Cycle (Oscillator)](b_024_1_schaff-trend-cycle_intro/b_024_1_schaff-trend-cycle_intro.md)                                                             |
 | b_025 | [Kaufman Efficiency Ratio](b_025_1_er_intro/b_025_1_er_intro.md)                                                                                                             |
-| b_026 | [Relative Strength To Outperform The Market(RSMK)](b_026_1_rsmk_intro_tasc202003/b_026_1_rsmk_intro_tasc202003.md)                                                                      |
+| b_026 | [Relative Strength To Outperform The Market (RSMK)](b_026_1_rsmk_intro_tasc202003/b_026_1_rsmk_intro_tasc202003.md)                                                                      |
 | b_027 | [KDJ](b_027_1_kdj_intro2/b_027_1_kdj_intro2.md)                                                                                                       |
 | b_028 | [XSII](b_028_1_xs2_intro/b_028_1_xs2_intro.md)                                                                                                          |
 | b_029 | [Donchian Channel](b_029_1_do_taq_intro/b_029_1_do_taq_intro.md)                                                                                                 |
