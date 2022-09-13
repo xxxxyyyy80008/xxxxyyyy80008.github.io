@@ -58,6 +58,7 @@ title: Technical Indicators
 | b_049 | [Aroon](b_049_1_aroon_intro/b_049_1_aroon_intro.md)                                                                                                    |
 | b_050 | [Chaikin Money Flow (CMF)](b_050_1_cmf_intro/b_050_1_cmf_intro.md)                                                                                                          |
 | b_051 | [MACD-V: Volatility Normalised Momentum](b_051_1_macd-v_intro_ssrn/b_051_1_macd-v_intro_ssrn.md)                                                                                  |
+| b_052 | [The Relative Strength Volume-Adjusted Exponential Moving Average (RS VA EMA)](b_052_1_rs-va-ema_intro_tasc202210/b_052_1_rs-va-ema_intro_tasc202210.md)                                                                                  |
 
 
 
