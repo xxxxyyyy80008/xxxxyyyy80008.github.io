@@ -16,7 +16,7 @@ title: A comparison of machine learning model validation schemes for non-station
 **Illustration of validation data splitting schemes**
 
 - red: training data, blue: validation data.
-- k = 5 splits expect the 1st one. 
+- k = 5 splits except the 1st one. 
 
 |  scheme |![png](img/ts_model_eval1_8.png)|
 |  ------------ | ------------ |
