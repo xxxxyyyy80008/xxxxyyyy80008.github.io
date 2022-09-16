@@ -1,5 +1,5 @@
 ---
-title: Time series data split for cross validation
+title: A comparison of machine learning model validation schemes for non-stationary time series data
 ---
 
 
