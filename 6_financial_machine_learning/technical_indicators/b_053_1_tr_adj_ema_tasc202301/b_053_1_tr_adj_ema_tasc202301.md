@@ -35,58 +35,9 @@ from datetime import datetime, timedelta, time, date
 
 
 ```python
-!pip install yfinance
-!pip install mplfinance
+#!pip install yfinance
+#!pip install mplfinance
 ```
-
-    Collecting yfinance
-      Downloading yfinance-0.2.12-py2.py3-none-any.whl (59 kB)
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m59.2/59.2 kB[0m [31m711.9 kB/s[0m eta [36m0:00:00[0m [36m0:00:01[0m
-    [?25hRequirement already satisfied: appdirs>=1.4.4 in /opt/conda/lib/python3.7/site-packages (from yfinance) (1.4.4)
-    Requirement already satisfied: cryptography>=3.3.2 in /opt/conda/lib/python3.7/site-packages (from yfinance) (38.0.2)
-    Requirement already satisfied: numpy>=1.16.5 in /opt/conda/lib/python3.7/site-packages (from yfinance) (1.21.6)
-    Requirement already satisfied: requests>=2.26 in /opt/conda/lib/python3.7/site-packages (from yfinance) (2.28.2)
-    Requirement already satisfied: frozendict>=2.3.4 in /opt/conda/lib/python3.7/site-packages (from yfinance) (2.3.5)
-    Requirement already satisfied: html5lib>=1.1 in /opt/conda/lib/python3.7/site-packages (from yfinance) (1.1)
-    Collecting multitasking>=0.0.7
-      Downloading multitasking-0.0.11-py3-none-any.whl (8.5 kB)
-    Requirement already satisfied: pytz>=2022.5 in /opt/conda/lib/python3.7/site-packages (from yfinance) (2022.7.1)
-    Requirement already satisfied: lxml>=4.9.1 in /opt/conda/lib/python3.7/site-packages (from yfinance) (4.9.2)
-    Requirement already satisfied: pandas>=1.3.0 in /opt/conda/lib/python3.7/site-packages (from yfinance) (1.3.5)
-    Requirement already satisfied: beautifulsoup4>=4.11.1 in /opt/conda/lib/python3.7/site-packages (from yfinance) (4.11.1)
-    Requirement already satisfied: soupsieve>1.2 in /opt/conda/lib/python3.7/site-packages (from beautifulsoup4>=4.11.1->yfinance) (2.3.2.post1)
-    Requirement already satisfied: cffi>=1.12 in /opt/conda/lib/python3.7/site-packages (from cryptography>=3.3.2->yfinance) (1.15.1)
-    Requirement already satisfied: six>=1.9 in /opt/conda/lib/python3.7/site-packages (from html5lib>=1.1->yfinance) (1.16.0)
-    Requirement already satisfied: webencodings in /opt/conda/lib/python3.7/site-packages (from html5lib>=1.1->yfinance) (0.5.1)
-    Requirement already satisfied: python-dateutil>=2.7.3 in /opt/conda/lib/python3.7/site-packages (from pandas>=1.3.0->yfinance) (2.8.2)
-    Requirement already satisfied: idna<4,>=2.5 in /opt/conda/lib/python3.7/site-packages (from requests>=2.26->yfinance) (3.4)
-    Requirement already satisfied: urllib3<1.27,>=1.21.1 in /opt/conda/lib/python3.7/site-packages (from requests>=2.26->yfinance) (1.26.14)
-    Requirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.7/site-packages (from requests>=2.26->yfinance) (2022.12.7)
-    Requirement already satisfied: charset-normalizer<4,>=2 in /opt/conda/lib/python3.7/site-packages (from requests>=2.26->yfinance) (2.1.1)
-    Requirement already satisfied: pycparser in /opt/conda/lib/python3.7/site-packages (from cffi>=1.12->cryptography>=3.3.2->yfinance) (2.21)
-    Installing collected packages: multitasking, yfinance
-    Successfully installed multitasking-0.0.11 yfinance-0.2.12
-    [33mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv[0m[33m
-    [0mCollecting mplfinance
-      Downloading mplfinance-0.12.9b7-py3-none-any.whl (73 kB)
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m73.1/73.1 kB[0m [31m831.3 kB/s[0m eta [36m0:00:00[0m00:01[0m0:01[0m
-    [?25hRequirement already satisfied: matplotlib in /opt/conda/lib/python3.7/site-packages (from mplfinance) (3.5.3)
-    Requirement already satisfied: pandas in /opt/conda/lib/python3.7/site-packages (from mplfinance) (1.3.5)
-    Requirement already satisfied: python-dateutil>=2.7 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mplfinance) (2.8.2)
-    Requirement already satisfied: cycler>=0.10 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mplfinance) (0.11.0)
-    Requirement already satisfied: packaging>=20.0 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mplfinance) (23.0)
-    Requirement already satisfied: fonttools>=4.22.0 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mplfinance) (4.38.0)
-    Requirement already satisfied: pillow>=6.2.0 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mplfinance) (9.4.0)
-    Requirement already satisfied: pyparsing>=2.2.1 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mplfinance) (3.0.9)
-    Requirement already satisfied: kiwisolver>=1.0.1 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mplfinance) (1.4.4)
-    Requirement already satisfied: numpy>=1.17 in /opt/conda/lib/python3.7/site-packages (from matplotlib->mplfinance) (1.21.6)
-    Requirement already satisfied: pytz>=2017.3 in /opt/conda/lib/python3.7/site-packages (from pandas->mplfinance) (2022.7.1)
-    Requirement already satisfied: typing-extensions in /opt/conda/lib/python3.7/site-packages (from kiwisolver>=1.0.1->matplotlib->mplfinance) (4.4.0)
-    Requirement already satisfied: six>=1.5 in /opt/conda/lib/python3.7/site-packages (from python-dateutil>=2.7->matplotlib->mplfinance) (1.16.0)
-    Installing collected packages: mplfinance
-    Successfully installed mplfinance-0.12.9b7
-    [33mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv[0m[33m
-    [0m
 
 
 ```python
