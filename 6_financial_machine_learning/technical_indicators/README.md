@@ -59,6 +59,7 @@ title: Technical Indicators
 | b_050 | [Chaikin Money Flow (CMF)](b_050_1_cmf_intro/b_050_1_cmf_intro.md)                                                                                                          |
 | b_051 | [MACD-V: Volatility Normalised Momentum](b_051_1_macd-v_intro_ssrn/b_051_1_macd-v_intro_ssrn.md)                                                                                  |
 | b_052 | [The Relative Strength Volume-Adjusted Exponential Moving Average (RS VA EMA)](b_052_1_rs-va-ema_intro_tasc202210/b_052_1_rs-va-ema_intro_tasc202210.md)                                                                                  |
+| b_053 | [True Range Adjusted Exponential Moving Average (TRAdj EMA)](b_053_1_tr_adj_ema_tasc202301/b_053_1_tr_adj_ema_tasc202301.md)                                                                                  |
 
 
 
