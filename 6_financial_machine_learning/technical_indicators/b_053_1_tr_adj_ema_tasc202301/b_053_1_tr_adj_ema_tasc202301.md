@@ -13,6 +13,13 @@
 
 In his article in this issue, “True Range Adjusted Exponential Moving Average (TRAdj EMA),” author Vitali Apirine presents how a security’s true range, which measures volatility, can be incorporated into a traditional exponential moving average. The trend-following indicator, called the true range adjusted exponential moving average (TRAdj EMA), applied with different lengths, can help define turning points and filter price movements. By comparing the indicator with an exponential moving average of identical length, the trader can gain insight into the overall trend.
 
+![png](../img/b_053_1.gif)
+
+
+![png](../img/b_053_2.gif)
+
+
+
 #### Load basic packages 
 
 
