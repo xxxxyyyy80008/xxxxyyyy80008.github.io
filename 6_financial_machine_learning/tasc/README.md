@@ -33,4 +33,5 @@ title: TASC - The Traders Tips section
 | c_005  | [TradersTips 2021-08](https://traders.com/Documentation/FEEDbk_docs/2021/08/TradersTips.html)  |  [Moving average bands (MAB) and moving average band width (MABW)](../technical_indicators/c_005_tasc202108/c_005_tasc202108.md) |
 | c_006  | [TradersTips 2017-10](https://traders.com/Documentation/FEEDbk_docs/2017/10/TradersTips.html)  |  [A Candlestick Strategy With Soldiers And Crows](../technical_indicators/c_006_tasc201710/c_006_tasc201710.md) |
 | c_007  | [TradersTips 2017-12](https://traders.com/Documentation/FEEDbk_docs/2017/12/TradersTips.html)  |  [Weekly & Daily MACD ](../technical_indicators/c_007_tasc201712/c_007_tasc201712.md) |
+| c_011  | [TradersTips 2022-12](https://traders.com/Documentation/FEEDbk_docs/2022/12/TradersTips.html)  |  [Short-Term Continuation And Reversal Signals](../technical_indicators/c_011_tasc202212/c_011_tasc202212.md) |
 | d_001  |  - | [combine b_38/b_39/b_40](../technical_indicators/d_001_b38-b39-b40/d_001_b38-b39-b40.md)  |
