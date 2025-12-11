@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Deep Adaptive Input Normalization
-parent: time_series
+parent: Time Series
 nav_order: 1
 ---
 

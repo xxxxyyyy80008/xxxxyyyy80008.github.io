@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Time series data split for cross validation
-parent: time_series
+parent: Time Series
 nav_order: 3
 ---
 
