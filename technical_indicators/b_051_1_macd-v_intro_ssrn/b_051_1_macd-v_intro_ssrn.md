@@ -1,6 +1,6 @@
 ---
 layout: default
-title: MACD-V: Volatility Normalised Momentum
+title: MACD-V - Volatility Normalised Momentum
 parent: Technical Indicators
 nav_order: 51
 ---
