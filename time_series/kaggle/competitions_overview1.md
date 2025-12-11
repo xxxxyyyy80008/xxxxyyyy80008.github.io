@@ -1,8 +1,12 @@
 ---
+layout: default
 title: Kaggle Time Series Competitions and Solutions (1)
+parent: Kaggle Competitions
+grand_parent: Time Series
+nav_order: 1
 ---
 
-### Kaggle Time Series Competitions and Solutions (1)
+## Kaggle Time Series Competitions and Solutions (1)
 
 *Jul 14, 2020*
 

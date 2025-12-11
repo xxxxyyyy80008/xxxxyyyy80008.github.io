@@ -1,10 +1,18 @@
-### Markov switching dynamic regression models
+---
+layout: default
+title: Markov switching dynamic regression models
+parent: Regime Shift
+grand_parent: Time Series
+nav_order: 3
+---
 
-#### reference: 
+##  Markov switching dynamic regression models
+
+### reference: 
  - example: https://www.statsmodels.org/dev/examples/notebooks/generated/markov_regression.html
  - doc: https://www.statsmodels.org/dev/generated/statsmodels.tsa.regime_switching.markov_regression.MarkovRegression.html
 
-#### Steps
+### Steps
 1. download market data using yfinance: download S&P 500 ('^GSPC')
 1. calculate return 20 day max return (i.e. target in supervised learning problem):
    - for each date (T):
@@ -13,7 +21,7 @@
     - lag 1 of target variable
     - lag 20 of target varable
 
-#### Markov switching parameters
+### Markov switching parameters
 - endog: The endogenous variable. the dependent variable (i.e. the target - 20 day max return)
 - k_regimes:  The number of regimes.
 - trend: Whether or not to include a trend.  Default is an intercept.

@@ -1,7 +1,10 @@
 ---
+layout: default
 title: Predicting regime shift in time series data - Literature review
+parent: Regime Shift
+grand_parent: Time Series
+nav_order: 2
 ---
-
 
 ***
 ### Predicting regime shift in time series data - Literature review

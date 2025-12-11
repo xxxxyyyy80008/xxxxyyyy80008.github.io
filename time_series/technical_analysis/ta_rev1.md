@@ -1,3 +1,11 @@
+---
+layout: default
+title: Predicting regime shift in time series data - Literature review
+parent: Technical Analysis
+grand_parent: Time Series
+nav_order: 2
+---
+
 ## Cheol-Ho Park and Scott H. Irwin. The Profitability of Technical Analysis: A Review (Part I)
 
 
