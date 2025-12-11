@@ -1,6 +1,6 @@
 ---
 layout: default
-title: FRAMA: Fractal Adaptive Moving Average
+title: FRAMA - Fractal Adaptive Moving Average
 parent: Technical Indicators
 nav_order: 2
 ---
