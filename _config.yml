@@ -6,6 +6,9 @@ remote_theme: just-the-docs/just-the-docs
 color_scheme: light # or "light"
 logo: "/assets/img/logo.png" # optional
 search_enabled: true
+search:
+  rel_url: true
+  button: true
 
 markdown: kramdown
 kramdown:
@@ -14,3 +17,4 @@ kramdown:
 
 url: "https://xxxxyyyy80008.github.io"
 baseurl: "" 
+
