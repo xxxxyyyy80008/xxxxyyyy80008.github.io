@@ -7,4 +7,5 @@ toc_label: "Contents"
 toc_icon: "list"        
 ---
 
-Quantitative Research
+
+# Quantitative Research
