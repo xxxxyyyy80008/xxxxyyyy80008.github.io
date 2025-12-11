@@ -1,6 +1,10 @@
 ---
+layout: default
 title: Temporal covariate shift
+parent: time_series
+nav_order: 2
 ---
+
 
 ***
 

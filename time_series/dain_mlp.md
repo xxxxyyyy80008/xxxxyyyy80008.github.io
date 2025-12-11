@@ -1,3 +1,10 @@
+---
+layout: default
+title: Deep Adaptive Input Normalization
+parent: time_series
+nav_order: 1
+---
+
 ## Deep Adaptive Input Normalization for Time Series Forecasting
 
 

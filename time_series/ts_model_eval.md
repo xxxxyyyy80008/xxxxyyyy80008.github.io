@@ -1,6 +1,10 @@
 ---
+layout: default
 title: A comparison of machine learning model validation schemes for non-stationary time series data
+parent: time_series
+nav_order: 4
 ---
+
 
 
 ***
