@@ -1,3 +1,10 @@
+---
+layout: default
+title: Ichimoku Cloud
+parent: Technical Indicators
+nav_order: 20
+---
+
 ## Ichimoku Cloud
 
 **References**

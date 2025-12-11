@@ -1,3 +1,10 @@
+---
+layout: default
+title: Stochastic Moving Average Convergence/Divergence (MACD)
+parent: Technical Indicators
+nav_order: 40
+---
+
 ## Stochastic Moving Average Convergence/Divergence (MACD)
 
 **References**

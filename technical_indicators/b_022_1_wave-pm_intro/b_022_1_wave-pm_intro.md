@@ -1,3 +1,10 @@
+---
+layout: default
+title: Wave PM (Whistler Active Volatility Energy Price Mass)
+parent: Technical Indicators
+nav_order: 22
+---
+
 ## Wave PM (Whistler Active Volatility Energy Price Mass)
 
 **References**

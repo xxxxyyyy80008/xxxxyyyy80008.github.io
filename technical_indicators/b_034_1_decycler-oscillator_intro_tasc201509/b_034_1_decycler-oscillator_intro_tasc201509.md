@@ -1,3 +1,10 @@
+---
+layout: default
+title: John Ehlers's Decycler Oscillator
+parent: Technical Indicators
+nav_order: 34
+---
+
 ## John Ehlers's Decycler Oscillator
 
 **References**

@@ -1,3 +1,10 @@
+---
+layout: default
+title: Value Chart
+parent: Technical Indicators
+nav_order: 21
+---
+
 ## Value Chart
 
 **References**

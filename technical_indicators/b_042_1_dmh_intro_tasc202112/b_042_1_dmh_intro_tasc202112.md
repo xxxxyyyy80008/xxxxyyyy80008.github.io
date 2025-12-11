@@ -1,3 +1,10 @@
+---
+layout: default
+title: An Improved Directional Movement Indicator (DMH)
+parent: Technical Indicators
+nav_order: 42
+---
+
 ## An Improved Directional Movement Indicator (DMH) - Smooth Directional Movements with Hann Windowed FIR filter
 
 **References**

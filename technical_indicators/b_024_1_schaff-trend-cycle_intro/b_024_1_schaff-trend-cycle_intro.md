@@ -1,3 +1,10 @@
+---
+layout: default
+title: Schaff Trend Cycle (Oscillator)
+parent: Technical Indicators
+nav_order: 24
+---
+
 ## Schaff Trend Cycle (Oscillator)
 
 **References**

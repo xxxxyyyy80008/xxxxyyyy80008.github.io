@@ -1,3 +1,10 @@
+---
+layout: default
+title: Hann windowed finite impulse response filter (FIR) Windowing
+parent: Technical Indicators
+nav_order: 41
+---
+
 ## Hann windowed finite impulse response filter (FIR) Windowing
 
 **References**

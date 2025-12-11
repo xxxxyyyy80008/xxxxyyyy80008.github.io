@@ -1,3 +1,10 @@
+---
+layout: default
+title: Relative Strength Moving Averages (RS_EMA)
+parent: Technical Indicators
+nav_order: 38
+---
+
 ## Relative Strength Moving Averages (RS_EMA)
 
 **References**

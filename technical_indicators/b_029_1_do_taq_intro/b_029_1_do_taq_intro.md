@@ -1,3 +1,10 @@
+---
+layout: default
+title: Donchian Channel
+parent: Technical Indicators
+nav_order: 29
+---
+
 ## Donchian Channel
 
 **References**

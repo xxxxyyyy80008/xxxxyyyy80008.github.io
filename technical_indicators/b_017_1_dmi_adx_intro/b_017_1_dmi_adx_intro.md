@@ -1,3 +1,10 @@
+---
+layout: default
+title: Average Directional Index (ADX)
+parent: Technical Indicators
+nav_order: 17
+---
+
 ## Average Directional Index (ADX)
 
 **References**

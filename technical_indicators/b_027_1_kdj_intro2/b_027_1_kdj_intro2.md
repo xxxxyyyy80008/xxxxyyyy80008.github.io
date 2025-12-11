@@ -1,3 +1,10 @@
+---
+layout: default
+title: KDJ
+parent: Technical Indicators
+nav_order: 27
+---
+
 ## KDJ
 
 **References**

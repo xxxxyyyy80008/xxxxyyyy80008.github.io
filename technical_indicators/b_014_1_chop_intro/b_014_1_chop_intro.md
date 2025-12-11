@@ -1,3 +1,10 @@
+---
+layout: default
+title: Choppiness Index (CHOP)
+parent: Technical Indicators
+nav_order: 14
+---
+
 ## Choppiness Index (CHOP)
 
 **References**

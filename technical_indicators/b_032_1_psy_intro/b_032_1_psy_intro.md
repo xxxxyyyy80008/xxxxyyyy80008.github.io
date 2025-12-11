@@ -1,3 +1,10 @@
+---
+layout: default
+title: Psychological Line (PSY) 
+parent: Technical Indicators
+nav_order: 32
+---
+
 ## Psychological Line (PSY) 
 
 **References**

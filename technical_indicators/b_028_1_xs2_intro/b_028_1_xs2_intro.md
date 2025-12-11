@@ -1,3 +1,10 @@
+---
+layout: default
+title: XSII
+parent: Technical Indicators
+nav_order: 28
+---
+
 ## XSII
 
 **References**

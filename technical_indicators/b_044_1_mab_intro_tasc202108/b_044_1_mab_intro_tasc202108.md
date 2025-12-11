@@ -1,3 +1,10 @@
+---
+layout: default
+title: Moving average bands (MAB) and moving average band width (MABW) 
+parent: Technical Indicators
+nav_order: 44
+---
+
 ## Moving average bands (MAB) and moving average band width (MABW) 
 
 **References**

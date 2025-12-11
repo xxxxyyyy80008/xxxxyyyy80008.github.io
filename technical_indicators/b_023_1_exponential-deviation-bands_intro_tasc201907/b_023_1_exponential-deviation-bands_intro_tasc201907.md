@@ -1,3 +1,10 @@
+---
+layout: default
+title: Exponential Deviation Bands
+parent: Technical Indicators
+nav_order: 23
+---
+
 ## Exponential Deviation Bands
 
 **References**

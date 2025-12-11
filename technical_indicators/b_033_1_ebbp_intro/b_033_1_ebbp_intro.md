@@ -1,3 +1,10 @@
+---
+layout: default
+title: Bull Power and Bear Power (Elder-Ray Index)
+parent: Technical Indicators
+nav_order: 33
+---
+
 ## Bull Power and Bear Power (Elder-Ray Index)
 
 **References**

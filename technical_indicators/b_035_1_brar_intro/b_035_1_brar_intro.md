@@ -1,3 +1,10 @@
+---
+layout: default
+title: BRAR
+parent: Technical Indicators
+nav_order: 35
+---
+
 ## BRAR
 
 **References**

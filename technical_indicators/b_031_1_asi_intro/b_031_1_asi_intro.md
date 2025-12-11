@@ -1,3 +1,10 @@
+---
+layout: default
+title: ASI
+parent: Technical Indicators
+nav_order: 31
+---
+
 ## ASI
 
 **References**

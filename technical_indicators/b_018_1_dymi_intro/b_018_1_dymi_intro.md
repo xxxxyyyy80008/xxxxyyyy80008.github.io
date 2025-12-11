@@ -1,3 +1,10 @@
+---
+layout: default
+title: Dynamic Momentum Index (DYMI)
+parent: Technical Indicators
+nav_order: 18
+---
+
 ## Dynamic Momentum Index (DYMI)
 
 

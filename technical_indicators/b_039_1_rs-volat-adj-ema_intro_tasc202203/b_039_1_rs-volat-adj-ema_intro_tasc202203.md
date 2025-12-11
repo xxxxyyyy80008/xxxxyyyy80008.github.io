@@ -1,3 +1,10 @@
+---
+layout: default
+title: The Relative Strength Volatility-Adjusted Exponential Moving Average (RS VolatAdj EMA)
+parent: Technical Indicators
+nav_order: 39
+---
+
 ## The Relative Strength Volatility-Adjusted Exponential Moving Average (RS VolatAdj EMA)
 
 **References**

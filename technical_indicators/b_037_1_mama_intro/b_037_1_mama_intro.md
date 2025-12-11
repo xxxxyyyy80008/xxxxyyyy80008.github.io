@@ -1,3 +1,10 @@
+---
+layout: default
+title: MAMA: MESA Adaptive Moving Average
+parent: Technical Indicators
+nav_order: 37
+---
+
 ## MAMA: MESA Adaptive Moving Average
 
 

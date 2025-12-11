@@ -1,3 +1,10 @@
+---
+layout: default
+title: The Vortex Indicator 
+parent: Technical Indicators
+nav_order: 19
+---
+
 ## The Vortex Indicator 
 
 **References**

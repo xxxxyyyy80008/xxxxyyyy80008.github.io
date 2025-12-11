@@ -1,3 +1,10 @@
+---
+layout: default
+title: Chande Momentum Oscillator (CMO) 
+parent: Technical Indicators
+nav_order: 16
+---
+
 ## Chande Momentum Oscillator (CMO) 
 
 **References**

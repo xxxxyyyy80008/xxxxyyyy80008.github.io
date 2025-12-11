@@ -1,3 +1,10 @@
+---
+layout: default
+title: Kaufman Efficiency Ratio
+parent: Technical Indicators
+nav_order: 25
+---
+
 ## Kaufman Efficiency Ratio
 
 **References**

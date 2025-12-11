@@ -1,3 +1,10 @@
+---
+layout: default
+title: Keltner Channels (KC)
+parent: Technical Indicators
+nav_order: 15
+---
+
 ## Keltner Channels (KC)
 
 **References**

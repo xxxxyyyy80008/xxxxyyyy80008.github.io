@@ -1,3 +1,10 @@
+---
+layout: default
+title: RSMK
+parent: Technical Indicators
+nav_order: 26
+---
+
 ## RSMK
 
 **References**

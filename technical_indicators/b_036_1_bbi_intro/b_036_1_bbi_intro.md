@@ -1,3 +1,10 @@
+---
+layout: default
+title: BBI
+parent: Technical Indicators
+nav_order: 36
+---
+
 ## BBI
 
 **References**

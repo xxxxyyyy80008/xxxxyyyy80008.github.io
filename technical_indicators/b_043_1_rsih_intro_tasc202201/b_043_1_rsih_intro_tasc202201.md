@@ -1,3 +1,10 @@
+---
+layout: default
+title: Relative Strength Moving Averages With Hann Windowing (RSIH)
+parent: Technical Indicators
+nav_order: 43
+---
+
 ## Relative Strength Moving Averages With Hann Windowing (RSIH)
 
 **References**

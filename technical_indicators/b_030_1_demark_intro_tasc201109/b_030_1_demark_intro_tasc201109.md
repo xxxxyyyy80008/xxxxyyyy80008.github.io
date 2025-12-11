@@ -1,3 +1,10 @@
+---
+layout: default
+title: Tom Demark Indicator (Magic 9)
+parent: Technical Indicators
+nav_order: 30
+---
+
 ## Tom Demark Indicator (Magic 9)
 
 **References**
