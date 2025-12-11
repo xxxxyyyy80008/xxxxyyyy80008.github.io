@@ -1,3 +1,10 @@
+---
+layout: default
+title: MADH (moving average difference with Hann) by John Ehlers
+parent: Technical Indicators
+nav_order: 46
+---
+
 ## MADH (moving average difference with Hann) by John Ehlers
 
 **References**

@@ -1,3 +1,10 @@
+---
+layout: default
+title: Adaptive price zone (APZ)
+parent: Technical Indicators
+nav_order: 48
+---
+
 ## Adaptive price zone (APZ)
 
 

@@ -1,3 +1,10 @@
+---
+layout: default
+title: Bollinger Bands Introduction
+parent: Technical Indicators
+nav_order: 4
+---
+
 ## Bollinger Bands Introduction
 
 **References**

@@ -1,3 +1,10 @@
+---
+layout: default
+title: Commodity Channel Index (CCI)
+parent: Technical Indicators
+nav_order: 7
+---
+
 ## Commodity Channel Index (CCI)
 
 **References**

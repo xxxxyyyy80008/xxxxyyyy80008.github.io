@@ -1,3 +1,10 @@
+---
+layout: default
+title: FRAMA: Fractal Adaptive Moving Average
+parent: Technical Indicators
+nav_order: 2
+---
+
 ## FRAMA: Fractal Adaptive Moving Average
 
 **References**

@@ -1,3 +1,10 @@
+---
+layout: default
+title: Relative Strength Index (RSI),  Stochastic RSI (STOCH RSI), Inverse Fisher Transform applied on RSI (IFT RSI)
+parent: Technical Indicators
+nav_order: 6
+---
+
 ## Relative Strength Index (RSI),  Stochastic RSI (STOCH RSI), Inverse Fisher Transform applied on RSI (IFT RSI)
 
 

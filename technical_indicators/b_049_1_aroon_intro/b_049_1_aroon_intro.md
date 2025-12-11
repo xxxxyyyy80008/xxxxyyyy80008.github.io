@@ -1,3 +1,10 @@
+---
+layout: default
+title: Aroon
+parent: Technical Indicators
+nav_order: 49
+---
+
 ## Aroon
 
 **References**

@@ -1,3 +1,10 @@
+---
+layout: default
+title: The Relative Strength Volume-Adjusted Exponential Moving Average (RS VA EMA)
+parent: Technical Indicators
+nav_order: 52
+---
+
 ## The Relative Strength Volume-Adjusted Exponential Moving Average (RS VA EMA)
 
 **References**

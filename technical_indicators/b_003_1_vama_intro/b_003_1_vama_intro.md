@@ -1,3 +1,10 @@
+---
+layout: default
+title: VAMA: A New Adaptive Moving Average
+parent: Technical Indicators
+nav_order: 3
+---
+
 ## VAMA: A New Adaptive Moving Average
 
 

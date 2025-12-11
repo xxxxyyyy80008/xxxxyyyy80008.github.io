@@ -1,3 +1,10 @@
+---
+layout: default
+title: Detecting High-Volume Breakouts: volume positive negative (VPN)
+parent: Technical Indicators
+nav_order: 45
+---
+
 ## Detecting High-Volume Breakouts: volume positive negative (VPN)
 
 **References**

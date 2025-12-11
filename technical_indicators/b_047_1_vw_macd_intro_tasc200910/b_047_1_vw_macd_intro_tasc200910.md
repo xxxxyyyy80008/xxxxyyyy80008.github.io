@@ -1,3 +1,10 @@
+---
+layout: default
+title: Volume-Weighted Moving Average Convergence/Divergence (VW_MACD)
+parent: Technical Indicators
+nav_order: 47
+---
+
 ## Volume-Weighted Moving Average Convergence/Divergence (VW_MACD)
 
 **References**

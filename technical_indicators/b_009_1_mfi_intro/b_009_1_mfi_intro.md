@@ -1,3 +1,10 @@
+---
+layout: default
+title: Money Flow Index (MFI)
+parent: Technical Indicators
+nav_order: 9
+---
+
 ## Money Flow Index (MFI)
 
 **References**

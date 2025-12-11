@@ -1,3 +1,10 @@
+---
+layout: default
+title: True Range Adjusted Exponential Moving Average (TRAdj EMA)
+parent: Technical Indicators
+nav_order: 53
+---
+
 ## True Range Adjusted Exponential Moving Average (TRAdj EMA)
 
 

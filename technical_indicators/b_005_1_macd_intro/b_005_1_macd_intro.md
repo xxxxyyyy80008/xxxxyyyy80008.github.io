@@ -1,3 +1,10 @@
+---
+layout: default
+title: Moving Average Convergence/Divergence (MACD)
+parent: Technical Indicators
+nav_order: 5
+---
+
 ## Moving Average Convergence/Divergence (MACD)
 
 **References**

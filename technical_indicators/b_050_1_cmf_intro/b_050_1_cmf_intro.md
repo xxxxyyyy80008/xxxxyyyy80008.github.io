@@ -1,3 +1,10 @@
+---
+layout: default
+title: Chaikin Money Flow (CMF)
+parent: Technical Indicators
+nav_order: 50
+---
+
 ## Chaikin Money Flow (CMF)
 
 **References**
