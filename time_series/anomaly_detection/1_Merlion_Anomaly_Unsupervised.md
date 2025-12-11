@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Anomaly Detection with Salesforce Merlion Package - Unsupervised anomaly detection
-parent: Time Series
-nav_order: 1
+parent: Time Series Anomaly Detection
+grand_parent: Time Series
+nav_order: 2
 ---
-
 
 # Anomaly Detection with Salesforce Merlion Package - Unsupervised anomaly detection
 

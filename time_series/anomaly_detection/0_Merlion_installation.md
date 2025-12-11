@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Installing Merlion
-parent: Time Series
+parent: Time Series Anomaly Detection
+grand_parent: Time Series
 nav_order: 1
 ---
 

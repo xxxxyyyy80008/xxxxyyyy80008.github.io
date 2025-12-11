@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Anomaly Detection with Salesforce Merlion Package - Unsupervised learning with Isolation Forest, VAE, and Ensemble
-parent: Time Series
+parent: Time Series Anomaly Detection
+grand_parent: Time Series
 nav_order: 3
 ---
 
