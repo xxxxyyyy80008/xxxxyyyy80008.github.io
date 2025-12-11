@@ -8,4 +8,3 @@ has_children: true
 # Portfolio Management
 
 
-{% include list.liquid all=true %}
