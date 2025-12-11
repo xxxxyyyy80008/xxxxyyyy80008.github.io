@@ -1,0 +1,16 @@
+title: "Quantitative Research"
+description: "Research notes and projects in quantitative finance, statistics, and machine learning."
+remote_theme: just-the-docs/just-the-docs
+
+# Just the Docs settings
+color_scheme: light # or "light"
+logo: "/assets/img/logo.png" # optional
+search_enabled: true
+
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+url: "https://xxxxyyyy80008.github.io"
+baseurl: "" 
