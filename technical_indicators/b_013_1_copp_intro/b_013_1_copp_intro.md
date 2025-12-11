@@ -1,3 +1,10 @@
+---
+layout: default
+title: Coppock Curve 
+parent: Technical Indicators
+nav_order: 13
+---
+
 ## Coppock Curve 
 
 **References**

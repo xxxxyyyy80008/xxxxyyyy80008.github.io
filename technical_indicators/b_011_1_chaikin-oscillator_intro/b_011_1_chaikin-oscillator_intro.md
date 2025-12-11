@@ -1,3 +1,10 @@
+---
+layout: default
+title: Chaikin Oscillator
+parent: Technical Indicators
+nav_order: 11
+---
+
 ## Chaikin Oscillator
 
 **References**

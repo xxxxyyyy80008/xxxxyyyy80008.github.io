@@ -1,3 +1,10 @@
+---
+layout: default
+title: Connors RSI (CRSI)
+parent: Technical Indicators
+nav_order: 12
+---
+
 ## Connors RSI (CRSI)
 
 **References**

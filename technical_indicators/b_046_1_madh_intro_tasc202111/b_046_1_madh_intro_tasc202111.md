@@ -1,6 +1,6 @@
 ---
 layout: default
-title: MADH (moving average difference with Hann) by John Ehlers
+title: MADH (moving average difference with Hann)
 parent: Technical Indicators
 nav_order: 46
 ---
