@@ -6,7 +6,7 @@ nav_order: 1
 
 # Quantitative Research
 
-Welcome to the site. Below is an overview of the main sections.
+Notes and projects in quantitative finance, statistics, algo trading, and machine learning.
 
 ## Time Series
 
