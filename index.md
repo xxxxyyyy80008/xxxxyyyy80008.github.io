@@ -8,10 +8,13 @@ nav_order: 1
 
 Quantitative Finance, Machine Learning, Derivatives, Portfolio Optimization, Risk Analysis
 
-## Time Series
+## Market Modeling & Forecasting
 
-## Portfolio Management
 
+
+## Derivatives & Risk Analytics
+
+- 
 
 ## Technical Indicators
 
