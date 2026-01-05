@@ -1,10 +1,10 @@
-title: "Quantitative Research"
-description: "Research notes and projects in quantitative finance, statistics, and machine learning."
+title: "A W | Quantitative Research"
+description: "Quantitative Finance, Machine Learning, Derivatives, Portfolio Optimization, Risk Analysis"
 remote_theme: just-the-docs/just-the-docs
 
 # Just the Docs settings
 color_scheme: light # or "light"
-logo: "/assets/img/logo.png" # optional
+
 search_enabled: true
 search:
   rel_url: true
@@ -18,3 +18,5 @@ kramdown:
 url: "https://xxxxyyyy80008.github.io"
 baseurl: "" 
 
+# Social Links
+github_username: xxxxyyyy80008
