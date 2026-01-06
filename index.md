@@ -15,7 +15,7 @@ Derivatives pricing, portfolio optimization, risk analysis, alpha research, and 
 
 ---
 
-## 🎯 Featured Research
+##  Featured Projects
 
 | Project | Description | Links |
 |:--------|:------------|:------|
@@ -26,7 +26,7 @@ Derivatives pricing, portfolio optimization, risk analysis, alpha research, and 
 
 ---
 
-## 📚 Research Areas
+##  Research Areas
 
 <div class="code-example" markdown="1">
 
@@ -49,7 +49,7 @@ Kaggle quant competition solutions: Optiver volatility prediction and Hull Tacti
 
 ---
 
-## 🛠️ Technical Skills
+##  Tech Stack
 
 | Category | Tools |
 |:---------|:------|
@@ -61,8 +61,9 @@ Kaggle quant competition solutions: Optiver volatility prediction and Hull Tacti
 
 ---
 
-## 📬 Contact
+##  Contact
 
-- **Email**: [your.email@example.com](mailto:your.email@example.com)
-- **LinkedIn**: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
-- **GitHub**: [github.com/your-username](https://github.com/your-username)
+<!-- - **Email**: [your.email@example.com](mailto:your.email@example.com)
+- **LinkedIn**: [linkedin.com/in/aw](https://linkedin.com/in/aw) -->
+- **GitHub**: [github.com/xxxxyyyy80008](https://github.com/xxxxyyyy80008)
+
