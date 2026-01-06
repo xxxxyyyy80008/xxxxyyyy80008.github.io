@@ -49,7 +49,7 @@ heading_anchors: true
 # External navigation links
 nav_external_links:
   - title: GitHub Repos
-    url: https://github.com/xxxxyyyy80008?tab=repositories
+    url: https://github.com/xxxxyyyy80008
     hide_icon: false
 
 # Callouts (for highlighting key info)
