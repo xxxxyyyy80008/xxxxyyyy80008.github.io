@@ -57,23 +57,3 @@ This section documents systematic trading strategies built using the [technical 
 
 ---
 
-## 📈 Performance Overview
-
-### Out-of-Sample Results (2020–2025)
-
-| Strategy | CAGR | Sharpe | Sortino | Max DD | Calmar | Win Rate | Profit Factor |
-|:---------|:----:|:------:|:-------:|:------:|:------:|:--------:|:-------------:|
-| FRAMA Crossover | 12.3% | 1.42 | 1.98 | -15.2% | 0.81 | 54% | 1.62 |
-| RSI Mean Reversion | 9.8% | 1.18 | 1.55 | -18.7% | 0.52 | 61% | 1.48 |
-| IFT RSI Momentum | 11.5% | 1.35 | 1.82 | -16.8% | 0.68 | 52% | 1.55 |
-| Bollinger Breakout | 8.1% | 0.95 | 1.21 | -22.4% | 0.36 | 43% | 1.38 |
-| Keltner Squeeze | 10.2% | 1.22 | 1.64 | -17.5% | 0.58 | 48% | 1.51 |
-| Multi-Factor Ensemble | 14.5% | 1.67 | 2.24 | -12.8% | 1.13 | 52% | 1.78 |
-| Regime-Adaptive | **15.8%** | **1.82** | **2.45** | **-11.2%** | **1.41** | 55% | **1.92** |
-| *Benchmark (SPY B&H)* | *10.1%* | *0.72* | *0.89* | *-33.7%* | *0.30* | *—* | *—* |
-
-{: .note }
-All results include 10bps transaction costs, 5bps slippage, and 1-day execution delay. Risk-free rate assumed 4%.
-
----
-
