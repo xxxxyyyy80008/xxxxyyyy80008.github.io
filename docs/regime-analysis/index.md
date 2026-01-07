@@ -12,8 +12,9 @@ permalink: /docs/regime-analysis/
 Time series modeling, regime shift detection, equity market crisis prediction, and historical market pattern analysis.
 {: .fs-5 .fw-300 }
 
-[Equity Market Crisis Models](/docs/regime-analysis/crisis-prediction/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Historical Market Pattern Analysis: 1998 vs 2025](/docs/regime-analysis/historical/1998-vs-2025){: .btn .fs-5 .mb-4 .mb-md-0 }
+[Equity Market Crisis Models](/docs/regime-analysis/crisis-prediction/){: .btn .btn-primary .fs-3 .mb-4 .mb-md-0 .mr-2 }
+[Historical Market Pattern Analysis: 1998 vs 2025](/docs/regime-analysis/pattern-analysis){: .btn .fs-3 .mb-4 .mb-md-0 }
+[Time series modeling](/docs/regime-analysis/time_series){: .btn .fs-3 .mb-4 .mb-md-0 }
 
 ---
 
