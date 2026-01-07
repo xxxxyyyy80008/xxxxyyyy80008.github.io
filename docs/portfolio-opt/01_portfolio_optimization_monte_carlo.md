@@ -4,7 +4,7 @@ title: Portfolio Optimization using Monte Carlo Methods
 parent: Portfolio Optimization
 nav_order: 2
 has_children: false
-permalink: /docs/portfolio-opt/
+permalink: /docs/portfolio-opt/01_portfolio_optimization_monte_carlo
 ---
 
 # Portfolio Optimization using Monte Carlo Methods
