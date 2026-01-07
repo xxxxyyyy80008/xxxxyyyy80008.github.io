@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Alpha Research
+title: Alpha Research & Signal Generation
 nav_order: 5
 has_children: true
 permalink: /docs/alpha-research/

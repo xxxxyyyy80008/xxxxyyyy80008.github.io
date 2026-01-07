@@ -1,17 +1,17 @@
 ---
 layout: default
 title: Technical Indicators
-parent: Alpha Research
+parent: Alpha Research & Signal Generation
 nav_order: 1
 has_children: true
 permalink: /docs/alpha-research/indicators/
 ---
 
 # Technical Indicators Library
-{: .fs-9 }
+{: .fs-7 }
 
 A collection of over 50 technical indicators implemented in Python for quantitative analysis and trading strategies.
-{: .fs-6 .fw-300 }
+{: .fs-5 .fw-300 }
 
 [Trend Indicators](/docs/alpha-research/indicators/trend/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [Momentum Indicators](/docs/alpha-research/indicators/momentum/){: .btn .fs-5 .mb-4 .mb-md-0 }

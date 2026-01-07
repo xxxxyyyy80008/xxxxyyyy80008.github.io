@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Strategies & Backtests
-parent: Alpha Research
+parent: Alpha Research & Signal Generation
 nav_order: 2
 has_children: true
 permalink: /docs/alpha-research/strategies/
