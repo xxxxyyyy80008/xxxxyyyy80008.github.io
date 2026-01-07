@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Black-Scholes Option Pricing with Greeks Analysis
+title: Delta Hedging 
 parent: Option Pricing & Risk Models
 nav_order: 6
 has_children: false

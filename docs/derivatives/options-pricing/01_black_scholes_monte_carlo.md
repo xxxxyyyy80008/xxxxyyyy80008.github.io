@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Black-Scholes Option Pricing - Theory, Simulation, and Market Comparison
+title: Black-Scholes Option Pricing
 parent: Option Pricing & Risk Models
 nav_order: 2
 has_children: false

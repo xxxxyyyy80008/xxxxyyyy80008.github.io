@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Black-Scholes Option Pricing with Greeks Analysis
+title: Binomial Tree and Monte Carlo Comparison
 parent: Option Pricing & Risk Models
 nav_order: 5
 has_children: false

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Black-Scholes Option Pricing with Greeks Analysis
+title: Implied Volatility Surface Analysis
 parent: Option Pricing & Risk Models
 nav_order: 4
 has_children: false
