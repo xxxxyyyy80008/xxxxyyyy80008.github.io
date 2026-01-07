@@ -4,7 +4,7 @@ title: Implied Volatility Surface Analysis
 parent: Option Pricing & Risk Models
 nav_order: 4
 has_children: false
-permalink: /docs/derivatives/options-pricing/03_black_scholes_implied_vol_surfac
+permalink: /docs/derivatives/options-pricing/03_black_scholes_implied_vol_surface
 ---
 
 # Black-Scholes Option Pricing - Implied Volatility Surface Analysis

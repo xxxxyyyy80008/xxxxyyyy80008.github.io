@@ -4,7 +4,7 @@ title: Delta Hedging
 parent: Option Pricing & Risk Models
 nav_order: 6
 has_children: false
-permalink: /docs/derivatives/options-pricing/05_delta_hedging.
+permalink: /docs/derivatives/options-pricing/05_delta_hedging
 ---
 
 #  Delta Hedging 
