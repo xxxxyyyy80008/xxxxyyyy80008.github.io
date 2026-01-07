@@ -4,7 +4,7 @@ title: Black-Scholes Option Pricing
 parent: Option Pricing & Risk Models
 nav_order: 2
 has_children: false
-permalink: /docs/derivatives/options/01_black_scholes_monte_carlo
+permalink: /docs/derivatives/options-pricing/01_black_scholes_monte_carlo
 ---
 
 

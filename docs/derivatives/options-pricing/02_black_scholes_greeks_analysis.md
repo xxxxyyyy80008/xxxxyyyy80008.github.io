@@ -4,7 +4,7 @@ title: Greeks Analysis
 parent: Option Pricing & Risk Models
 nav_order: 3
 has_children: false
-permalink: /docs/derivatives/options/02_black_scholes_greeks_analysis
+permalink: /docs/derivatives/options-pricing/02_black_scholes_greeks_analysis
 ---
 
 # Black-Scholes Option Pricing with Greeks Analysis
