@@ -10,7 +10,7 @@ permalink: /
 {: .fs-7 }
 
 derivatives pricing, portfolio optimization, risk analysis, alpha research, and machine learning applications in quantitative finance.
-{: .fs-5 .fw-300 }
+{: .fs-7 .fw-300 }
 
 
 ---
