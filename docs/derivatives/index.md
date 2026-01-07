@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Option Pricing and Risk Models
+title: Option Pricing & Risk Models
 nav_order: 2
 has_children: true
 permalink: /docs/derivatives/
 ---
 
-# Option Pricing and Risk Models
+# Option Pricing & Risk Models
 {: .fs-7 }
 
 Black-Scholes, binomial trees, Monte Carlo simulations, and risk models for option pricing. Includes Greeks analysis and implied volatility surfaces.

@@ -1,3 +1,12 @@
+---
+layout: default
+title: Black-Scholes Option Pricing with Greeks Analysis
+parent: Option Pricing & Risk Models
+nav_order: 4
+has_children: false
+permalink: /docs/derivatives/options/03_black_scholes_implied_vol_surfac
+---
+
 # Black-Scholes Option Pricing - Implied Volatility Surface Analysis
 
 **Notebooks**

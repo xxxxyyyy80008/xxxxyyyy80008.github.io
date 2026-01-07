@@ -1,3 +1,12 @@
+---
+layout: default
+title: Black-Scholes Option Pricing with Greeks Analysis
+parent: Option Pricing & Risk Models
+nav_order: 5
+has_children: false
+permalink: /docs/derivatives/options/04_option_pricing_binomial_tree
+---
+
 # Option Pricing: Binomial Tree and Monte Carlo Comparison
 
 

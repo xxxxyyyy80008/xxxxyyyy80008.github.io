@@ -1,4 +1,14 @@
-# Black-Scholes Option Pricing: Theory, Simulation, and Market Comparison
+---
+layout: default
+title: Black-Scholes Option Pricing - Theory, Simulation, and Market Comparison
+parent: Option Pricing & Risk Models
+nav_order: 2
+has_children: false
+permalink: /docs/derivatives/options/01_black_scholes_monte_carlo
+---
+
+
+# Black-Scholes Option Pricing - Theory, Simulation, and Market Comparison
 
 **Notebooks**
 - **[Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/black-scholes-option-pricing-and-monte-carlo/)**
