@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Portfolio Risk Analytics - VaR and ES Estimation
+title: Portfolio Risk  - VaR and ES
 parent: Portfolio Optimization
 nav_order: 4
 has_children: false
