@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Regime Analysis
+title: Market Regime Analysis
 nav_order: 4
 has_children: true
 permalink: /docs/regime-analysis/

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Time Series
-parent: Regime Analysis
+parent: Market Regime Analysis
 nav_order: 1
 has_children: true
 permalink: /docs/regime-analysis/time_series/

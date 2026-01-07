@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Crisis Prediction
-parent: Regime Analysis
+parent: Market Regime Analysis
 nav_order: 2
 has_children: true
 ---
