@@ -1,4 +1,13 @@
-# Portfolio Risk Analytics: VaR and ES Estimation
+---
+layout: default
+title: Portfolio Risk Analytics - VaR and ES Estimation
+parent: Portfolio Optimization
+nav_order: 4
+has_children: false
+permalink: /docs/portfolio-opt/
+---
+
+# Portfolio Risk Analytics - VaR and ES Estimation
 
 **Notebooks**
 

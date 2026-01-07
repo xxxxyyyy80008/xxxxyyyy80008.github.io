@@ -1,3 +1,12 @@
+---
+layout: default
+title: Portfolio Optimization using Monte Carlo Methods & PyPortfolioOpt
+parent: Portfolio Optimization
+nav_order: 3
+has_children: false
+permalink: /docs/portfolio-opt/
+---
+
 # Portfolio Optimization using Monte Carlo Methods & PyPortfolioOpt
 
 **Notebooks**
