@@ -4,7 +4,7 @@ title: Portfolio Optimization using Monte Carlo Methods & PyPortfolioOpt
 parent: Portfolio Optimization
 nav_order: 3
 has_children: false
-permalink: /docs/portfolio-opt/
+permalink: /docs/portfolio-opt/02_portfolio_optimization_pyportfolioopt
 ---
 
 # Portfolio Optimization using Monte Carlo Methods & PyPortfolioOpt

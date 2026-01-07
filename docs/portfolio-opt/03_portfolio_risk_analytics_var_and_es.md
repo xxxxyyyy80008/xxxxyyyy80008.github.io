@@ -4,7 +4,7 @@ title: Portfolio Risk Analytics - VaR and ES Estimation
 parent: Portfolio Optimization
 nav_order: 4
 has_children: false
-permalink: /docs/portfolio-opt/
+permalink: /docs/portfolio-opt/03_portfolio_risk_analytics_var_and_es
 ---
 
 # Portfolio Risk Analytics - VaR and ES Estimation
