@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Monte Carlo Methods vs PyPortfolioOpt
+title: Monte Carlo vs PyPortfolioOpt
 parent: Portfolio Optimization
 nav_order: 3
 has_children: false

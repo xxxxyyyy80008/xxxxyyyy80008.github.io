@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Portfolio Optimization Monte Carlo Methods
+title: Portfolio Optimization Monte Carlo
 parent: Portfolio Optimization
 nav_order: 2
 has_children: false

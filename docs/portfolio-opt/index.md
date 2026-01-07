@@ -18,18 +18,12 @@ Modern Portfolio Theory (MPT), Monte Carlo simulation, and advanced risk analyti
 ## Overview
 
 
-1. Portfolio Optimization using Monte Carlo Methods
-    - [Documentation](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/docs/01_portfolio_optimization_monte_carlo.md)
-    - [Github Notebook](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks/01_portfolio_optimization_monte_carlo.ipynb)
-    - [Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/portfolio-optimization-with-monte-carlo)
-2. Portfolio Optimization - PyPortfolioOpt
-    - [Documentation](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/docs/02_portfolio_optimization_pyportfolioopt.md)
-    - [Github Notebook](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks/02_portfolio_optimization_pyportfolioopt.ipynb)
-    - [Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/portfolio-optimization-mc-and-pyportfolioopt) 
-3. Portfolio Risk Analytics - VaR & ES
-    - [Documentation](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/docs/03_portfolio_risk_analytics_var_and_es.md)
-    - [Github Notebook](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks/03_portfolio_risk_analytics_var_and_es.ipynb)
-    - [Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/portfolio-risk-analytics-var-and-es)
+|#| Notebook|Details | Implementation |
+|--|---------|----------------|--------|
+|1| **Portfolio Optimization using Monte Carlo Methods**  | Traditional portfolio optimization using **SciPy SLSQP** algorithm with Monte Carlo simulation to map the efficient frontier. |[Docs](/docs/portfolio-opt/portfolio-optimization-with-monte-carlo) ~ [Github](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks/01_portfolio_optimization_monte_carlo.ipynb) ~ [Kaggle](https://www.kaggle.com/code/xxxxyyyy80008/portfolio-optimization-with-monte-carlo)|
+|2| **Portfolio Optimization - PyPortfolioOpt** | Advanced portfolio optimization using **PyPortfolioOpt** library with dual optimization approach and discrete allocation functionality. | [Docs](/docs/portfolio-opt/02_portfolio_optimization_pyportfolioopt.md) ~ [Github Notebook](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks/02_portfolio_optimization_pyportfolioopt.ipynb) ~ [Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/portfolio-optimization-mc-and-pyportfolioopt) |
+|3| **Portfolio Risk Analytics - VaR & ES** | Calculate, compare, and backtest ~17 different VaR and Expected Shortfall models for market risk.|[Docs](/docs/portfolio-opt/03_portfolio_risk_analytics_var_and_es.md) ~ [Github Notebook](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks/03_portfolio_risk_analytics_var_and_es.ipynb) ~ [Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/portfolio-risk-analytics-var-and-es)|
+
 
 
 ##  Details
@@ -111,7 +105,7 @@ Advanced portfolio optimization using **PyPortfolioOpt** library with dual optim
 
 #### Overview
 
-Comprehensive risk measurement framework implementing ~17 VaR and Expected Shortfall methodologies with rigorous backtesting. 
+Calculate, compare, and backtest ~17 different VaR and Expected Shortfall models for market risk.
 
 #### Key Features
 - 17 VaR/ES methods: Parametric, non-parametric, and advanced historical

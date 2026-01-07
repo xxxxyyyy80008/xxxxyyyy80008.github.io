@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Binomial Tree and Monte Carlo Comparison
+title: Binomial Tree vs Monte Carlo 
 parent: Option Pricing & Risk Models
 nav_order: 5
 has_children: false
