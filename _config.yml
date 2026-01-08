@@ -113,13 +113,12 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  
+
 # Exclude notebooks folder from Just the Docs navigation
 # but Jekyll will still copy it to _site/
 just_the_docs:
   collections:
     docs:
-      name: Documentation
       nav_exclude: false
 
 # Make sure notebooks folder is included in build
