@@ -15,7 +15,7 @@ permalink: /docs/alpha-research/indicators/
 **55+ production-ready implementations** with mathematical foundations and empirical validation.
 {: .fs-5 .fw-300 }
 
-[Source Code](https://github.com/xxxxyyyy80008/talib2025){: .btn .btn-primary .fs-3 .mb-2 .mb-md-0 }
+[Source Code](https://github.com/xxxxyyyy80008/talib2025){: .btn .btn-primary .fs-3 .mb-2 .mb-md-0}{:target="_blank" rel="noopener noreferrer"}
 
 ---
 
