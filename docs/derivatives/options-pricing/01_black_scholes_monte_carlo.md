@@ -10,7 +10,7 @@ permalink: /docs/derivatives/options-pricing/01_black_scholes_monte_carlo
 
 # Black-Scholes Option Pricing - Theory, Simulation, and Market Comparison
 
-[View](/notebooks/options-pricing/01_black_scholes_monte_carlo.html) -  [Github](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks/01_black_scholes_monte_carlo.ipynb){:target="_blank" rel="noopener noreferrer"}
+[View](/notebooks/options-pricing/01_black_scholes_monte_carlo.html){:target="_blank" rel="noopener noreferrer"} -  [Github](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks){:target="_blank" rel="noopener noreferrer"}
 
 ##  Overview
 
