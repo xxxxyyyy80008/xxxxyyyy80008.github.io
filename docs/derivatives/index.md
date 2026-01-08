@@ -33,8 +33,6 @@ Each notebook combines rigorous mathematical implementation with practical appli
 
 ##  Repository
 
-[**github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models**](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models)
-{: .fs-5 }
-
+[Source Code](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models){: .btn .btn-primary .fs-3 .mb-2 .mb-md-0 }
 ---
 
