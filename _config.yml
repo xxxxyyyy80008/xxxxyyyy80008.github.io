@@ -52,7 +52,6 @@ mathjax_config:
       console.log('MathJax is ready!');
     }
 
-
 # Enable syntax highlighting
 highlighter: rouge
 markdown: kramdown
