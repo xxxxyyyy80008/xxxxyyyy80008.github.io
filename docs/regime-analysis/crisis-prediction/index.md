@@ -3,6 +3,7 @@ layout: default
 title: Crisis Prediction
 parent: Market Regime Analysis
 nav_order: 2
+has_toc: false
 has_children: true
 ---
 

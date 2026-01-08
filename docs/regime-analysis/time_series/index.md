@@ -4,6 +4,7 @@ title: Time Series
 parent: Market Regime Analysis
 nav_order: 3
 has_children: true
+has_toc: false
 permalink: /docs/regime-analysis/time_series/
 ---
 
