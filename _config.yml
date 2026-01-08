@@ -1,9 +1,9 @@
-title: "A W "
+title: "A W"
 description: "Quantitative Finance, Machine Learning, Derivatives Pricing, Portfolio Optimization, Risk Analysis"
-# remote_theme: just-the-docs/just-the-docs
 remote_theme: just-the-docs/just-the-docs
+
 # Just the Docs settings
-color_scheme: light # or "light"
+color_scheme: light
 
 # Search
 search_enabled: true
@@ -31,39 +31,8 @@ aux_links_new_tab: true
 mathjax: true
 mathjax_autoNumber: true  
 
-# Additional MathJax settings
-mathjax_config:
-  tex:
-    inlineMath: [['$', '$'], ['\(', '\)']]
-    displayMath: [['$$', '$$'], ['\[', '\]']]
-    processEscapes: true
-    processEnvironments: true
-    packages:
-      '[+]': ['ams', 'color', 'bbox']
-  options:
-    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    ignoreHtmlClass: 'tex2jax_ignore'  # class to ignore math processing
-    processHtmlClass: 'tex2jax_process' # class to process math
-  loader:
-    load: ['[tex]/ams', '[tex]/color', '[tex]/bbox']
-  startup:
-    ready: () => {
-      MathJax.startup.defaultReady();
-      console.log('MathJax is ready!');
-    }
-
-# Enable syntax highlighting
-highlighter: rouge
-markdown: kramdown
-kramdown:
-  syntax_highlighter: rouge
-  input: GFM
-  math_engine: mathjax  
-
-
 url: "https://xxxxyyyy80008.github.io"
 baseurl: "" 
-
 
 # Footer
 footer_content: "© 2026 A W. Quantitative Research"
@@ -106,3 +75,40 @@ enable_copy_code_button: true
 mermaid:
   version: "10.6.0"
 
+# Collections for navigation
+collections:
+  docs:
+    permalink: "/:collection/:path/"
+    output: true
+
+# Default layout
+defaults:
+  - scope:
+      path: ""
+      type: docs
+    values:
+      layout: default
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# Markdown processor settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  math_engine: mathjax  # This line is crucial for MathJax
+
+# Optional: If you want highlighter separately
+highlighter: rouge
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
