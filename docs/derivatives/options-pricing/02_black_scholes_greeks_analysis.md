@@ -46,6 +46,7 @@ This Jupyter notebook provides an **advanced implementation of Black-Scholes-Mer
 **Formulas Implemented**:
 
 **Call Option**:
+
 $$C = Se^{-q\tau}N(d_1) - Ke^{-r\tau}N(d_2)$$
 
 **Put Option**:
