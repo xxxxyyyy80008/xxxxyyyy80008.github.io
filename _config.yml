@@ -27,10 +27,14 @@ aux_links:
 
 aux_links_new_tab: true
 
+
+math: katex
 markdown: kramdown
 kramdown:
-  math_engine: mathjax
+  input: GFM
+  math_engine: null
   syntax_highlighter: rouge
+  hard_wrap: false
 
 url: "https://xxxxyyyy80008.github.io"
 baseurl: "" 
