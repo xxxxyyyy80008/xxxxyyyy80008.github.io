@@ -14,47 +14,63 @@ permalink: /docs/alpha-research/strategies/
 Systematic rule-based strategies, backtesting, and performance evaluation.
 {: .fs-5 .fw-300 }
 
-[Backtest Framework](/docs/alpha-research/strategies/backtest-framework){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Strategy Results](/docs/alpha-research/strategies/results){: .btn .fs-5 .mb-4 .mb-md-0 }
+## Strategy Catalog
+
+### Mean Reversion
+
+| Strategy | Description | Link |
+|:---------|:------------|:-----|
+| **Bollinger Mean-Reversion** | Classic mean-reversion with z-score entry/exit | [View](/docs/alpha-research/strategies/c_001_tasc201905/c_001_tasc201905.html) |
+| **Bollinger + Candlesticks** | Band signals with pattern confirmation | [View](/docs/alpha-research/strategies/c_002_tasc201910/c_002_tasc201910.html) |
 
 ---
 
-## Overview
+### Trend Following
 
-This section documents systematic trading strategies built using the [technical indicators library](/docs/alpha-research/indicators/), along with the backtesting infrastructure used to evaluate them:
-
-- **Rule-Based Strategies** — Fully systematic, no discretionary decisions
-- **Vectorized Backtesting** — Fast historical simulation engine
-- **Realistic Assumptions** — Transaction costs, slippage, execution delays
-- **Rigorous Evaluation** — Walk-forward testing, robustness checks
-
-{: .highlight }
-> All strategies are designed for research and educational purposes. Past performance does not guarantee future results.
+| Strategy | Description | Link |
+|:---------|:------------|:-----|
+| **Adaptive Moving Averages** | KAMA/FRAMA-based trend detection | [View](/docs/alpha-research/strategies/c_003_tasc201804/c_003_tasc201804.html) |
+| **Weekly & Daily MACD** | Multi-timeframe trend alignment | [View](/docs/alpha-research/strategies/c_007_tasc201712/c_007_tasc201712.html) |
+| **MAB/MABW System** | Band width expansion signals | [View](/docs/alpha-research/strategies/c_005_tasc202108/c_005_tasc202108.html) |
 
 ---
 
-## 📦 Repositories
+### Breakout Detection
 
-| Repository | Description |
-|:-----------|:------------|
-| [**trading-strategies**](https://github.com/your-username/trading-strategies) | Strategy implementations and backtest code |
-| [**backtest-engine**](https://github.com/your-username/backtest-engine) | Core backtesting framework |
-
----
-
-## 📊 Strategy Library
-
-### Strategy Summary
-
-| Strategy | Type | Indicators | Timeframe | Complexity |
-|:---------|:-----|:-----------|:----------|:-----------|
-| [FRAMA Crossover](#frama-crossover) | Trend | FRAMA, ATR | Daily | Low |
-| [RSI Mean Reversion](#rsi-mean-reversion) | Mean Reversion | RSI, Bollinger | Daily | Low |
-| [IFT RSI Momentum](#ift-rsi-momentum) | Momentum | IFT RSI | Daily | Low |
-| [Bollinger Breakout](#bollinger-breakout) | Breakout | BB, ATR | Daily | Medium |
-| [Keltner Squeeze](#keltner-squeeze) | Volatility | KC, BB, MACD | Daily | Medium |
-| [Multi-Factor Ensemble](#multi-factor-ensemble) | Ensemble | Multiple | Daily | High |
-| [Regime-Adaptive](#regime-adaptive-strategy) | Adaptive | HMM + Multiple | Daily | High |
+| Strategy | Description | Link |
+|:---------|:------------|:-----|
+| **VPN High-Volume Breakouts** | Price breakout + volume confirmation | [View](/docs/alpha-research/strategies/c_004_tasc202104/c_004_tasc202104.html) |
+| **DMI Continuation Signals** | ADX trend strength + directional crossover | [View](/docs/alpha-research/strategies/c_011_tasc202212/c_011_tasc202212.html) |
 
 ---
 
+### Multi-Factor Composite
+
+| Strategy | Description | Link |
+|:---------|:------------|:-----|
+| **Soldiers & Crows** | Candlestick patterns + trend filter | [View](/docs/alpha-research/strategies/c_006_tasc201710/c_006_tasc201710.html) |
+| **Stoch MACD + RS Composite** | Triple confirmation: momentum + relative strength | [View](/docs/alpha-research/strategies/d_001_b38-b39-b40/d_001_b38-b39-b40.html) |
+
+---
+
+## Backtesting Framework
+
+-  **Transaction costs** — Commission + spread modeling
+-  **Slippage estimation** — Volume-dependent impact
+-  **Walk-forward validation** — Rolling out-of-sample testing
+-  **Risk metrics** — Sharpe, Sortino, max drawdown, win rate
+
+---
+
+## References
+
+- **TASC Papers** (2010-2025) — Primary strategy sources
+- **Kaufman** — Adaptive methods
+
+---
+
+## Related Sections
+
+- [Technical Indicators](/docs/alpha-research/indicators/) — 55+ indicators powering these strategies
+- [Regime Analysis](/docs/regime-analysis/) — Market regime detection for strategy selection
+```
