@@ -9,9 +9,8 @@ permalink: /docs/derivatives/options-pricing/03_black_scholes_implied_vol_surfac
 
 # Black-Scholes Option Pricing - Implied Volatility Surface Analysis
 
-**Notebooks**
-- **[Github Notebook](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks/03_black_scholes_implied_vol_surface.ipynb)**
-- **[Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/option-pricing-implied-volatility-surface/)**
+[View](/notebooks/options-pricing/03_black_scholes_implied_vol_surface.html){:target="_blank" rel="noopener noreferrer"} -  [Github](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks){:target="_blank" rel="noopener noreferrer"}
+
 
 ##  Overview
 

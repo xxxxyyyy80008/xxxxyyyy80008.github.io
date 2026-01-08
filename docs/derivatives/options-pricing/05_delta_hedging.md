@@ -10,9 +10,8 @@ permalink: /docs/derivatives/options-pricing/05_delta_hedging
 #  Delta Hedging 
 
 
-**Notebooks**
-- **[Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/option-pricing-delta-hedging)**
-- **[Github Notebook](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks/05_delta_hedging.ipynb)**
+[View](/notebooks/options-pricing/05_delta_hedging.html){:target="_blank" rel="noopener noreferrer"} -  [Github](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks){:target="_blank" rel="noopener noreferrer"}
+
 
 
 ## Overview

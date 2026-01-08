@@ -9,11 +9,7 @@ permalink: /docs/derivatives/options-pricing/02_black_scholes_greeks_analysis
 
 # Black-Scholes Option Pricing with Greeks Analysis
 
-
-**Notebooks**
-- **[Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/black-scholes-option-pricing-with-greeks-analysis)**
-- **[Github Notebook](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks/02_black_scholes_greeks_analysis.ipynb)**
-
+[View](/notebooks/options-pricing/02_black_scholes_greeks_analysis.html){:target="_blank" rel="noopener noreferrer"} -  [Github](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks){:target="_blank" rel="noopener noreferrer"}
 
 
 ##  Overview
