@@ -1,3 +1,12 @@
+---
+layout: default
+parent: Black-Scholes Option Pricing
+grand_parent: Option Pricing & Risk Models
+nav_order: 2
+has_children: false
+math: katex                 
+---
+
 # Black-Scholes Option Pricing: Theory, Simulation, and Market Comparison
 
 #### Purpose of the notebook:
