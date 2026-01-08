@@ -1,7 +1,7 @@
 title: "A W "
 description: "Quantitative Finance, Machine Learning, Derivatives Pricing, Portfolio Optimization, Risk Analysis"
 # remote_theme: just-the-docs/just-the-docs
-remote_theme: just-the-docs/just-the-docs@v0.8.2
+remote_theme: just-the-docs/just-the-docs
 # Just the Docs settings
 color_scheme: light # or "light"
 
@@ -27,14 +27,40 @@ aux_links:
 
 aux_links_new_tab: true
 
+# Enable MathJax for LaTeX math rendering
+mathjax: true
+mathjax_autoNumber: true  
 
-math: katex
+# Additional MathJax settings
+mathjax_config:
+  tex:
+    inlineMath: [['$', '$'], ['\(', '\)']]
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+    processEscapes: true
+    processEnvironments: true
+    packages:
+      '[+]': ['ams', 'color', 'bbox']
+  options:
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    ignoreHtmlClass: 'tex2jax_ignore'  # class to ignore math processing
+    processHtmlClass: 'tex2jax_process' # class to process math
+  loader:
+    load: ['[tex]/ams', '[tex]/color', '[tex]/bbox']
+  startup:
+    ready: () => {
+      MathJax.startup.defaultReady();
+      console.log('MathJax is ready!');
+    }
+
+
+# Enable syntax highlighting
+highlighter: rouge
 markdown: kramdown
 kramdown:
-  input: GFM
-  math_engine: null
   syntax_highlighter: rouge
-  hard_wrap: false
+  input: GFM
+  math_engine: mathjax  
+
 
 url: "https://xxxxyyyy80008.github.io"
 baseurl: "" 
