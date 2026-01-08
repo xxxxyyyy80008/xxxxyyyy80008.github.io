@@ -84,11 +84,15 @@ collections:
 # Default layout
 defaults:
   - scope:
+      path: "index.md"
+    values:
+      has_toc: false
+  - scope:
       path: ""
       type: docs
     values:
       layout: default
-      has_toc: false
+      # has_toc: false
 
 # Markdown processor settings
 markdown: kramdown
