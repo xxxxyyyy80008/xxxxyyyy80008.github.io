@@ -76,10 +76,10 @@ mermaid:
   version: "10.6.0"
 
 # Collections for navigation
-collections:
-  docs:
-    permalink: "/:collection/:path/"
-    output: true
+# collections:
+#   docs:
+#     permalink: "/:collection/:path/"
+#     output: true
 
 # Default layout
 defaults:
