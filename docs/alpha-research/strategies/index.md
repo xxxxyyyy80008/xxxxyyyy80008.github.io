@@ -8,10 +8,10 @@ permalink: /docs/alpha-research/strategies/
 ---
 
 # Trading Strategies & Backtesting
-{: .fs-9 }
+{: .fs-7 }
 
-Systematic rule-based strategies, backtesting framework, and rigorous performance evaluation.
-{: .fs-6 .fw-300 }
+Systematic rule-based strategies, backtesting, and performance evaluation.
+{: .fs-5 .fw-300 }
 
 [Backtest Framework](/docs/alpha-research/strategies/backtest-framework){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [Strategy Results](/docs/alpha-research/strategies/results){: .btn .fs-5 .mb-4 .mb-md-0 }
