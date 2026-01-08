@@ -88,19 +88,16 @@ defaults:
       type: docs
     values:
       layout: default
-  - scope:
-      path: ""
-    values:
-      layout: default
+      has_toc: false
 
 # Markdown processor settings
 markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-  math_engine: mathjax  # This line is crucial for MathJax
+  math_engine: mathjax  
 
-# Optional: If you want highlighter separately
+# highlighter separately
 highlighter: rouge
 
 # Exclude from processing
