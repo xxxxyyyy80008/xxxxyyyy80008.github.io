@@ -7,186 +7,156 @@ has_children: true
 permalink: /docs/alpha-research/indicators/
 ---
 
-# Technical Indicators Library
+
+# Technical Indicators
 {: .fs-7 }
 
-A collection of over 50 technical indicators implemented in Python for quantitative analysis and trading strategies.
+**55+ production-ready implementations** with mathematical foundations and empirical validation.
 {: .fs-5 .fw-300 }
 
-[Trend Indicators](/docs/alpha-research/indicators/trend/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Momentum Indicators](/docs/alpha-research/indicators/momentum/){: .btn .fs-5 .mb-4 .mb-md-0 }
-[Volatility Indicators](/docs/alpha-research/indicators/volatility/){: .btn .fs-5 .mb-4 .mb-md-0 }
-[Volume Indicators](/docs/alpha-research/indicators/volume/){: .btn .fs-5 .mb-4 .mb-md-0 }
-[Oscillators](/docs/alpha-research/indicators/oscillators/){: .btn .fs-5 .mb-4 .mb-md-0 }
+[View Source Code](https://github.com/xxxxyyyy80008/talib2025){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
-## Overview
+## Quick Stats
 
-This section provides a comprehensive library of technical indicators categorized by their function. Each indicator includes:
-
-- **Mathematical Definitions** — Detailed formulas and explanations
-- **Python Implementations** — Ready-to-use code snippets
-- **Use Cases** — Examples of how to apply each indicator in trading strategies
-
----
-
-## 📦 Repository
-
-| Repository | Description |
-|:-----------|:------------|
-| [**technical-indicators**](https://github.com/your-username/technical-indicators) | Complete library of indicators with implementations and documentation |
+| Metric | Value |
+|:-------|:------|
+| **Total Indicators** | 55 |
+| **Categories** | 7 (Adaptive, Momentum, Trend, Volatility, Volume, Sentiment, DSP) |
+| **Languages** | Python, NumPy/Pandas|
+| **Documentation** | Full LaTeX formulas + parameter tuning guides |
+| **Academic Sources** | 20+ TASC papers, Ehlers, Kaufman, DeMark |
 
 ---
 
-## 📊 Indicator Categories
+## Highlights
 
-### Trend Indicators
-- **Simple Moving Average (SMA)**
-- **Exponential Moving Average (EMA)**
-- **Weighted Moving Average (WMA)**
-- **Fractal Adaptive Moving Average (FRAMA)**
-- **Moving Average Convergence Divergence (MACD)**
-
-### Momentum Indicators
-- **Relative Strength Index (RSI)**
-- **Stochastic Oscillator**
-- **Rate of Change (ROC)**
-- **Commodity Channel Index (CCI)**
-- **Momentum Indicator**
-
-### Volatility Indicators
-- **Average True Range (ATR)**
-- **Bollinger Bands**
-- **Keltner Channel**
-- **Donchian Channel**
-- **Historical Volatility**
-
-### Volume Indicators
-- **On-Balance Volume (OBV)**
-- **Accumulation/Distribution Line**
-- **Chaikin Money Flow**
-- **Volume Rate of Change**
-- **Money Flow Index (MFI)**
-
-### Oscillators
-- **Stochastic RSI**
-- **Williams %R**
-- **Ultimate Oscillator**
-- **Chaikin Oscillator**
-- **Price Oscillator**
+ **Mathematical Modeling** — Fractal dimension, Hilbert transforms, Kalman filtering  
+ **Signal Processing** — FIR filters, Hann windowing, Ehlers DSP techniques  
+ **Statistical Methods** — Stochastic processes, volatility normalization, efficiency ratios  
+ **Research Translation** — Academic papers → validated Python code  
 
 ---
 
-## 🔍 Featured Indicator Implementations
+##  Indicator Catalog
 
-### Simple Moving Average (SMA)
-#### Definition
-The Simple Moving Average (SMA) is calculated as the average of a specified number of past prices.
+###  Adaptive Moving Averages (9)
+*Self-adjusting algorithms based on volatility, volume, or fractal dimension*
+
+| Indicator | Adaptation Method | Link |
+|:----------|:------------------|:-----|
+| FRAMA | Fractal dimension | [View](/docs/alpha-research/indicators/b_002_1_frama_intro/b_002_1_frama_intro.html) |
+| VAMA | Volatility-based | [View](/docs/alpha-research/indicators/b_003_1_vama_intro/b_003_1_vama_intro.html) |
+| MAMA | Hilbert Transform (MESA) | [View](/docs/alpha-research/indicators/b_037_1_mama_intro/b_037_1_mama_intro.html) |
+| Kaufman ER | Efficiency ratio | [View](/docs/alpha-research/indicators/b_025_1_er_intro/b_025_1_er_intro.html) |
+| RS_EMA | Relative strength | [View](/docs/alpha-research/indicators/b_038_1_rs-ema_intro_tasc202205_v2/b_038_1_rs-ema_intro_tasc202205_v2.html) |
+| RS VolatAdj EMA | Volatility-adjusted RS | [View](/docs/alpha-research/indicators/b_039_1_rs-volat-adj-ema_intro_tasc202203/b_039_1_rs-volat-adj-ema_intro_tasc202203.html) |
+| RS VA EMA | Volume-adjusted RS | [View](/docs/alpha-research/indicators/b_052_1_rs-va-ema_intro_tasc202210/b_052_1_rs-va-ema_intro_tasc202210.html) |
+| TRAdj EMA | True range adjusted | [View](/docs/alpha-research/indicators/b_053_1_tr_adj_ema_tasc202301/b_053_1_tr_adj_ema_tasc202301.html) |
+| RSIH | Hann windowing + RS | [View](/docs/alpha-research/indicators/b_043_1_rsih_intro_tasc202201/b_043_1_rsih_intro_tasc202201.html) |
+
+**Key Formula (FRAMA):**
 
 $$
-SMA_t = \frac{1}{N} \sum_{i=0}^{N-1} P_{t-i}
+\alpha = e^{-4.6(D-1)}, \quad D = \frac{\log(N_1+N_2)-\log(N_3)}{\log 2}
 $$
 
-Where:
-- $$P_t$$ = price at time $$t$$
-- $$N$$ = number of periods
+---
 
-#### Python Implementation
+###  Momentum Oscillators (13)
+*Overbought/oversold detection and momentum strength measurement*
 
-```python
-import pandas as pd
-
-def simple_moving_average(prices, window):
-    return prices.rolling(window=window).mean()
-```
-
-#### Use Case
-Use SMA to identify the general direction of the trend. A price crossing above the SMA may indicate a bullish trend, while crossing below may indicate a bearish trend.
+| Indicator | Range | Signal Threshold | Link |
+|:----------|:-----:|:----------------|:-----|
+| RSI | 0-100 | OB >70, OS <30 | [View](/docs/alpha-research/indicators/b_006_1_rsi_intro/b_006_1_rsi_intro.html) |
+| Stochastic RSI | 0-1 | OB >0.8, OS <0.2 | [View](/docs/alpha-research/indicators/b_006_1_rsi_intro/b_006_1_rsi_intro.html) |
+| IFT RSI | -1 to +1 | Sharpened signals | [View](/docs/alpha-research/indicators/b_006_1_rsi_intro/b_006_1_rsi_intro.html) |
+| Connors RSI | 0-100 | Multi-component RSI | [View](/docs/alpha-research/indicators/b_012_1_crsi_intro/b_012_1_crsi_intro.html) |
+| Breakout RSI (BRSI) | 0-100 | Breakout validation | [View](/docs/alpha-research/indicators/b_054_1_brsi_tasc201509/b_054_1_brsi_tasc201509.html) |
+| Awesome Oscillator | ±∞ | Zero-line cross | [View](/docs/alpha-research/indicators/b_001_1_ao_intro/b_001_1_ao_intro.html) |
+| CCI | ±∞ | OB >+100, OS <-100 | [View](/docs/alpha-research/indicators/b_007_1_cci_intro/b_007_1_cci_intro.html) |
+| Williams %R | -100 to 0 | OB >-20, OS <-80 | [View](/docs/alpha-research/indicators/b_008_1_william-r_intro/b_008_1_william-r_intro.html) |
+| Chande MO (CMO) | -100 to +100 | Zero-line momentum | [View](/docs/alpha-research/indicators/b_016_1_cmo_intro/b_016_1_cmo_intro.html) |
+| Dynamic MI (DYMI) | 0-100 | Adaptive RSI | [View](/docs/alpha-research/indicators/b_018_1_dymi_intro/b_018_1_dymi_intro.html) |
+| KDJ | 0-100+ | J-line extremes | [View](/docs/alpha-research/indicators/b_027_1_kdj_intro2/b_027_1_kdj_intro2.html) |
+| Coppock Curve | ±∞ | Long-term bottoms | [View](/docs/alpha-research/indicators/b_013_1_copp_intro/b_013_1_copp_intro.html) |
+| Greed & Fear (GFI) | 0-100 | Sentiment extremes | [View](/docs/alpha-research/indicators/b_055_1_gfi_tasc202210/b_055_1_gfi_tasc202210.html) |
 
 ---
 
-### Relative Strength Index (RSI)
-#### Definition
-The Relative Strength Index (RSI) measures the speed and change of price movements.
+### Trend Following (11)
+*Directional movement and trend strength identification*
 
-$$
-RSI = 100 - \frac{100}{1 + RS}
-$$
-
-Where:
-- $$RS = \frac{\text{Average Gain}}{\text{Average Loss}}$$
-
-#### Python Implementation
-
-```python
-def relative_strength_index(prices, window):
-    delta = prices.diff()
-    gain = (delta.where(delta > 0, 0)).rolling(window=window).mean()
-    loss = (-delta.where(delta < 0, 0)).rolling(window=window).mean()
-    rs = gain / loss
-    return 100 - (100 / (1 + rs))
-```
-
-#### Use Case
-RSI is typically used to identify overbought or oversold conditions in a market. An RSI above 70 indicates overbought conditions, while below 30 indicates oversold conditions.
+| Indicator | Type | Best For | Link |
+|:----------|:-----|:---------|:-----|
+| MACD | Oscillator | Trend + momentum | [View](/docs/alpha-research/indicators/b_005_1_macd_intro/b_005_1_macd_intro.html) |
+| MACD-V | Oscillator | Volatility-normalized | [View](/docs/alpha-research/indicators/b_051_1_macd-v_intro_ssrn/b_051_1_macd-v_intro_ssrn.html) |
+| VW MACD | Oscillator | Volume confirmation | [View](/docs/alpha-research/indicators/b_047_1_vw_macd_intro_tasc200910/b_047_1_vw_macd_intro_tasc200910.html) |
+| Stochastic MACD | Oscillator | Bounded (0-100) | [View](/docs/alpha-research/indicators/b_040_1_stochastic-macd_intro_tasc201911/b_040_1_stochastic-macd_intro_tasc201911.html) |
+| MADH | Oscillator | Hann-smoothed | [View](/docs/alpha-research/indicators/b_046_1_madh_intro_tasc202111/b_046_1_madh_intro_tasc202111.html) |
+| ADX | 0-100 | Trend strength | [View](/docs/alpha-research/indicators/b_017_1_dmi_adx_intro/b_017_1_dmi_adx_intro.html) |
+| DMH | Directional | Improved DMI | [View](/docs/alpha-research/indicators/b_042_1_dmh_intro_tasc202112/b_042_1_dmh_intro_tasc202112.html) |
+| Vortex | Directional | VI+/VI- crossover | [View](/docs/alpha-research/indicators/b_019_1_vortex_intro_tasc201001/b_019_1_vortex_intro_tasc201001.html) |
+| Aroon | 0-100 | Trend timing | [View](/docs/alpha-research/indicators/b_049_1_aroon_intro/b_049_1_aroon_intro.html) |
+| Ichimoku Cloud | Multi-component | Complete system | [View](/docs/alpha-research/indicators/b_020_1_ichimoku-cloud_intro/b_020_1_ichimoku-cloud_intro.html) |
+| Schaff Trend Cycle | 0-100 | Cycle oscillator | [View](/docs/alpha-research/indicators/b_024_1_schaff-trend-cycle_intro/b_024_1_schaff-trend-cycle_intro.html) |
 
 ---
 
-### Average True Range (ATR)
-#### Definition
-The Average True Range (ATR) measures market volatility by decomposing the entire range of an asset for that period.
+###  Volatility & Bands (9)
+*Price envelopes, breakout detection, and mean reversion*
 
-$$
-ATR = \frac{1}{N} \sum_{i=1}^{N} TR_i
-$$
+| Indicator | Construction | Use Case | Link |
+|:----------|:-------------|:---------|:-----|
+| Bollinger Bands | SMA ± 2σ | Mean reversion | [View](/docs/alpha-research/indicators/b_004_1_bbands_intro/b_004_1_bbands_intro.html) |
+| Keltner Channels | EMA ± 2×ATR | Breakouts | [View](/docs/alpha-research/indicators/b_015_1_keltner-channels_intro/b_015_1_keltner-channels_intro.html) |
+| Donchian Channel | N-period high/low | Turtle strategy | [View](/docs/alpha-research/indicators/b_029_1_do_taq_intro/b_029_1_do_taq_intro.html) |
+| Exp Deviation Bands | Exponential SD | Fast adaptation | [View](/docs/alpha-research/indicators/b_023_1_exponential-deviation-bands_intro_tasc201907/b_023_1_exponential-deviation-bands_intro_tasc201907.html) |
+| Adaptive Price Zone | Dynamic zones | Volatility regimes | [View](/docs/alpha-research/indicators/b_048_1_apz_intro/b_048_1_apz_intro.html) |
+| MA Bands (MAB/MABW) | Multi-MA + width | Band width signals | [View](/docs/alpha-research/indicators/b_044_1_mab_intro_tasc202108/b_044_1_mab_intro_tasc202108.html) |
+| Choppiness Index | 0-100 | Trend vs. range | [View](/docs/alpha-research/indicators/b_014_1_chop_intro/b_014_1_chop_intro.html) |
+| Wave PM | Energy model | Volatility energy | [View](/docs/alpha-research/indicators/b_022_1_wave-pm_intro/b_022_1_wave-pm_intro.html) |
+| Value Chart | Detrended | Normalized price | [View](/docs/alpha-research/indicators/b_021_1_value-chart_intro/b_021_1_value-chart_intro.html) |
 
-Where:
-- $$TR = \max(\text{High} - \text{Low}, |\text{High} - \text{Close}_{previous}|, |\text{Low} - \text{Close}_{previous}|)$$
-
-#### Python Implementation
-
-```python
-def average_true_range(df, window):
-    high_low = df['high'] - df['low']
-    high_close = (df['high'] - df['close'].shift(1)).abs()
-    low_close = (df['low'] - df['close'].shift(1)).abs()
-    tr = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
-    return tr.rolling(window=window).mean()
-```
-
-#### Use Case
-ATR is used to gauge market volatility; higher ATR values indicate higher volatility.
+**Squeeze Detection:** BB inside KC → Contraction phase
 
 ---
 
-## 📚 References
+###  Volume-Based (5)
+*Confirmation via volume analysis and money flow*
 
-- Wilder, J. W. (1978). *New Concepts in Technical Trading Systems*
-- Murphy, J. J. (1999). *Technical Analysis of the Financial Markets*
-- Achelis, S. B. (2001). *Technical Analysis from A to Z*
-
----
-
-## 🔗 Related Sections
-
-- [Alpha Research](/docs/alpha-research/) — Explore trading strategies utilizing these indicators.
-- [Backtesting Framework](/docs/alpha-research/strategies/backtest-framework/) — Test your strategies with these indicators effectively.
+| Indicator | Metric | Interpretation | Link |
+|:----------|:-------|:---------------|:-----|
+| Money Flow Index | Volume-weighted RSI | Buying/selling pressure | [View](/docs/alpha-research/indicators/b_009_1_mfi_intro/b_009_1_mfi_intro.html) |
+| Chaikin Money Flow | AD accumulation | Money flow strength | [View](/docs/alpha-research/indicators/b_010_1_chaikin-mf_intro/b_010_1_chaikin-mf_intro.html) |
+| Chaikin Oscillator | MACD of AD Line | Momentum of accumulation | [View](/docs/alpha-research/indicators/b_011_1_chaikin-oscillator_intro/b_011_1_chaikin-oscillator_intro.html) |
+| Volume Pos/Neg (VPN) | High-volume breakouts | Breakout confirmation | [View](/docs/alpha-research/indicators/b_045_1_vpn_intro_tasc202104/b_045_1_vpn_intro_tasc202104.html) |
 
 ---
 
-{: .warning }
-> **Disclaimer**: The implementations provided here are for educational purposes only. Ensure to backtest any strategy before applying it in real trading.
-```
+###  Sentiment & Breadth (6)
+*Market psychology and relative strength analysis*
+
+| Indicator | Measures | Signal | Link |
+|:----------|:---------|:-------|:-----|
+| Psychological Line | % bullish days | Contrarian | [View](/docs/alpha-research/indicators/b_032_1_psy_intro/b_032_1_psy_intro.html) |
+| Elder-Ray (Bull/Bear) | Buying/selling power | $$\text{Bull} = H - EMA_{13}$$ | [View](/docs/alpha-research/indicators/b_033_1_ebbp_intro/b_033_1_ebbp_intro.html) |
+| BRAR | Sentiment willingness | Chinese indicator | [View](/docs/alpha-research/indicators/b_035_1_brar_intro/b_035_1_brar_intro.html) |
+| RSMK | Mansfield RS | Stock vs. benchmark | [View](/docs/alpha-research/indicators/b_026_1_rsmk_intro_tasc202003/b_026_1_rsmk_intro_tasc202003.html) |
+| Tom DeMark TD9 | Exhaustion count | 9/13 sequences | [View](/docs/alpha-research/indicators/b_030_1_demark_intro_tasc201109/b_030_1_demark_intro_tasc201109.html) |
+| ASI | Swing index | Accumulation | [View](/docs/alpha-research/indicators/b_031_1_asi_intro/b_031_1_asi_intro.html) |
 
 ---
 
-This index page:
+###  Signal Processing (4)
+*Digital signal processing techniques from electrical engineering*
 
-- ✅ Categorizes indicators by function (trend, momentum, volatility, volume, oscillators)
-- ✅ Provides detailed definitions, Python implementations, and use cases for selected indicators
-- ✅ Links to relevant child pages for further exploration of specific categories
-- ✅ Includes a **repository** link for easy access to the codebase
-- ✅ Contains **references** for further reading and verification
+| Indicator | Technique | Author/Source | Link |
+|:----------|:----------|:--------------|:-----|
+| Ehlers Decycler | High-pass filter | John Ehlers | [View](/docs/alpha-research/indicators/b_034_1_decycler-oscillator_intro_tasc201509/b_034_1_decycler-oscillator_intro_tasc201509.html) |
+| Hann FIR Filter | Windowed FIR | DSP/TASC | [View](/docs/alpha-research/indicators/b_041_1_fir-windowing_intro_tasc202109/b_041_1_fir-windowing_intro_tasc202109.html) |
+| BBI | Multi-MA composite | — | [View](/docs/alpha-research/indicators/b_036_1_bbi_intro/b_036_1_bbi_intro.html) |
+| XSII | — | — | [View](/docs/alpha-research/indicators/b_028_1_xs2_intro/b_028_1_xs2_intro.html) |
 
-Would you like me to help create a specific child page for any category, such as **trend indicators** or **momentum indicators**?
+---
