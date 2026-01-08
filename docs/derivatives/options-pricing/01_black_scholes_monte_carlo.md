@@ -10,9 +10,11 @@ permalink: /docs/derivatives/options-pricing/01_black_scholes_monte_carlo
 
 # Black-Scholes Option Pricing - Theory, Simulation, and Market Comparison
 
+[View](/docs/derivatives/options-pricing/01_black_scholes_monte_carlo/01_black_scholes_monte_carlo.html) 
+
 **Notebooks**
 - **[Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/black-scholes-option-pricing-and-monte-carlo/)**
-- **[Github Notebook](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks/01_black_scholes_monte_carlo.ipynb)**
+- **[Github](https://github.com/xxxxyyyy80008/Option-Pricing-and-Risk-Models/blob/main/notebooks/01_black_scholes_monte_carlo.ipynb)**
 
 ##  Overview
 
