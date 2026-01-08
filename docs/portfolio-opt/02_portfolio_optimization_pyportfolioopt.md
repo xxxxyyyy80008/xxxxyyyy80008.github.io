@@ -9,10 +9,8 @@ permalink: /docs/portfolio-opt/02_portfolio_optimization_pyportfolioopt
 
 # Portfolio Optimization using Monte Carlo Methods & PyPortfolioOpt
 
-**Notebooks**
 
-- [Github Notebook](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks/02_portfolio_optimization_pyportfolioopt.ipynb)
-- [Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/portfolio-optimization-mc-and-pyportfolioopt)
+[View](/notebooks/portfolio-opt/02_portfolio_optimization_pyportfolioopt.html){:target="_blank" rel="noopener noreferrer"} -  [Github](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks){:target="_blank" rel="noopener noreferrer"}
 
 
 ##  Overview

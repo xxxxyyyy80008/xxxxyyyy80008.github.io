@@ -9,10 +9,7 @@ permalink: /docs/portfolio-opt/01_portfolio_optimization_monte_carlo
 
 # Portfolio Optimization using Monte Carlo Methods
 
-**Notebooks**
-
-- [Github Notebook](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks/01_portfolio_optimization_monte_carlo.ipynb)
-- [Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/portfolio-optimization-with-monte-carlo)
+[View](/notebooks/portfolio-opt/01_portfolio_optimization_monte_carlo.html){:target="_blank" rel="noopener noreferrer"} -  [Github](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks){:target="_blank" rel="noopener noreferrer"}
 
 
 ##  Overview

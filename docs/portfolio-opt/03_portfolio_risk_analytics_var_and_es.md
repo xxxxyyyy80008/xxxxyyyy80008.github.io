@@ -9,10 +9,9 @@ permalink: /docs/portfolio-opt/03_portfolio_risk_analytics_var_and_es
 
 # Portfolio Risk Analytics - VaR and ES Estimation
 
-**Notebooks**
 
-- [Github Notebook](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks/03_portfolio_risk_analytics_var_and_es.ipynb)
-- [Kaggle Notebook](https://www.kaggle.com/code/xxxxyyyy80008/portfolio-risk-analytics-var-and-es)
+[View](/notebooks/portfolio-opt/03_portfolio_risk_analytics_var_and_es.html){:target="_blank" rel="noopener noreferrer"} -  [Github](https://github.com/xxxxyyyy80008/Quantitative-Portfolio-Optimization/blob/main/notebooks){:target="_blank" rel="noopener noreferrer"}
+
 
 ##  Project Overview
 This notebook implements a **comprehensive risk analytics framework** featuring **17 distinct Value-at-Risk (VaR) and Expected Shortfall (ES) methodologies** for portfolio risk measurement. The analysis provides a comparative study of traditional, advanced, and modern risk estimation techniques.
