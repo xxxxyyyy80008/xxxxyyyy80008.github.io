@@ -80,9 +80,7 @@ collections:
   docs:
     permalink: "/:collection/:path/"
     output: true
-    No nav: true
-enable_nav: false
-nav_footer: false
+
 # Default layout
 defaults:
   - scope:
