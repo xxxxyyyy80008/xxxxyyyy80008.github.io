@@ -28,10 +28,13 @@ The script contains a custom-built, event-driven backtesting engine with the fol
 
 ### **3. Mathematical Components**
 The MABW deviation is calculated using the root mean square of the difference between slow and fast moving averages:
+
 $$
 \text{Dev} = \sqrt{\text{Mean}((\text{MA}_{slow} - \text{MA}_{fast})^2)} \times \text{Multiplier}
 $$
+
 The Width is derived as:
+
 $$
 \text{Width} = \frac{\text{Upper Band} - \text{Lower Band}}{\text{MA}_{slow}} \times 100
 $$
