@@ -1,8 +1,4 @@
-Here is a high-level, portfolio-ready Markdown template for your **Walk-Forward Methodology** page.
 
-This document is designed to demonstrate to hiring managers that you prioritize **robustness over raw returns** and understand the statistical dangers of overfitting.
-
-***
 
 # Walk-Forward Analysis & Parameter Stability Framework
 
