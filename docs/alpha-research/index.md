@@ -17,104 +17,54 @@ Technical indicator implementations, trading strategy development, and systemati
 
 ---
 
-## Overview
 
-This section contains my research on quantitative alpha generation, featuring:
+# Systematic Alpha Research Framework
 
-- **50+ Technical Indicators** — Custom implementations from scratch in Python
-- **Rule-Based Strategies** — Systematic trading strategies using indicator signals
-- **Backtesting Framework** — Performance evaluation with realistic assumptions
+### **Overview**
+This section documents my quantitative research into systematic trading strategies. The objective of this repository is not merely to find a "holy grail" strategy, but to establish a reproducible, rigorous **Research Engine** that can validate hypotheses, stress-test execution mechanics, and quantify parameter stability.
 
-{: .highlight }
-> All indicators are implemented from mathematical definitions without relying on TA-Lib, ensuring full understanding of the underlying calculations.
+The core framework is built in Python (Pandas/NumPy/Optuna) and features a **Hybrid Event-Driven Architecture** capable of vectorizing signals for speed while simulating execution event-by-event for accuracy.
 
----
+### **The Research Pipeline**
 
-## 📦 Repositories
-
-| Repository | Description |
-|:-----------|:------------|
-| [**technical-indicators**](https://github.com/your-username/technical-indicators) | 50+ indicator implementations with documentation |
-| [**trading-strategies**](https://github.com/your-username/trading-strategies) | Strategy implementations and backtest results |
-
----
-
-## 📊 Indicator Library Summary
-
-### By Category
-
-| Category | Count | Examples |
-|:---------|:-----:|:---------|
-| **Trend** | 12 | SMA, EMA, DEMA, TEMA, KAMA, FRAMA, T3 |
-| **Momentum** | 15 | RSI, IFT RSI, Stochastic, Williams %R, CCI, CMO |
-| **Volatility** | 10 | ATR, Bollinger Bands, Keltner Channel, Donchian |
-| **Volume** | 8 | OBV, VWAP, MFI, Chaikin Money Flow, A/D Line |
-| **Oscillators** | 7 | MACD, PPO, APO, TRIX, Ultimate Oscillator |
-
-### Featured Implementations
-
-<div class="code-example" markdown="1">
-
-#### FRAMA (Fractal Adaptive Moving Average)
-{: .fs-5 .fw-500 }
-
-Adapts smoothing based on fractal dimension of price series — more responsive in trends, smoother in ranges.
-
-$$
-\alpha = \exp(-4.6 \cdot (D - 1))
-$$
-
-Where $$D$$ is the fractal dimension calculated from price highs and lows.
-
-[View Implementation →](/docs/alpha-research/indicators/trend#frama)
-{: .fs-4 }
-
-</div>
-
-<div class="code-example" markdown="1">
-
-#### IFT RSI (Inverse Fisher Transform RSI)
-{: .fs-5 .fw-500 }
-
-Applies inverse Fisher transform to RSI for sharper turning point signals with values bounded $$[-1, +1]$$.
-
-$$
-\text{IFT} = \frac{e^{2x} - 1}{e^{2x} + 1}
-$$
-
-Where $$x$$ is the smoothed, normalized RSI.
-
-[View Implementation →](/docs/alpha-research/indicators/oscillators#ift-rsi)
-{: .fs-4 }
-
-</div>
-
----
-
-## 📈 Strategy Performance Summary
-
-| Strategy | Sharpe | CAGR | Max DD | Win Rate |
-|:---------|:------:|:----:|:------:|:--------:|
-| FRAMA Crossover | 1.42 | 12.3% | -15.2% | 54% |
-| RSI Mean Reversion | 1.18 | 9.8% | -18.7% | 61% |
-| Bollinger Breakout | 0.95 | 8.1% | -22.4% | 43% |
-| Multi-Factor Combo | 1.67 | 14.5% | -12.8% | 52% |
-
-{: .note }
-All results are out-of-sample (2020-2025) with 10bps transaction costs and 1-day execution delay.
-
----
-
-## 🔬 Research Approach
+My process follows a strict factory model to minimize overfitting and selection bias.
 
 ```mermaid
-flowchart LR
-    A[Market Data] --> B[Feature Engineering]
-    B --> C[Indicator Calculation]
-    C --> D[Signal Generation]
-    D --> E[Strategy Rules]
-    E --> F[Backtest Engine]
-    F --> G[Performance Analysis]
-    G --> H{Robust?}
-    H -->|Yes| I[Paper Trading]
-    H -->|No| B
+graph LR
+    A[Alpha Hypothesis] --> B[Vectorized Signal Design]
+    B --> C{Walk-Forward Analysis}
+    C -->|Optuna TPE| D[In-Sample Optimization]
+    D -->|Rolling Window| E[Out-of-Sample Validation]
+    E --> F[Parameter Stability Check]
+    F --> G[Portfolio Aggregation]
+    
+    style C fill:#f9f,stroke:#333,stroke-width:2px
+    style F fill:#bfb,stroke:#333,stroke-width:2px
+```
+
+### **Strategy Pool**
+
+Below is the current universe of strategies currently under management in this framework. Performance metrics represent **Out-of-Sample (OOS)** results from the Walk-Forward Analysis engine.
+
+| Strategy ID | Style | Logic Class | Asset Class | Freq | OOS Sharpe | Correlation (SPY) | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **[STRAT-01: MABW](./strategies/mabw-volatility-breakout)** | Momentum | Volatility Breakout | Equities | Daily | **1.42** | 0.15 | <span style="color:green">Active</span> |
+| STRAT-02: MRS-RSI | Mean Rev | Dynamic Thresholds | ETFs | Daily | 1.10 | -0.45 | <span style="color:orange">Review</span> |
+| STRAT-03: PAIRS-C | Arb | Cointegration (CADF) | Energy | Intraday | 1.85 | 0.05 | <span style="color:green">Active</span> |
+| STRAT-04: L/S-MOM | L/S Equity | Cross-Sectional Mom | S&P 500 | Weekly | 0.95 | 0.60 | <span style="color:red">Retired</span> |
+| ... | ... | ... | ... | ... | ... | ... | ... |
+
+*(Note: STRAT-04 was retired due to high regime sensitivity detected during the Holdout phase.)*
+
+### **Core Infrastructure**
+The reliability of these results rests on the underlying engine architecture.
+
+*   **[Walk-Forward Methodology](./framework/walk-forward-methodology)**: How I use rolling windows and Optuna to defeat look-ahead bias and overfitting.
+*   **[Backtest Engine Architecture](./framework/backtest-engine-architecture)**: A deep dive into the hybrid vectorized/event-driven system design, including stale order handling and slippage modeling.
+
+### **Tech Stack**
+*   **Core:** Python 3.10+, Pandas, NumPy
+*   **Optimization:** Optuna (Tree-structured Parzen Estimator)
+*   **Data Structures:** Custom `dataclasses` for immutable config management.
+*   **Visualization:** Matplotlib, Seaborn
+
