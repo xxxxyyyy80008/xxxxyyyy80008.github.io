@@ -1,6 +1,12 @@
-Here is a concise summary of the provided Python script.
+---
+layout: default
+title:  MABW Volatility Breakout & Momentum Strategy
+parent: Strategies & Backtests
+nav_order: 1
+---
 
-### **Script Overview: MABW Volatility Breakout & Momentum Strategy**
+
+### **MABW Volatility Breakout & Momentum Strategy**
 
 This script implements, backtests, and analyzes a quantitative trading strategy designed to capitalize on volatility compression (squeezes) followed by momentum breakouts across a portfolio of equities.
 
