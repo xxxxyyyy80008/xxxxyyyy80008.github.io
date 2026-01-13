@@ -23,7 +23,6 @@ Time series modeling, regime shift detection, equity market crisis prediction, a
 
 Understanding market regimes is critical for risk management and strategy adaptation. This section covers:
 
-- **Time Series Forecasting** — Advanced normalization and preprocessing techniques
 - **Regime Shift Detection** — Identifying structural breaks in market behavior
 - **Equity Market Crisis Prediction** — Machine learning models for crash early warning
 - **Historical Market Pattern Analysis** — Comparative study of market recovery patterns
