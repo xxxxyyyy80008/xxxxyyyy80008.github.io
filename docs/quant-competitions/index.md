@@ -3,6 +3,8 @@ layout: default
 title: "Quant Competitions"
 nav_order: 5
 has_children: true
+has_toc: false
+permalink: /docs/quant-competitions/
 ---
 
 # Quant Competitions
