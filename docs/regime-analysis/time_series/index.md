@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Time Series
+title: Time Series Modeling
 parent: Market Regime Analysis
 nav_order: 3
 has_children: true
