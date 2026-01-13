@@ -2,7 +2,7 @@
 layout: default
 title: Time Series Modeling
 parent: Market Regime Analysis
-nav_order: 3
+nav_order: 4
 has_children: true
 has_toc: false
 permalink: /docs/regime-analysis/time-series/
@@ -16,7 +16,7 @@ Two quant-native lenses on market state: **latent regimes** (discrete, persisten
 {: .fs-5 .fw-300 }
 
 [Markov-Switching Regime Detection](/docs/regime-analysis/time_series/markov-switching){: .btn .btn-primary .fs-3 .mb-4 .mb-md-0 .mr-2 }
-[Anomaly Detection](/docs/regime-analysis/time_series/anomaly-detection){: .btn .fs-3 .mb-4 .mb-md-0 }
+[Anomaly Detection](/docs/regime-analysis/time-series/anomaly-detection){: .btn .fs-3 .mb-4 .mb-md-0 }
 
 ---
 
