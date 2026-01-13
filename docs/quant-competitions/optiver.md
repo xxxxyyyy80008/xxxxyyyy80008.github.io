@@ -17,6 +17,12 @@ This folder contains my end-to-end work for the Optiver Realized Volatility Pred
 
 ## Repository contents
 
+
+[Source Code](https://github.com/xxxxyyyy80008/Kaggle-Optiver-Realized-Volatility-Prediction/tree/main/scripts){: .btn .btn-primary .fs-3 .mb-2 .mb-md-0}{:target="_blank" rel="noopener noreferrer"}
+
+---
+
+
 ### 0) Initial exploration (data + target)
 Goal: understand the dataset structure and what the model is predicting.
 
