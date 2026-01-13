@@ -10,11 +10,10 @@ permalink: /docs/quant-competitions/mitsui-commodity-prediction
 # MITSUI&CO. Commodity Prediction Challenge (Kaggle)
 
 
-- **Competition page:** [https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge)  
-- [**Data:** ](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge/data)  
+[**Competition page**](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge) · [**Data**](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge/data)  
 
 
-Python Scripts for the **MITSUI&CO. Commodity Prediction Challenge**. [View](/notebooks/quant-competitions/20251003-commodity-prediction.html){:target="_blank" rel="noopener noreferrer"}
+Python Scripts for the **MITSUI&CO. Commodity Prediction Challenge**. [View Script](/notebooks/quant-competitions/20251003-commodity-prediction.html){:target="_blank" rel="noopener noreferrer"}
 
 The implementation focuses on:
 
