@@ -110,4 +110,3 @@ A set of plots intended to answer:  **“Is 2025 recovering like 1998, and if so
 10. **Template-based projection** (scale 1998 “future segment” to 2025 price level)
 ![png](images/output_30_0.png)
 11. **Summary Dashboard**![png](images/output_33_0.png)
----
