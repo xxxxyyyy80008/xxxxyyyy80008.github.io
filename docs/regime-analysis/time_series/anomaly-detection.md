@@ -17,14 +17,6 @@ Applies **Salesforce Merlion** to generate anomaly scores on a market-derived ti
 
 The goal is not labeled anomaly detection; instead, this analysis test whether anomaly scores carry information about *forward upside potential*.
 
-## References
-- Merlion: https://github.com/salesforce/Merlion  
-- Merlion example: https://github.com/salesforce/Merlion/blob/main/examples/anomaly/1_AnomalyFeatures.ipynb  
-- Isolation Forest (sklearn): https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html  
-- Merlion VAE implementation: https://github.com/salesforce/Merlion/blob/main/merlion/models/anomaly/vae.py  
-
----
-
 ## Data & target
 - Data source: `yfinance`
 - Asset: S&P 500 (`^GSPC`)
@@ -72,5 +64,13 @@ This notebook treats the anomaly score as a candidate signal and reports:
 - **VAE is the strongest single model in this run**: it shows the **highest correlation** with the forward $$20$$-day max return target on **both** the training and testing splits (relative to Isolation Forest and the ensemble).
 - **Scale matters when comparing anomaly scores**: VAE produces **consistently larger-magnitude anomaly scores** than the other methods. This likely reflects **different score calibration/normalization** across detectors rather than “more anomalies” in an absolute sense.
 - **Practical implication**: if you want a single unsupervised score that best tracks the forward-move proxy used here, **VAE is the best candidate** from these three. For downstream use, consider **standardizing scores** (e.g., z-score by a rolling window) before thresholding or combining with other signals.
+
+---
+
+## References
+- Merlion: [https://github.com/salesforce/Merlion](https://github.com/salesforce/Merlion)  
+- Merlion example: [https://github.com/salesforce/Merlion/blob/main/examples/anomaly/1_AnomalyFeatures.ipynb](https://github.com/salesforce/Merlion/blob/main/examples/anomaly/1_AnomalyFeatures.ipynb)  
+- Isolation Forest (sklearn): [https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html)  
+- Merlion VAE implementation: [https://github.com/salesforce/Merlion/blob/main/merlion/models/anomaly/vae.py](https://github.com/salesforce/Merlion/blob/main/merlion/models/anomaly/vae.py)  
 
 ---
