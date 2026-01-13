@@ -60,23 +60,6 @@ This enables side-by-side inspection of “month $$m$$ after trough” dynamics 
 
 ---
 
-## Visualizations (10 views)
-The script produces a set of plots intended to answer:  
-**“Is 2025 recovering like 1998, and if so, in what dimensions?”**
-
-1. **Absolute price paths** (1998 full; 2025 actual + shaded projection region)
-2. **Normalized recovery paths** (aligned by start date; 0% reference line at trough)
-3. **Dual y-axis overlay** (1998 on left axis, 2025 on right axis; same x-grid)
-4. **20D moving average + ±2σ bands** (volatility regime and stabilization check)
-5. **Daily return distributions** (mean/dispersion/skew differences)
-6. **Cumulative returns** since trough (path dependence)
-7. **Moving averages (20D/50D)** (trend and time-to-signal; guarded for short samples)
-8. **Rolling realized volatility** (annualized; windowed; 20% reference level)
-9. **Risk–reward scenario panel** (explicit assumptions; not model-estimated)
-10. **Template-based projection** (scale 1998 “future segment” to 2025 price level)
-
----
-
 ## Projection method 
 When 2025 has fewer observations than the 1998 benchmark, the script can build a *shape-implied* continuation:
 
@@ -109,3 +92,20 @@ This yields an interpretable *recovery speed table* rather than relying purely o
 - Scenario panel (Viz 9) is **assumption-driven** and should not be treated as inference.
 
 
+## Visualizations
+
+A set of plots intended to answer:  **“Is 2025 recovering like 1998, and if so, in what dimensions?”**
+
+1. **Absolute price paths** (1998 full; 2025 actual + shaded projection region)![png](images/output_7_0.png)
+2. **Normalized recovery paths** (aligned by start date; 0% reference line at trough)![png](images/output_9_0.png)
+3. **Dual y-axis overlay** (1998 on left axis, 2025 on right axis; same x-grid)![png](images/output_11_0.png)
+4. **20D moving average + ±2σ bands** (volatility regime and stabilization check)![png](images/output_14_0.png)
+5. **Daily return distributions** (mean/dispersion/skew differences)![png](images/output_18_0.png)
+6. **Cumulative returns** since trough (path dependence)![png](images/output_20_0.png)
+7. **Moving averages (20D/50D)** (trend and time-to-signal; guarded for short samples)![png](images/output_22_0.png)
+8. **Rolling realized volatility** (annualized; windowed; 20% reference level)![png](images/output_26_0.png)
+9. **Risk–reward scenario panel** (explicit assumptions; not model-estimated)![png](images/output_28_0.png)
+10. **Template-based projection** (scale 1998 “future segment” to 2025 price level)
+![png](images/output_30_0.png)
+11. **Summary Dashboard**![png](images/output_33_0.png)
+---
