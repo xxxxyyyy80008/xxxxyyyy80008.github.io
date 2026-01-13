@@ -22,7 +22,7 @@ It’s designed as a **pattern-matching framework**: align two recovery windows,
 
 - [View Script](/notebooks/regime-analysis/pattern-analysis/s-p-500-recovery-analysis-1998-vs-2025.html){:target="_blank" rel="noopener noreferrer"}
 
-- [Nasdaq 100 Recovery Pattern](notebooks/regime-analysis/pattern-analysis/nasdaq-100-recovery-analysis-1998-vs-2025.html){:target="_blank" rel="noopener noreferrer"}
+- [Nasdaq 100 Recovery Pattern](/notebooks/regime-analysis/pattern-analysis/nasdaq-100-recovery-analysis-1998-vs-2025.html){:target="_blank" rel="noopener noreferrer"}
 
 ## Comparison design
 
