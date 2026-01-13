@@ -10,6 +10,8 @@ nav_order: 1
 
 This script implements, backtests, and analyzes a quantitative trading strategy designed to capitalize on volatility compression (squeezes) followed by momentum breakouts across a portfolio of equities.
 
+[View](/notebooks/alpha-research/strategies/01_strategy_mabw.html)
+
 ### **1. Core Strategy Logic**
 The strategy utilizes the **Moving Average Band Width (MABW)** to detect market phases.
 *   **Indicators:** Calculates Fast (10) and Slow (60) Moving Averages to create bands. The "Width" is the percentage difference between the Upper and Lower bands.
