@@ -11,10 +11,12 @@ permalink: /docs/quant-competitions/mitsui-commodity-prediction
 
 
 - **Competition page:** [https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge)  
-- **Data:** [https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge/data](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge/data)  
+- [**Data:** ](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge/data)  
 
 
-Python Scripts for the **MITSUI&CO. Commodity Prediction Challenge**. The implementation focuses on:
+Python Scripts for the **MITSUI&CO. Commodity Prediction Challenge**. [View](/notebooks/quant-competitions/20251003-commodity-prediction.html){:target="_blank" rel="noopener noreferrer"}
+
+The implementation focuses on:
 
 - Converting the wide, multi-asset dataset into a standardized **long format** (`date`, `asset_id`, OHLCV-like fields)
 - Building simple rolling-window features per asset
