@@ -19,37 +19,63 @@ Advanced preprocessing, normalization, and forecasting techniques for non-statio
 
 ---
 
-## Overview
 
-Financial time series present unique challenges that standard machine learning preprocessing cannot address:
 
-- **Non-stationarity** — Statistical properties change over time
-- **Regime dependence** — Different market states require different models
-- **Fat tails** — Extreme events occur more frequently than Gaussian assumptions
-- **Volatility clustering** — Periods of high/low volatility persist
-- **Look-ahead bias risk** — Future information can easily leak into training
-
-{: .highlight }
-> Traditional z-score normalization using full-sample statistics is fundamentally flawed for financial forecasting — it leaks future information and assumes stationarity.
+# Time Series Modeling
+Two quant-native lenses on market state: **latent regimes** (discrete, persistent) and **anomaly scores** (continuous, stress/surprise).
 
 ---
 
-## 📦 Repository
+## 1) Markov-Switching Regime Detection (Statsmodels)
+**Goal:** infer a hidden regime $$S_t$$ where both conditional mean dynamics and dispersion can change.
 
-| Repository | Description |
-|:-----------|:------------|
-| [**time-series-research**](https://github.com/your-username/time-series-research) | Normalization methods, regime detection, forecasting models |
+**Label (research proxy):** 20-day forward max return
+$$
+y_t = 100 \times \frac{\max(C_{t+1},\dots,C_{t+20}) - C_t}{C_t}
+$$
+
+**Best model (selected by BIC on train):** 3 regimes, switching variance, exog `lag1` + `lag20`
+$$
+y_t=\beta_{0,S_t}+\beta_{1,S_t}y_{t-1}+\beta_{2,S_t}y_{t-20}+\varepsilon_t,\quad
+\varepsilon_t\sim\mathcal{N}(0,\sigma^2_{S_t})
+$$
+
+**Key results (train, 2000-02-01→2025-07-22; $$n=6406$$):**
+- Model selection: `3_regime_full` BIC **18433.66** (wins vs 2-regime, 5-regime, and non-switching-variance variants)
+- Regime mix + behavior (hard assignment via $$\arg\max_i P(S_t=i)$$):
+  - **R0 (53.5%)**: mean **2.248%**, std **1.572%**, longest **343** days
+  - **R1 (5.0%)**: mean **6.948%**, std **5.925%**, longest **74** days *(high opportunity + high dispersion)*
+  - **R2 (41.5%)**: mean **3.322%**, std **2.837%**, longest **131** days
+- Persistence (expected duration $$\mathbb{E}[D_i]=1/(1-p_{ii})$$):
+  - R0 **40.6d**, R1 **16.1d**, R2 **25.2d**
+- Transition matrix is diagonal-dominant (persistent regimes; rare regime is short-lived).
+
+**Artifacts:**
+- `markov_regime_probabilities.png`
+- `markov_regime_overlay.png`
 
 ---
 
-## 🎯 Key Challenges & Solutions
+## 2) Merlion Anomaly Detection (Unsupervised)
+**Goal:** produce a continuous anomaly score $$a_t$$ capturing “unusualness” (stress, structural breaks, outliers) without labeled anomalies.
 
-| Challenge | Naive Approach | Problem | Our Solution |
-|:----------|:---------------|:--------|:-------------|
-| **Normalization** | Global z-score | Look-ahead bias | Rolling / Adaptive normalization |
-| **Non-stationarity** | Assume constant distribution | Model degradation | Regime-conditional modeling |
-| **Distribution shift** | Fixed preprocessing | Poor generalization | Deep Adaptive Input Normalization |
-| **Volatility clustering** | Homoscedastic models | Underestimated risk | GARCH family, regime-switching |
-| **Regime changes** | Single model | Catastrophic failures | Change point detection + model switching |
+**Detectors used:** Isolation Forest, VAE, and an ensemble.
+
+**Quant takeaway (from your run):**
+- **VAE achieved the strongest correlation** with the forward-return proxy on both train and test.
+- VAE scores are typically **larger in magnitude** → treat score scale as *model-specific calibration*, not “more anomalous reality”.
+
+**Best practice for comparability (use before thresholds/ensembles):**
+- rolling z-score or robust normalization
+  $$
+  \tilde{a}_t=\frac{a_t-\mu_{t,w}}{\sigma_{t,w}}
+  $$
+
+---
+
+## Why both belong in “regime” research
+- Markov switching answers: **“Which persistent state are we in?”** via $$P(S_t=i)$$.
+- Anomaly detection answers: **“How unusual is today?”** via $$\tilde{a}_t$$.
+- Next step (high ROI): include $$\tilde{a}_t$$ as an exogenous regressor or evaluate $$\mathrm{Corr}(\tilde{a}_t, y_t \mid S_t=i)$$.
 
 ---
