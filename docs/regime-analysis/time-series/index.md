@@ -15,7 +15,7 @@ Two quant-native lenses on market state: **latent regimes** (discrete, persisten
 
 {: .fs-5 .fw-300 }
 
-[Markov-Switching Regime Detection](/docs/regime-analysis/time_series/markov-switching){: .btn .btn-primary .fs-3 .mb-4 .mb-md-0 .mr-2 }
+[Markov-Switching Regime Detection](/docs/regime-analysis/time-series/markov-switching){: .btn .btn-primary .fs-3 .mb-4 .mb-md-0 .mr-2 }
 [Anomaly Detection](/docs/regime-analysis/time-series/anomaly-detection){: .btn .fs-3 .mb-4 .mb-md-0 }
 
 ---
