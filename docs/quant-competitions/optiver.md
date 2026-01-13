@@ -10,9 +10,7 @@ permalink: /docs/quant-competitions/optiver
 # Optiver Realized Volatility Prediction (Kaggle)
 
 
-- **Competition page:** [https://www.kaggle.com/c/optiver-realized-volatility-prediction](https://www.kaggle.com/c/optiver-realized-volatility-prediction)  
-- **Data:** [https://www.kaggle.com/c/optiver-realized-volatility-prediction/data](https://www.kaggle.com/c/optiver-realized-volatility-prediction/data)  
-- [**Organizer tutorial (financial concepts + WAP):**](https://www.kaggle.com/jiashenliu/introduction-to-financial-concepts-and-data)  
+- [**Competition page:** ](https://www.kaggle.com/c/optiver-realized-volatility-prediction) · [**Data:**](https://www.kaggle.com/c/optiver-realized-volatility-prediction/data) · [**Organizer tutorial (financial concepts + WAP):**](https://www.kaggle.com/jiashenliu/introduction-to-financial-concepts-and-data)  
 
 This [github repository](https://github.com/xxxxyyyy80008/Kaggle-Optiver-Realized-Volatility-Prediction/tree/main/scripts){:target="_blank" rel="noopener noreferrer"} contains the end-to-end work for the Optiver Realized Volatility Prediction competition: initial data exploration, correlation-based stock grouping, feature engineering (technical indicators + `tsfresh`), lightweight feature selection via correlation filtering, and LightGBM training setups under different stock subsets.
 
