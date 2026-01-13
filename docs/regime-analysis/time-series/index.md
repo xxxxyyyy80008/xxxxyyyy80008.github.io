@@ -9,11 +9,11 @@ permalink: /docs/regime-analysis/time-series/
 ---
 
 # Time Series Modeling
-{: .fs-9 }
+{: .fs-7 }
 
 Two quant-native lenses on market state: **latent regimes** (discrete, persistent) and **anomaly scores** (continuous, stress/surprise).
 
-{: .fs-6 .fw-300 }
+{: .fs-5 .fw-300 }
 
 [Markov-Switching Regime Detection](/docs/regime-analysis/time_series/markov-switching){: .btn .btn-primary .fs-3 .mb-4 .mb-md-0 .mr-2 }
 [Anomaly Detection](/docs/regime-analysis/time_series/anomaly-detection){: .btn .fs-3 .mb-4 .mb-md-0 }
@@ -21,12 +21,8 @@ Two quant-native lenses on market state: **latent regimes** (discrete, persisten
 ---
 
 
+## 1) Markov-Switching Regime Detection
 
-# 
-
----
-
-## 1) Markov-Switching Regime Detection (Statsmodels)
 **Goal:** infer a hidden regime $$S_t$$ where both conditional mean dynamics and dispersion can change.
 
 **Label (research proxy):** 20-day forward max return
@@ -50,25 +46,18 @@ $$
   - R0 **40.6d**, R1 **16.1d**, R2 **25.2d**
 - Transition matrix is diagonal-dominant (persistent regimes; rare regime is short-lived).
 
-**Artifacts:**
-- `markov_regime_probabilities.png`
-- `markov_regime_overlay.png`
 
 ---
 
-## 2) Merlion Anomaly Detection (Unsupervised)
+## 2) Anomaly Detection
+
 **Goal:** produce a continuous anomaly score $$a_t$$ capturing “unusualness” (stress, structural breaks, outliers) without labeled anomalies.
 
 **Detectors used:** Isolation Forest, VAE, and an ensemble.
 
-**Quant takeaway (from your run):**
+**Quant takeaway:**
 - **VAE achieved the strongest correlation** with the forward-return proxy on both train and test.
 - VAE scores are typically **larger in magnitude** → treat score scale as *model-specific calibration*, not “more anomalous reality”.
 
-**Best practice for comparability (use before thresholds/ensembles):**
-- rolling z-score or robust normalization
-  $$
-  \tilde{a}_t=\frac{a_t-\mu_{t,w}}{\sigma_{t,w}}
-  $$
 
 ---
