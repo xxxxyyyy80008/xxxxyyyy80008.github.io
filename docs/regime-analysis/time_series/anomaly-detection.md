@@ -3,7 +3,8 @@ layout: default
 title: "Anomaly Detection (Merlion): Isolation Forest, VAE, Ensemble"
 parent: Market Regime Analysis
 grand_parent: Time Series Modeling
-nav_order: 1
+nav_order: 2
+permalink: /docs/regime-analysis/time_series/anomaly-detection
 ---
 
 # Anomaly Detection with Salesforce Merlion (Unsupervised)
