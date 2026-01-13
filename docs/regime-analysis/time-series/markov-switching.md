@@ -14,6 +14,9 @@ permalink: /docs/regime-analysis/time-series/markov-switching
 
 Multiple specifications (different number of regimes, lag features, switching variance) are compared, and the best model is selected by **BIC**. From this model, insights are derived regarding the regimes persistence, transition dynamics, and regime-conditional behavior.
 
+
+[View](/notebooks/regime-analysis/time-series/anomaly-merlion.html){:target="_blank" rel="noopener noreferrer"} -  [Github](https://github.com/xxxxyyyy80008/time-series-analysis/tree/main/notebooks){:target="_blank" rel="noopener noreferrer"}
+
 ---
 
 ## Data & target construction

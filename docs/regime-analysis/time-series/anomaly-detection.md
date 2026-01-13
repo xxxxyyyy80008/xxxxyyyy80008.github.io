@@ -17,6 +17,10 @@ Applies **Salesforce Merlion** to generate anomaly scores on a market-derived ti
 
 The goal is not labeled anomaly detection; instead, this analysis test whether anomaly scores carry information about *forward upside potential*.
 
+[View](/notebooks/regime-analysis/time-series/anomaly-merlion.html){:target="_blank" rel="noopener noreferrer"} -  [Github](https://github.com/xxxxyyyy80008/time-series-analysis/tree/main/notebooks){:target="_blank" rel="noopener noreferrer"}
+
+---
+
 ## Data & target
 - Data source: `yfinance`
 - Asset: S&P 500 (`^GSPC`)
