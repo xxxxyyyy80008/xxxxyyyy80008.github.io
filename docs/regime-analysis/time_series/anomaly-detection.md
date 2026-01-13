@@ -7,13 +7,14 @@ nav_order: 30
 ---
 
 # Anomaly Detection with Salesforce Merlion (Unsupervised)
-This project applies **Salesforce Merlion** to generate anomaly scores on a market-derived time series using three unsupervised detectors:
+
+Applies **Salesforce Merlion** to generate anomaly scores on a market-derived time series using three unsupervised detectors:
 
 - **Isolation Forest**
 - **VAE** (Variational Autoencoder)
 - **Ensemble** (Isolation Forest + VAE via `DetectorEnsemble`)
 
-The goal is not labeled anomaly detection; instead, we test whether anomaly scores carry information about *forward upside potential*.
+The goal is not labeled anomaly detection; instead, this analysis test whether anomaly scores carry information about *forward upside potential*.
 
 ## References
 - Merlion: https://github.com/salesforce/Merlion  
@@ -60,18 +61,15 @@ This notebook treats the anomaly score as a candidate signal and reports:
 ---
 
 ## Visual outputs
-- Time series overlays (target vs anomaly scores) for train and test (Plotly + Matplotlib)
+- Time series overlays (target vs anomaly scores) for train and test
 - Correlation heatmaps (train/test)
 - Score distribution comparisons (train/test)
-
-If exported, an HTML artifact can be saved (example path from notes):
-- `html/2_Merlion_Isoforest_VAE.html`
 
 ---
 
 ## Key takeaways
-- **VAE** tends to show **higher correlation on training** but **much lower correlation on testing** versus Isolation Forest / ensemble.
-- This pattern can indicate **overfitting** (strong in-sample fit, weaker out-of-sample generalization).
-- Visual inspection often matches the correlation table: VAE looks “better” in train overlays but degrades on test.
+- **VAE is the strongest single model in this run**: it shows the **highest correlation** with the forward $$20$$-day max return target on **both** the training and testing splits (relative to Isolation Forest and the ensemble).
+- **Scale matters when comparing anomaly scores**: VAE produces **consistently larger-magnitude anomaly scores** than the other methods. This likely reflects **different score calibration/normalization** across detectors rather than “more anomalies” in an absolute sense.
+- **Practical implication**: if you want a single unsupervised score that best tracks the forward-move proxy used here, **VAE is the best candidate** from these three. For downstream use, consider **standardizing scores** (e.g., z-score by a rolling window) before thresholding or combining with other signals.
 
 ---
