@@ -10,11 +10,9 @@ permalink: /docs/regime-analysis/time-series/markov-switching
 # Markov-Switching Regime Detection 
 
 
-This project fits **Markov-switching dynamic regression** (Statsmodels `MarkovRegression`) models to detect **latent regimes** in a market-derived target series (S&P 500). 
+**Markov-switching dynamic regression** (Statsmodels `MarkovRegression`) models are fitted to detect **latent regimes** in a market-derived target series (S&P 500). 
 
-Multiple specifications (different number of regimes, lag features, switching variance) are compared, and the best model is selected by **BIC**. 
-
-Regime persistence, transition dynamics, and regime-conditional behavior are analyzed.
+Multiple specifications (different number of regimes, lag features, switching variance) are compared, and the best model is selected by **BIC**. From this model, insights are derived regarding the regimes persistence, transition dynamics, and regime-conditional behavior.
 
 ---
 
