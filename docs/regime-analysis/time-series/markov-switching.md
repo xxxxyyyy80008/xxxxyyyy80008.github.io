@@ -7,9 +7,14 @@ nav_order: 2
 permalink: /docs/regime-analysis/time-series/markov-switching
 ---
 
-# Markov-Switching Regime Detection (S&P 500) — Statsmodels `MarkovRegression`
+# Markov-Switching Regime Detection 
 
-This project fits **Markov-switching dynamic regression** models to detect **latent regimes** in a market-derived target series. We compare multiple specifications (different number of regimes, lag features, switching variance), select the best model by **BIC**, and analyze regime persistence, transition dynamics, and regime-conditional behavior.
+
+This project fits **Markov-switching dynamic regression** (Statsmodels `MarkovRegression`) models to detect **latent regimes** in a market-derived target series (S&P 500). 
+
+Multiple specifications (different number of regimes, lag features, switching variance) are compared, and the best model is selected by **BIC**. 
+
+Regime persistence, transition dynamics, and regime-conditional behavior are analyzed.
 
 ---
 
@@ -57,7 +62,7 @@ All models are estimated using `statsmodels.tsa.MarkovRegression` on the **train
 
 ---
 
-## Model comparison (actual results)
+## Model comparison 
 
 Lower AIC/BIC indicates better fit (with BIC penalizing complexity more strongly).
 
@@ -73,7 +78,7 @@ Lower AIC/BIC indicates better fit (with BIC penalizing complexity more strongly
 
 ---
 
-## Best model: `3_regime_full` (what it learned)
+## Best model: `3_regime_full` 
 
 **Specification**
 - 3 regimes
@@ -129,8 +134,8 @@ Regimes are assigned via $$\arg\max_i P(S_t=i)$$ using smoothed marginal probabi
 
 
 ## Notes / caveats
-- This pipeline fits regimes on a **forward-looking** target (20-day forward max return). That’s useful for analysis, but for *real-time* regime detection you’d typically fit regimes on **observable features** (returns, realized vol, breadth, macro proxies).
+- This pipeline fits regimes on a **forward-looking** target (20-day forward max return).
 - Score/regime labels are **model-dependent**: “Regime 1” here means the regime with the estimated characteristics above (rare + high dispersion), not a universal mapping.
-- The best model was selected by **in-sample BIC** on the training period; if you plan to deploy regimes, add out-of-sample validation (forecast utility, stability across windows, rolling refits).
+- The best model was selected by **in-sample BIC** on the training period.
 
 ---
