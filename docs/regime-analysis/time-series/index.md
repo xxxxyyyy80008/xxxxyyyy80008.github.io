@@ -55,7 +55,7 @@ $$
 
 **Detectors used:** Isolation Forest, VAE, and an ensemble.
 
-**Quant takeaway:**
+**Key takeaway:**
 - **VAE achieved the strongest correlation** with the forward-return proxy on both train and test.
 - VAE scores are typically **larger in magnitude** → treat score scale as *model-specific calibration*, not “more anomalous reality”.
 
