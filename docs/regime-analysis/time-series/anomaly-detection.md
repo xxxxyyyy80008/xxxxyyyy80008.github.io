@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Anomaly Detection (Merlion): Isolation Forest, VAE, Ensemble"
-parent: Market Regime Analysis
-grand_parent: Time Series Modeling
+parent: Time Series Modeling
+grand_parent: Market Regime Analysis
 nav_order: 3
 permalink: /docs/regime-analysis/time-series/anomaly-detection
 ---

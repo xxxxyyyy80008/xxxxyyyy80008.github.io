@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Markov-Switching Regime Detection"
-parent: Market Regime Analysis
-grand_parent: Time Series Modeling
+parent: Time Series Modeling
+grand_parent: Market Regime Analysis
 nav_order: 2
 permalink: /docs/regime-analysis/time-series/markov-switching
 ---
