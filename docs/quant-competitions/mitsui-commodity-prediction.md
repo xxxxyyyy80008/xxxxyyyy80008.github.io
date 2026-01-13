@@ -96,18 +96,3 @@ The script defines three model classes:
   - Similar to V2 with different hyperparameters
 
 ---
-
-## Evaluation metric (as implemented here)
-
-The code includes a local scoring implementation:
-- Computes **daily rank correlation** between predictions and true targets across the 424 targets
-- Returns a **Sharpe ratio** of daily rank correlations:
-
-$$
-Sharpe = \frac{\mathbb{E}[\rho_t]}{\sqrt{\mathrm{Var}(\rho_t)}}
-$$
-
-Handling missing targets:
-- The competition uses a sentinel `SOLUTION_NULL_FILLER = -999999` in the solution; this is converted back to nulls before computing correlations.
-
----
