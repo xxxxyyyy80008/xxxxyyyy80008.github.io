@@ -15,20 +15,18 @@ Time series modeling, regime shift detection, equity market crisis prediction, a
 
 [Equity Market Crisis Models](/docs/regime-analysis/crisis-prediction/){: .btn .btn-primary .fs-3 .mb-4 .mb-md-0 .mr-2 }
 [Historical Market Pattern Analysis: 1998 vs 2025](/docs/regime-analysis/pattern-analysis){: .btn .fs-3 .mb-4 .mb-md-0 }
-[Time series modeling](/docs/regime-analysis/time-series){: .btn .fs-3 .mb-4 .mb-md-0 }
+[Time Series Modeling](/docs/regime-analysis/time-series){: .btn .fs-3 .mb-4 .mb-md-0 }
 
 ---
 
 ## Overview
 
-Understanding market regimes is critical for risk management and strategy adaptation. This section covers:
+Understanding market regimes is critical for risk management and strategy adaptation. Market regimes fundamentally alter the statistical properties of returns. Strategies that ignore regime changes often fail catastrophically during transitions. This section covers:
 
-- **Regime Shift Detection** — Identifying structural breaks in market behavior
-- **Equity Market Crisis Prediction** — Machine learning models for crash early warning
+- [**Equity Market Crisis Prediction**](/docs/regime-analysis/crisis-prediction/) — Machine learning models for crash early warning
 - **Historical Market Pattern Analysis** — Comparative study of market recovery patterns
+- **Regime Shift Detection** — Identifying structural breaks in market behavior
 
-{: .highlight }
-> Market regimes fundamentally alter the statistical properties of returns. Strategies that ignore regime changes often fail catastrophically during transitions.
 
 ---
 
@@ -36,9 +34,9 @@ Understanding market regimes is critical for risk management and strategy adapta
 
 | Repository | Description |
 |:-----------|:------------|
-| [**time-series-research**](https://github.com/your-username/time-series-research) | Forecasting methods and normalization techniques |
 | [**crisis-prediction-ml**](https://github.com/your-username/crisis-prediction-ml) | ML models for market crash detection |
 | [**market-recovery-analysis**](https://github.com/your-username/market-recovery-analysis) | 1998 vs 2025 comparative study |
+| [**Time Series Modeling**](https://github.com/xxxxyyyy80008/time-series-analysis/tree/main/notebooks) |  latent regimes (discrete, persistent) and anomaly scores (continuous, stress/surprise) |
 
 ---
 
