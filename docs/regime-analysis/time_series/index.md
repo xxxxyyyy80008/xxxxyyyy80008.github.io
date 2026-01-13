@@ -8,21 +8,21 @@ has_toc: false
 permalink: /docs/regime-analysis/time_series/
 ---
 
-# Time Series Analysis for Finance
+# Time Series Modeling
 {: .fs-9 }
 
-Advanced preprocessing, normalization, and forecasting techniques for non-stationary financial data.
+Two quant-native lenses on market state: **latent regimes** (discrete, persistent) and **anomaly scores** (continuous, stress/surprise).
+
 {: .fs-6 .fw-300 }
 
-[Adaptive Normalization](/docs/regime-analysis/time_series/adaptive-normalization){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Regime Shift Detection](/docs/regime-analysis/time_series/regime-shift){: .btn .fs-5 .mb-4 .mb-md-0 }
+[Markov-Switching Regime Detection](/docs/regime-analysis/time_series/markov-switching){: .btn .btn-primary .fs-3 .mb-4 .mb-md-0 .mr-2 }
+[Anomaly Detection](/docs/regime-analysis/time_series/anomaly-detection){: .btn .fs-3 .mb-4 .mb-md-0 }
 
 ---
 
 
 
-# Time Series Modeling
-Two quant-native lenses on market state: **latent regimes** (discrete, persistent) and **anomaly scores** (continuous, stress/surprise).
+# 
 
 ---
 
