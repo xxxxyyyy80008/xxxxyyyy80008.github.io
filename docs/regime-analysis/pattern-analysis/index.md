@@ -77,7 +77,7 @@ The script produces a set of plots intended to answer:
 
 ---
 
-## Projection method (it's a template, not a model)
+## Projection method 
 When 2025 has fewer observations than the 1998 benchmark, the script can build a *shape-implied* continuation:
 
 1. Take the corresponding future segment of the 1998 recovery path.
