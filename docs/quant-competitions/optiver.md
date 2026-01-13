@@ -10,7 +10,7 @@ permalink: /docs/quant-competitions/optiver
 # Optiver Realized Volatility Prediction (Kaggle)
 
 
-- [**Competition page** ](https://www.kaggle.com/c/optiver-realized-volatility-prediction) · [**Data**](https://www.kaggle.com/c/optiver-realized-volatility-prediction/data) · [**Organizer tutorial (financial concepts + WAP)**](https://www.kaggle.com/jiashenliu/introduction-to-financial-concepts-and-data)  
+- [**Competition page** ](https://www.kaggle.com/c/optiver-realized-volatility-prediction){:target="_blank" rel="noopener noreferrer"} · [**Data**](https://www.kaggle.com/c/optiver-realized-volatility-prediction/data){:target="_blank" rel="noopener noreferrer"} · [**Organizer tutorial (financial concepts + WAP)**](https://www.kaggle.com/jiashenliu/introduction-to-financial-concepts-and-data){:target="_blank" rel="noopener noreferrer"}  
 
 This [github repository](https://github.com/xxxxyyyy80008/Kaggle-Optiver-Realized-Volatility-Prediction/tree/main/scripts){:target="_blank" rel="noopener noreferrer"} contains the end-to-end work for the Optiver Realized Volatility Prediction competition: initial data exploration, correlation-based stock grouping, feature engineering (technical indicators + `tsfresh`), lightweight feature selection via correlation filtering, and LightGBM training setups under different stock subsets.
 
@@ -113,7 +113,3 @@ To avoid any potential information leakage (e.g., `time_id` appearing in train f
 - K-fold splits within train are also time-id based  
 
 This ensures each `time_id` across *all* stocks is assigned entirely to train or test.
-
----
-
-
