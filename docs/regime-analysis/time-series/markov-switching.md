@@ -131,10 +131,13 @@ Regimes are assigned via $$\arg\max_i P(S_t=i)$$ using smoothed marginal probabi
 - Min/Max: **-3.513% / 14.941%**
 - Longest streak: **131** consecutive days
 
+![](images/output_1_1.png)
+
+![](images/output_1_2.png)
 ---
 
 
-## Notes / caveats
+## Caveats
 - This pipeline fits regimes on a **forward-looking** target (20-day forward max return).
 - Score/regime labels are **model-dependent**: “Regime 1” here means the regime with the estimated characteristics above (rare + high dispersion), not a universal mapping.
 - The best model was selected by **in-sample BIC** on the training period.
