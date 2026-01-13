@@ -61,7 +61,7 @@ This notebook treats the anomaly score as a candidate signal and reports:
 - Time series overlays (target vs anomaly scores) for train and test
 - Correlation heatmaps (train/test)
 - Score distribution comparisons (train/test)
-
+![](images/output_10_1.png)
 ---
 
 ## Key takeaways

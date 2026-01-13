@@ -20,8 +20,7 @@ comparison of market recovery patterns between the **1998 Crisis** and **2025 Ma
 ### Objective
 Comprehensive comparison of market recovery patterns between the **1998 Crisis** and **2025 Market Drop**, analyzing whether historical patterns can predict future recovery trajectories through detailed technical and statistical analysis.
 
-- [KAGGLE NOTEBOOK](https://www.kaggle.com/code/xxxxyyyy80008/s-p-500-recovery-analysis-1998-vs-2025/)
-- [GITHUB NOTEBOOK](https://github.com/xxxxyyyy80008/Market-Recovery-Pattern-1998-vs-2025/blob/main/notebooks/sp500-recovery-analysis.ipynb)
+- [GITHUB](https://github.com/xxxxyyyy80008/Market-Recovery-Pattern-1998-vs-2025/blob/main/notebooks/){:target="_blank" rel="noopener noreferrer"}
 
 ### Comparison Periods
 - **Historical Benchmark**: 1998-1999 Crisis Recovery (24 months)
