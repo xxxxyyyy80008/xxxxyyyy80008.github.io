@@ -72,10 +72,3 @@ $$
   $$
 
 ---
-
-## Why both belong in “regime” research
-- Markov switching answers: **“Which persistent state are we in?”** via $$P(S_t=i)$$.
-- Anomaly detection answers: **“How unusual is today?”** via $$\tilde{a}_t$$.
-- Next step (high ROI): include $$\tilde{a}_t$$ as an exogenous regressor or evaluate $$\mathrm{Corr}(\tilde{a}_t, y_t \mid S_t=i)$$.
-
----
