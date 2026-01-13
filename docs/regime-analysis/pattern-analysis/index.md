@@ -24,7 +24,7 @@ It’s designed as a **pattern-matching framework**: align two recovery windows,
 
 - [Nasdaq 100 Recovery Pattern](notebooks/regime-analysis/pattern-analysis/nasdaq-100-recovery-analysis-1998-vs-2025.html){:target="_blank" rel="noopener noreferrer"}
 
-## Research design
+## Comparison design
 
 ### 1) Anchoring event
 We define the “crisis point” as the intended trough date and snap to the **nearest trading day**:
