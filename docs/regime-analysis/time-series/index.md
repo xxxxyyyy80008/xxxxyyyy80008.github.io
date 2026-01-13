@@ -5,7 +5,7 @@ parent: Market Regime Analysis
 nav_order: 3
 has_children: true
 has_toc: false
-permalink: /docs/regime-analysis/time_series/
+permalink: /docs/regime-analysis/time-series/
 ---
 
 # Time Series Modeling

@@ -3,8 +3,8 @@ layout: default
 title: "Markov-Switching Regime Detection"
 parent: Market Regime Analysis
 grand_parent: Time Series Modeling
-nav_order: 1
-permalink: /docs/regime-analysis/time_series/markov-switching
+nav_order: 2
+permalink: /docs/regime-analysis/time-series/markov-switching
 ---
 
 # Markov-Switching Regime Detection (S&P 500) — Statsmodels `MarkovRegression`
