@@ -27,21 +27,6 @@ Understanding market regimes is critical for risk management and strategy adapta
 - **Historical Market Pattern Analysis** — Comparative study of market recovery patterns
 - **Regime Shift Detection** — Identifying structural breaks in market behavior
 
-
----
-
-##  Repositories
-
-| Repository | Description |
-|:-----------|:------------|
-| [**crisis-prediction-ml**](https://github.com/your-username/crisis-prediction-ml) | ML models for market crash detection |
-| [**market-recovery-analysis**](https://github.com/your-username/market-recovery-analysis) | 1998 vs 2025 comparative study |
-| [**Time Series Modeling**](https://github.com/xxxxyyyy80008/time-series-analysis/tree/main/notebooks) |  latent regimes (discrete, persistent) and anomaly scores (continuous, stress/surprise) |
-
----
-
-##  Key Questions
-
 | Question | Approach | Section |
 |:---------|:---------|:--------|
 | How to normalize non-stationary financial series? | Deep Adaptive Input Normalization | [Time Series](/docs/regime-analysis/time-series/) |
@@ -49,5 +34,19 @@ Understanding market regimes is critical for risk management and strategy adapta
 | Can we predict market crashes? | Classification ML with macro/technical features | [Crisis Prediction](/docs/regime-analysis/crisis-prediction/) |
 | How do recoveries compare across eras? | Pattern matching, drawdown analysis | [Historical](/docs/regime-analysis/historical/) |
 
+
+
 ---
+
+##  Repositories
+
+| Repository | Description |
+|:-----------|:------------|
+| [**Equity-Market-Crisis-Prediction-Models**](https://github.com/xxxxyyyy80008/Equity-Market-Crisis-Prediction-Models/tree/main/notebooks){:target="_blank" rel="noopener noreferrer"}  | ML models for market crash detection |
+| [**Market-Recovery-Pattern-1998-vs-2025**](https://github.com/xxxxyyyy80008/Market-Recovery-Pattern-1998-vs-2025){:target="_blank" rel="noopener noreferrer"}  | 1998 vs 2025 comparative study |
+| [**Time Series Modeling**](https://github.com/xxxxyyyy80008/time-series-analysis/tree/main/notebooks){:target="_blank" rel="noopener noreferrer"}  |  latent regimes (discrete, persistent) and anomaly scores (continuous, stress/surprise) |
+
+
+
+
 
