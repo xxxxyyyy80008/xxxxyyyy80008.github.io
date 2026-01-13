@@ -18,11 +18,7 @@ It’s designed as a **pattern-matching framework**: align two recovery windows,
 {: .fs-5 .fw-300 }
 
 
-- [GITHUB](https://github.com/xxxxyyyy80008/Market-Recovery-Pattern-1998-vs-2025/blob/main/notebooks/){:target="_blank" rel="noopener noreferrer"}
-
-- [View Script](/notebooks/regime-analysis/pattern-analysis/s-p-500-recovery-analysis-1998-vs-2025.html){:target="_blank" rel="noopener noreferrer"}
-
-- [Nasdaq 100 Recovery Pattern](/notebooks/regime-analysis/pattern-analysis/nasdaq-100-recovery-analysis-1998-vs-2025.html){:target="_blank" rel="noopener noreferrer"}
+[GITHUB](https://github.com/xxxxyyyy80008/Market-Recovery-Pattern-1998-vs-2025/blob/main/notebooks/){:target="_blank" rel="noopener noreferrer"}  ·  [View Script](/notebooks/regime-analysis/pattern-analysis/s-p-500-recovery-analysis-1998-vs-2025.html){:target="_blank" rel="noopener noreferrer"} · [Nasdaq 100 Recovery Pattern](/notebooks/regime-analysis/pattern-analysis/nasdaq-100-recovery-analysis-1998-vs-2025.html){:target="_blank" rel="noopener noreferrer"}
 
 ## Comparison design
 
