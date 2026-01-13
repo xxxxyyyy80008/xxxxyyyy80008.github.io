@@ -3,20 +3,22 @@ layout: default
 title: "Optiver Realized Volatility Prediction"
 parent: Quant Competitions
 nav_order: 1
+has_children: false
+permalink: /docs/quant-competitions/optiver
 ---
 
 # Optiver Realized Volatility Prediction (Kaggle)
 
-- **Competition page:** https://www.kaggle.com/c/optiver-realized-volatility-prediction  
-- **Data:** https://www.kaggle.com/c/optiver-realized-volatility-prediction/data  
-- **Organizer tutorial (financial concepts + WAP):** https://www.kaggle.com/jiashenliu/introduction-to-financial-concepts-and-data  
+
+- **Competition page:** [https://www.kaggle.com/c/optiver-realized-volatility-prediction](https://www.kaggle.com/c/optiver-realized-volatility-prediction)  
+- **Data:** [https://www.kaggle.com/c/optiver-realized-volatility-prediction/data](https://www.kaggle.com/c/optiver-realized-volatility-prediction/data)  
+- **Organizer tutorial (financial concepts + WAP):** [https://www.kaggle.com/jiashenliu/introduction-to-financial-concepts-and-data](https://www.kaggle.com/jiashenliu/introduction-to-financial-concepts-and-data)  
 
 This folder contains my end-to-end work for the Optiver Realized Volatility Prediction competition: initial data exploration, correlation-based stock grouping, feature engineering (technical indicators + `tsfresh`), lightweight feature selection via correlation filtering, and LightGBM training setups under different stock subsets.
 
 ---
 
-## Repository contents
-
+## Repository
 
 [Source Code](https://github.com/xxxxyyyy80008/Kaggle-Optiver-Realized-Volatility-Prediction/tree/main/scripts){: .btn .btn-primary .fs-3 .mb-2 .mb-md-0}{:target="_blank" rel="noopener noreferrer"}
 
@@ -122,7 +124,4 @@ This ensures each `time_id` across *all* stocks is assigned entirely to train or
 
 ---
 
-## Public notebooks
-After the competition, I reviewed published notebooks and copied a few that I found interesting into the `public/` folder. One notable takeaway: **TabNet** appears in several community solutions and is something I’d like to explore further.
 
----

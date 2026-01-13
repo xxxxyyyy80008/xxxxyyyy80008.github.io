@@ -4,13 +4,14 @@ title: "MITSUI&CO. Commodity Prediction Challenge"
 parent: Quant Competitions
 nav_order: 2
 has_children: false
+permalink: /docs/quant-competitions/mitsui-commodity-prediction
 ---
 
 # MITSUI&CO. Commodity Prediction Challenge (Kaggle)
 
 
-- **Competition page:** https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge  
-- **Data:** https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge/data  
+- **Competition page:** [https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge)  
+- **Data:** [https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge/data](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge/data)  
 
 
 Python Scripts for the **MITSUI&CO. Commodity Prediction Challenge**. The implementation focuses on:
@@ -108,66 +109,3 @@ Handling missing targets:
 - The competition uses a sentinel `SOLUTION_NULL_FILLER = -999999` in the solution; this is converted back to nulls before computing correlations.
 
 ---
-
-## Inference / submission logic
-
-### Streaming-style prediction function
-The `predict(...)` function is written for Kaggle’s inference server interface. It:
-
-1. Receives a `test` batch for a single `date_id`
-2. Appends this batch to a global rolling store `df_train_original` (keeping only prior dates)
-3. Builds features on a rolling history:
-   - `N_last_day = 60`
-   - uses `.tail(N_last_day * 143)` before preprocessing
-   - uses `.tail(143 * 10)` after feature creation
-4. Produces predictions for `target_0 ... target_423` for the latest date
-
-Currently, the ensemble is effectively **CatBoost-only**:
-- `ensemble_prediction = prediction1`  
-(The LightGBM models are present but commented out.)
-
-### Local inference server
-The script attempts to run:
-- `kaggle_evaluation.mitsui_inference_server.MitsuiInferenceServer(predict)`
-- either `serve()` during a competition rerun or `run_local_gateway(...)` otherwise
-
----
-
-## How to run
-
-### 1) Install dependencies
-This script uses:
-- `numpy`, `pandas`, `polars`
-- `catboost`
-- optionally `lightgbm`
-- Kaggle evaluation server (`kaggle_evaluation`) when running the local gateway
-
-Example:
-```bash
-pip install numpy pandas polars catboost lightgbm
-```
-
-### 2) Dataset path
-The code resolves input from either:
-- local folder: `./mitsui-commodity-prediction-challenge/`
-- or Kaggle input: `/kaggle/input/mitsui-commodity-prediction-challenge/`
-
-Ensure `train.csv` and `train_labels.csv` exist under that directory.
-
-### 3) Train
-Training is invoked by:
-- loading and preprocessing `train.csv`
-- creating features
-- calling `model1.train(df_features, config.num_valid)`
-
-Validation size:
-- `config.num_valid = 134` (last 134 dates used as validation in this baseline)
-
----
-
-## Notes / current limitations
-
-- **Validation**: the script scores only the first 90 rows of the last validation segment in one place (`head(90)`), consistent with the provided code.
-- **Ensembling**: LightGBM variants exist but are commented out in training and inference.
-- **Feature missingness**: many assets do not have full OHLCV fields; the preprocessing fills unavailable fields with NaN and features may carry NaNs depending on asset type.
-- **Performance**: LightGBM v2/v3 train 424 models; this is significantly heavier than the CatBoost baseline.
