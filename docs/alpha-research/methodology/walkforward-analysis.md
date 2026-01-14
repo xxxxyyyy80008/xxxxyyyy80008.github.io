@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Walk-Forward Analysis & Validation Methodology"
+title: "Walk-Forward Analysis"
 parent: Methodology
 grand_parent: Alpha Research & Signal Generation
 nav_order: 3
