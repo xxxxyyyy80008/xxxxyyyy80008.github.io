@@ -15,6 +15,7 @@ A hybrid simulation environment combining vectorized signal generation with even
 {: .fs-5 .fw-300 }
 
 [View Source Code](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
 ---
 
 ## System Abstract
