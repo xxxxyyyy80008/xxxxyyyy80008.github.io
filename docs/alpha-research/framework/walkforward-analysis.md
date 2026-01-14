@@ -169,3 +169,23 @@ To ensure the backtest is a realistic proxy for live execution, the engine incor
 Following the Walk-Forward process, the final selected parameter configuration is tested on a **Holdout Dataset**. This data is strictly quarantined and is never exposed to the optimization engine.
 
 Performance convergence between the **Walk-Forward Test Set** and the **Holdout Set** serves as the final confirmation of strategy validity. A significant divergence in the Holdout period indicates that the Walk-Forward process itself was implicitly tuned (a phenomenon known as "meta-overfitting"), and the strategy is discarded.
+
+
+## 7. Process Flow
+flowchart TD
+    A[Start] --> B[Define Data Set]
+    B --> C[Global OOS Window]
+    C -->|Not Used for Walk-Forward| D[Generate Rolling Windows]
+    D --> E[Window 1: Train & Test]
+    D --> F[Window 2: Train & Test]
+    D --> G[Window 3: Train & Test]
+    F -->|Evaluate Performance| H[Calculate Metrics]
+    G -->|Evaluate Performance| H
+    E -->|Evaluate Performance| H
+    H --> I[Degradation Analysis]
+    I --> J[Parameter Optimization]
+    J --> K[Store Best Parameters]
+    K -->|Repeat for All Windows| L[Finalize Parameters]
+    L --> M[Global Out-of-Sample Validation]
+    M -->|Final Validation| N[Evaluate on Global OOS]
+    N --> O[End]
