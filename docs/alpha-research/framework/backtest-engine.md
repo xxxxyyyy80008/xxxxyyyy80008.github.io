@@ -8,108 +8,126 @@ has_children: false
 permalink: /docs/alpha-research/framework/backtest-engine
 ---
 
+
 # Backtest Engine Architecture
+{: .fs-7 }
 
-### **Design Philosophy: The Hybrid Approach**
-Developing a backtesting engine requires balancing two competing constraints: **Computational Speed** (for optimization) and **Execution Granularity** (for realism).
-
-My framework utilizes a **Hybrid Architecture**:
-1.  **Vectorized Signal Generation:** Technical indicators and raw logic are computed across the entire dataframe in a single pass using Pandas/NumPy. This ensures $O(1)$ signal generation speed relative to time steps.
-2.  **Event-Driven Execution:** The portfolio state, risk checks, and trade simulation occur sequentially in a time-stepped loop. This allows for realistic handling of path-dependent factors like trailing stops, capital depletion, and complex slippage models.
+A hybrid simulation environment combining vectorized signal generation with event-driven execution.
+{: .fs-5 .fw-300 }
 
 ---
 
-## 1. System Data Flow
+## System Abstract
 
-The architecture decouples **Logic** (Strategy), **State** (Portfolio), and **Mechanics** (Execution). This separation of concerns ensures that a bug in the signal logic does not corrupt the position tracking math.
+The backtesting framework is designed to balance the computational efficiency of vectorized operations with the granular accuracy of event-driven systems. Unlike pure vectorized backtesters (which often suffer from look-ahead bias) or pure event-driven systems (which are computationally expensive), this engine separates **Signal Generation** from **Trade Execution**.
+
+The core architecture adheres to **Functional Programming (FP)** principles:
+*   **Immutability:** Core data structures (`Signal`, `Trade`, `Position`) are frozen dataclasses.
+*   **Pure Functions:** Metric calculations and portfolio logic are stateless.
+*   **Strict Causality:** The execution loop processes data sequentially to prevent future data leakage.
+
+---
+
+## Architectural Data Flow
+
+The simulation pipeline proceeds in three distinct phases: **Preparation**, **Generation**, and **Execution**.
 
 ```mermaid
-flowchart TD
-    Data[Market Data (OHLCV)] -->|Vectorized| Strat[Abstract Strategy]
-    Strat -->|Signals & Regimes| Eng[Backtest Engine Loop]
-    
-    subgraph "Event-Driven Loop (T -> T+1)"
-    Eng -->|Daily State| PM[Portfolio Manager]
-    PM -->|Allocation Logic| Risk[Risk & Constraints]
-    Risk -->|Approved Orders| Exec[Trade Executor]
-    Exec -->|Fills & Costs| PM
+graph TD
+    subgraph "Phase 1: Vectorized Preparation"
+        A[Raw OHLCV Data] -->|Strategy.prepare_data| B[Indicator Calculation]
+        B -->|Strategy.generate_signals| C[Signal Matrix]
     end
-    
-    PM -->|Equity Curve| Results[Performance Metrics]
-    
-    style Strat fill:#f9f,stroke:#333,stroke-width:2px
-    style PM fill:#bbf,stroke:#333,stroke-width:2px
-    style Exec fill:#bfb,stroke:#333,stroke-width:2px
+
+    subgraph "Phase 2: Event-Driven Loop"
+        C --> D{Time Step Iterator}
+        D -->|Open| E[Pending Order Execution]
+        E -->|State Update| F[Portfolio Manager]
+        D -->|Close| G[Signal Processing]
+        G -->|New Orders| H[Pending Queue]
+        F -->|Mark-to-Market| I[Daily Equity Snapshot]
+    end
+
+    subgraph "Phase 3: Analysis"
+        I --> J[Performance Metrics]
+        F --> K[Trade Ledger]
+    end
+
+    style D fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 ---
 
-## 2. Core Components
+## Core Components
 
-### A. The Signal Generator (`strategy_base.py`)
-All strategies inherit from an Abstract Base Class. This strictly defines the interface, requiring strategies to return standardized `Signal` objects.
-*   **Vectorization:** Heavy lifting (e.g., Moving Averages, volatility bands) is pre-calculated.
-*   **Safety:** The abstract class enforces the removal of `NaN` data before signal processing to prevent "pollution" of the signal stream.
+### 1. The Engine Kernel (`BacktestEngine`)
+The engine serves as the orchestrator. It ingests a dictionary of DataFrames and a Strategy configuration.
+*   **Data Ingestion:** Automatically handles multi-ticker alignment and empty datasets.
+*   **Signal Processing:** Aggregates signals from all tickers into a single time-ordered queue.
+*   **Execution Loop:** Iterates through unique timestamps. Crucially, it processes **Exits** before **Entries** within the same time step to manage capital recycling correctly.
 
-### B. The Portfolio Manager (`portfolio_manager.py`)
-This component acts as the "Central Bank" of the simulation. It holds the "Source of Truth" for the account balance.
-*   **Dynamic Position Sizing:** Calculates size based on `TradeConfig` (e.g., % of Equity, Fixed Dollar).
-*   **Rejection Logic:** Orders are rejected if they violate capital constraints or minimum trade size limits.
-*   **Return Calculation:** Uses logarithmic returns for aggregation but reports arithmetic returns for final metrics.
+### 2. Portfolio Management (`PortfolioManager`)
+Capital allocation and state management are handled via functional logic rather than object-oriented mutation where possible.
+*   **Allocation:** Supports equal-weight capital distribution across the ticker universe.
+*   **Position Sizing:** Enforces constraints on maximum trade size and minimum viable capital.
+*   **State:** The portfolio state is a dictionary containing `ticker_accounts`, `trades`, and `daily_values`, maintained dynamically during the loop.
 
-### C. The Trade Executor (`trade_executor.py`)
-Simulates the interaction with the market.
-*   **Slippage Protocol:**
-    *   Currently implements a **Fixed + Percentage** slippage model.
-    *   $$ P_{exec} = P_{market} \cdot (1 \pm \delta_{pct}) \pm \delta_{fixed} $$
-    *   *Correction:* In earlier iterations, slippage was double-counted on entry and exit calculation. The current version explicitly separates entry cost basis from exit realization.
-*   **Commission:** Models per-share and per-order distinct costs.
+### 3. Trade Executor (`TradeExecutor`)
+This module handles the transition from **Signal** to **Trade**, applying realistic market frictions.
+*   **Slippage Model:** Implements a dual-factor cost model:
+    *   *Percentage:* Volatility-based cost ($$ P \times \text{pct} $$).
+    *   *Fixed:* Square-root impact law ($$ \text{fixed} \times \sqrt{\text{quantity}} $$).
+*   **Commission:** Applies percentage-based commission structures.
+*   **Guardrails:** Prevents negative balances and rejects trades if costs exceed available capital.
 
----
-
-## 3. Handling Edge Cases & Bias
-
-A robust engine must handle data imperfections. My architecture explicitly addresses several common "silent killers" of backtests.
-
-### Look-Ahead Bias Prevention
-The engine strictly separates **Signal Time** from **Execution Time**.
-*   **Signal:** Generated at Close of Day $T$.
-*   **Execution:** Simulated at Open of Day $T+1$.
-*   This prevents the strategy from "buying the low" of the day it generated the signal.
-
-### Stale Order "Garbage Collection"
-In a multi-asset universe, some assets may stop trading (delisting, halts) while the simulation continues.
-*   **The Issue:** A limit order placed on a halted stock might "fill" weeks later at a stale price in a naive engine.
-*   **The Fix:** The engine performs a `prune_stale_orders()` check at every time step. If a ticker is not present in the current day's data slice, any pending orders for that ticker are expired immediately.
-
-### Safe Returns Math
-To prevent runtime errors during the "Holdout" periods (where data might be sparse or volatile):
-*   Implemented `np.errstate` context managers to handle division-by-zero scenarios gracefully.
-*   Metrics like Calmar Ratio and Sortino Ratio default to `0.0` rather than `NaN` to allow the optimizer to continue seeking valid parameter sets.
+### 4. Strategy Interface (`StrategyBase`)
+Strategies are implemented as Abstract Base Classes (ABC) requiring two pure methods:
+*   `prepare_data(df)`: Returns a new DataFrame with technical indicators appended.
+*   `generate_signals(df)`: Returns a list of `Signal` objects based on vector logic (e.g., crossovers, threshold breaches).
 
 ---
 
-## 4. Typed Data Structures
+## Data Models & Type Safety
 
-To ensure data integrity, I utilize Python `dataclasses` instead of loose dictionaries. This enforces strict typing across the stack.
+To ensure simulation integrity, the system uses strictly typed `dataclasses`.
 
-```python
-@dataclass(frozen=True)
-class TradeConfig:
-    """Immutable configuration to prevent runtime state modification"""
-    initial_capital: float = 10000.0
-    pos_size_type: str = 'percentage'  # 'fixed' or 'percentage'
-    pos_size_value: float = 0.05       # e.g. 5% per trade
-    commission_rate: float = 0.0005    # 5 bps
-    slippage_pct: float = 0.0005       # 5 bps
-    max_positions: int = 10
+| Model | Mutability | Description |
+| :--- | :--- | :--- |
+| **Signal** | `frozen=True` | A directive to Buy/Sell generated by the strategy. Contains Ticker, Date, Type, and Price. |
+| **Position** | `frozen=True` | A snapshot of current holding, including Entry Price and Size. |
+| **Trade** | `frozen=True` | A permanent record of a completed transaction, including realized PnL and transaction costs. |
+| **TradeConfig** | `mutable` | Global configuration defining Initial Capital, Slippage, and Commission rates. |
+
+---
+
+## Performance Metrics
+
+The `metrics.py` module computes performance statistics post-simulation. These are calculated from the `daily_values` and `trades` ledger.
+
+### Risk-Adjusted Returns
+*   **Sharpe Ratio:** Annualized excess return normalized by standard deviation.
+*   **Sortino Ratio:** Penalizes only downside volatility.
+*   **Calmar Ratio:** Ratio of Total Return to Maximum Drawdown.
+
+### Trade Statistics
+*   **Expectancy:** Mathematical expected value per trade based on win rate and avg win/loss.
+*   **Profit Factor:** Ratio of Gross Profit to Gross Loss.
+*   **Volatility:** Annualized standard deviation of returns.
+
+---
+
+## Friction Modeling Specification
+
+The engine simulates a "worse-than-reality" execution environment to ensure robustness.
+
+$$
+\text{Execution Price}_{Buy} = P_{market} + (P_{market} \times S_{pct}) + (S_{fixed} \times \sqrt{Q})
+$$
+
+$$
+\text{Net PnL} = (N_{shares} \times \Delta P) - \text{Commission} - \text{Slippage Cost}
+$$
+
+*   **Slippage:** Applied to *both* entries and exits to penalize high-turnover strategies.
+*   **Timing:** Entries are typically executed on the bar following the signal (Open execution) to strictly prevent look-ahead bias.
 ```
-
----
-
-## 5. Future Roadmap
-
-While the current engine is robust for daily/weekly strategies, I am working on the following extensions:
-
-1.  **Market Impact Model:** Moving from linear slippage to a Square-Root Law model ($Cost \propto \sigma \sqrt{\frac{Q}{V}}$) to better simulate capacity constraints.
-2.  **Intraday Support:** Adapting the time-step loop to handle minute-bar data for higher frequency strategies.
