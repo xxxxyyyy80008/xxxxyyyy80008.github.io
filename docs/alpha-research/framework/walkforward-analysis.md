@@ -32,7 +32,7 @@ gantt
     
     %% --- SECTIONS ---
     section 1. GLOBAL PHASES
-    Optimization Universe (2017-2022)      :active, opt_period, 2017-04, 2023-01
+    Optimization Universe (2017-2022)      :active, opt_period, 2017-01, 2023-01
     LOCKED VAULT (Global OOS)              :crit,   oos_period, 2023-01, 2026-01
 
     %% --- WINDOW 1 ---
@@ -55,7 +55,7 @@ gantt
 
     %% --- EXECUTION ---
     section Optimization Process
-    Optuna Trial (Evaluating Params)       :active, 2017-04, 2023-01
+    Optuna Trial (Evaluating Params)       :active, 2017-01, 2023-01
     Aggregation & Selection                :milestone, 2023-01, 0d
     
     section Final Validation

@@ -131,786 +131,92 @@ def calculate_param_autocorrelation(
 
 ---
 
-## Implementation: Complete Framework
+Here is the refined text for **Parameter Stability Analysis**, strictly aligned with the implementation details of **Method 2 (Global Optimization)**.
 
-### Data Structure
+It focuses on the robustness of the singular global parameter set and the distribution of the top-performing trials, removing code, case studies, and irrelevant walk-forward metrics (like temporal autocorrelation).
 
-```python
-from dataclasses import dataclass
-from typing import List, Dict, Optional
-import pandas as pd
-import numpy as np
+***
 
-@dataclass
-class ParameterStability:
-    """Complete stability metrics for a single parameter."""
-    name: str
-    values: List[float]
-    mean: float
-    median: float
-    std: float
-    cv: float
-    min: float
-    max: float
-    range_ratio: float
-    autocorr_lag1: float
-    is_stable: bool
-    stability_score: float
-```
+# Parameter Stability Analysis
 
-### Analysis Function
+## The Robustness Objective
 
-```python
-def analyze_parameter_stability(
-    param_history: List[Dict[str, Any]],
-    cv_threshold: float = 0.15,
-    range_threshold: float = 0.60
-) -> pd.DataFrame:
-    """
-    Comprehensive parameter stability analysis.
-    
-    Args:
-        param_history: List of parameter dicts from each optimization window
-        cv_threshold: Maximum CV for "stable" classification
-        range_threshold: Maximum range ratio for stability
-        
-    Returns:
-        DataFrame with complete stability metrics
-    """
-    param_names = param_history[0].keys()
-    results = []
-    
-    for param in param_names:
-        values = [p[param] for p in param_history]
-        
-        # Basic statistics
-        mean = np.mean(values)
-        median = np.median(values)
-        std = np.std(values, ddof=1)
-        
-        # Stability metrics
-        cv = std / mean if mean != 0 else np.inf
-        range_ratio = (max(values) - min(values)) / median if median != 0 else np.inf
-        autocorr = pd.Series(values).autocorr(lag=1)
-        
-        # Composite stability score (0-100)
-        cv_score = max(0, 100 * (1 - cv / 0.40))  # 0% at CV=0.40
-        range_score = max(0, 100 * (1 - range_ratio / 1.00))
-        stability_score = 0.6 * cv_score + 0.4 * range_score
-        
-        # Classification
-        is_stable = (cv < cv_threshold) and (range_ratio < range_threshold)
-        
-        results.append({
-            'parameter': param,
-            'mean': round(mean, 3),
-            'median': median,
-            'std': round(std, 3),
-            'cv': round(cv, 3),
-            'min': min(values),
-            'max': max(values),
-            'range': max(values) - min(values),
-            'range_ratio': round(range_ratio, 3),
-            'autocorr_lag1': round(autocorr, 3),
-            'stability_score': round(stability_score, 1),
-            'stable': is_stable,
-            'assessment': classify_stability(cv, range_ratio)
-        })
-    
-    return pd.DataFrame(results).sort_values('stability_score', ascending=False)
+In the context of Global Optimization (Method 2), parameter stability is defined not by how parameters evolve over time, but by the properties of the solution space itself. A strategy is considered robust if the selected parameters reside within a "broad peak" of performance rather than a "narrow spike."
 
-def classify_stability(cv: float, range_ratio: float) -> str:
-    """Classify parameter stability."""
-    if cv < 0.10 and range_ratio < 0.30:
-        return "Excellent"
-    elif cv < 0.15 and range_ratio < 0.60:
-        return "Good"
-    elif cv < 0.25 and range_ratio < 1.00:
-        return "Moderate"
-    else:
-        return "Poor"
-```
+The objective of this analysis is to distinguish between parameters that capture genuine market inefficiencies (structural alpha) and those that are merely artifacts of curve-fitting to specific historical noise (spurious alpha).
 
 ---
 
-## Case Study 1: MABW Strategy
+## 1. Top Trials Distribution Analysis (Cluster Stability)
 
-### Walk-Forward Results (8 Windows, 2020-2024)
+Method 2 identifies a single set of parameters intended to function across all historical windows. To assess the reliability of this selection, the system analyzes the spatial distribution of the top $$N$$ best-performing trials (typically the top 10 to 50 iterations from the Optuna study).
 
-| Parameter | Mean | Std | CV | Range | Range Ratio | Autocorr | Score | Status |
-|-----------|------|-----|-----|-------|-------------|----------|-------|--------|
-| `bb_std` | 2.05 | 0.14 | **0.07** | 1.8-2.3 | 0.24 | -0.12 | **94.2** | ✅ Excellent |
-| `fast_period` | 12.3 | 1.21 | **0.10** | 10-15 | 0.41 | +0.08 | **89.5** | ✅ Excellent |
-| `slow_period` | 25.8 | 2.35 | **0.09** | 22-30 | 0.31 | +0.15 | **91.3** | ✅ Excellent |
-| `width_ma_period` | 20.1 | 2.08 | **0.10** | 17-24 | 0.35 | -0.05 | **88.7** | ✅ Excellent |
-| `bb_period` | 19.5 | 3.76 | **0.19** | 15-26 | 0.56 | +0.32 | **71.4** | ⚠️ Moderate |
+### The Logic of Clustering
+We posit that in a robust solution space, the best-performing parameter sets should cluster closely together.
 
-### Interpretation
+*   **Tight Clustering:** If the top 20 trials possess nearly identical parameter values, it indicates a stable convex optimization surface. The strategy is robust to minor execution errors or slippage.
+*   **Scattered Distribution:** If the top 20 trials feature widely divergent parameter values (e.g., one trial uses a lookback of 20, another uses 80), it suggests the objective function is "noisy" or multimodal. The "best" result is likely a statistical outlier.
 
-**Excellent Stability (4/5 parameters):**
-- `bb_std`, `fast_period`, `slow_period`, `width_ma_period` show CV < 0.15
-- These parameters are **structural** to the strategy
-- Insensitive to market regime changes
+### Quantitative Metrics
+To quantify this clustering, the system calculates dispersion metrics for the parameter values of these top trials:
 
-**Moderate Stability (`bb_period`):**
-- CV = 0.19 (borderline)
-- Range ratio = 0.56 (moderate)
-- Positive autocorrelation (+0.32) suggests **regime-adaptive behavior**
-- In trending markets (2021-2022): Optimized to 22-26 (longer)
-- In choppy markets (2023): Optimized to 15-18 (shorter)
-
-**Action:** Monitor `bb_period` with adaptive smoothing:
-```python
-adaptive_bb_period = int(0.7 * recent_optimal + 0.3 * historical_median)
-```
+*   **Coefficient of Variation (CV):**
+    $$ CV = \frac{\sigma_{trials}}{\mu_{trials}} $$
+    A low CV ($$< 0.10$$) among top trials confirms that the optimizer consistently converged on the same region. High CV suggests random luck.
+*   **Range Ratio:**
+    $$ R = \frac{\max(\theta) - \min(\theta)}{\text{median}(\theta)} $$
+    This measures the width of the optimality plateau. A narrow range implies high sensitivity (fragility), while a moderate range implies a forgiving parameter space.
 
 ---
 
-## Case Study 2: RS-EMA Strategy
+## 2. Cross-Window Performance Variance
 
-### Walk-Forward Results (8 Windows, 2020-2024)
+Since the optimization process applies a single parameter set across three distinct historical windows (e.g., 2018-2019, 2019-2021, 2021-2022), stability is measured by the consistency of the objective score across these regimes.
 
-| Parameter | Mean | Std | CV | Range | Range Ratio | Autocorr | Score | Status |
-|-----------|------|-----|-----|-------|-------------|----------|-------|--------|
-| `rs_lookback` | 14.2 | 5.8 | **0.41** | 6-24 | 1.27 | +0.58 | **32.1** | ❌ Poor |
-| `ema_fast` | 8.1 | 2.3 | **0.28** | 5-12 | 0.86 | +0.41 | **55.3** | ⚠️ Moderate |
-| `ema_slow` | 21.3 | 3.2 | **0.15** | 17-28 | 0.52 | +0.22 | **78.9** | ⚠️ Moderate |
-| `entry_threshold` | 0.62 | 0.09 | **0.15** | 0.48-0.75 | 0.44 | -0.18 | **79.2** | ✅ Good |
+### Metric: Standard Deviation of Windows
+The system calculates the standard deviation of the objective scores ($$\sigma_{score}$$) achieved in each of the rolling windows for a given trial.
 
-### Interpretation
+*   **Low Variance:** The strategy performs comparably in all three windows, indicating insensitivity to specific market regimes (e.g., Bull vs. Bear).
+*   **High Variance:** The strategy generates exceptional returns in one window but poor returns in another. Even if the *average* score is high, such parameters are penalized or discarded to prevent regime-specific overfitting.
 
-**Critical Issue: `rs_lookback` Instability**
-- CV = 0.41 (highly unstable)
-- Range ratio = 1.27 (extreme)
-- Strong positive autocorrelation (+0.58) = **regime drift**
-
-**Analysis:** Optimal RS lookback is shortening over time:
-- 2020-2021: 18-24 months
-- 2022-2023: 10-14 months
-- 2024: 6-8 months
-
-**Hypothesis:** Market efficiency increasing (HFT, ETFs) → momentum signals decay faster
-
-**Action:** Consider adaptive parameter or shorter fixed lookback.
+### Metric: Minimum Window Score
+To enforce a "safety first" approach, the stability analysis prioritizes the **Minimum Window Score** ($$\min(S_{w1}, S_{w2}, S_{w3})$$) rather than the mean. A parameter set is only as robust as its worst historical performance.
 
 ---
 
-## Visual Analysis Methods
+## 3. Parameter Sensitivity (Importance Analysis)
 
-### 1. Parameter Evolution Plot
+Not all parameters contribute equally to strategy performance. Understanding sensitivity is crucial for dimensionality reduction and risk management.
 
-```python
-def plot_parameter_evolution(
-    param_history: List[Dict[str, Any]],
-    param_name: str,
-    window_dates: List[str]
-) -> None:
-    """
-    Plot parameter values over time with confidence bands.
-    """
-    values = [p[param_name] for p in param_history]
-    mean = np.mean(values)
-    std = np.std(values)
-    
-    fig, ax = plt.subplots(figsize=(12, 6))
-    
-    # Plot parameter values
-    ax.plot(window_dates, values, 'o-', linewidth=2, 
-            markersize=8, label='Optimized Value')
-    
-    # Mean line
-    ax.axhline(mean, color='green', linestyle='--', 
-               linewidth=2, alpha=0.7, label=f'Mean ({mean:.1f})')
-    
-    # Confidence bands (±1 std)
-    ax.fill_between(range(len(values)), 
-                     mean - std, mean + std,
-                     alpha=0.2, color='green', 
-                     label='±1 Std Dev')
-    
-    # CV annotation
-    cv = std / mean
-    ax.text(0.02, 0.98, f'CV = {cv:.3f}\nStability: {classify_cv(cv)}',
-            transform=ax.transAxes, verticalalignment='top',
-            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5),
-            fontsize=12, fontweight='bold')
-    
-    ax.set_xlabel('Optimization Window', fontsize=12)
-    ax.set_ylabel(f'{param_name} Value', fontsize=12)
-    ax.set_title(f'Parameter Evolution: {param_name}', fontsize=14, fontweight='bold')
-    ax.legend(loc='upper right')
-    ax.grid(True, alpha=0.3)
-    plt.tight_layout()
-    plt.show()
+### Mean Decrease Impurity (MDI)
+The system utilizes the MDI method (via Random Forest regression on the trial history) to quantify the "importance" of each parameter.
 
-def classify_cv(cv: float) -> str:
-    """Classify CV for display."""
-    if cv < 0.10:
-        return "Excellent"
-    elif cv < 0.15:
-        return "Good"
-    elif cv < 0.25:
-        return "Moderate"
-    else:
-        return "Poor"
-```
-
-**Example Output:**
-
-![Parameter Evolution](../images/param_evolution_bb_period.png)
+*   **High Importance:** Parameters with high MDI values are the primary drivers of the strategy's variance. These require precise tuning and rigorous stability checks.
+*   **Low Importance:** Parameters with near-zero MDI are "noise." In future iterations, these parameters can be fixed to constant values to reduce the dimensionality of the search space without degrading performance.
 
 ---
 
-### 2. Parameter Heatmap (2D Stability Surface)
+## 4. Degradation Analysis (In-Sample vs. Out-of-Sample)
 
-```python
-def plot_parameter_heatmap(
-    param1_name: str,
-    param2_name: str,
-    param1_range: np.ndarray,
-    param2_range: np.ndarray,
-    performance_matrix: np.ndarray,
-    optimal_params: Dict
-) -> None:
-    """
-    Visualize performance across 2D parameter space.
-    
-    Shows how sensitive strategy is to parameter variations.
-    """
-    fig, ax = plt.subplots(figsize=(10, 8))
-    
-    # Create heatmap
-    im = ax.imshow(performance_matrix, cmap='RdYlGn', 
-                   aspect='auto', origin='lower',
-                   extent=[param1_range.min(), param1_range.max(),
-                          param2_range.min(), param2_range.max()])
-    
-    # Mark optimal point
-    ax.scatter(optimal_params[param1_name], 
-               optimal_params[param2_name],
-               marker='*', s=500, c='blue', 
-               edgecolors='black', linewidths=2,
-               label='Optimal Parameters', zorder=5)
-    
-    # Contour lines
-    contours = ax.contour(param1_range, param2_range, 
-                          performance_matrix.T,
-                          levels=10, colors='black', 
-                          alpha=0.3, linewidths=0.5)
-    ax.clabel(contours, inline=True, fontsize=8)
-    
-    # Colorbar
-    cbar = plt.colorbar(im, ax=ax)
-    cbar.set_label('Sharpe Ratio', fontsize=12)
-    
-    ax.set_xlabel(param1_name, fontsize=12)
-    ax.set_ylabel(param2_name, fontsize=12)
-    ax.set_title('Parameter Sensitivity Surface', 
-                 fontsize=14, fontweight='bold')
-    ax.legend(loc='upper right')
-    plt.tight_layout()
-    plt.show()
-```
+Before final selection, the system performs a degradation check comparing the Training (Optimization) performance against the Testing (Out-of-Sample) performance within the historical windows.
 
-**Interpretation:**
-
-![Parameter Heatmap](../images/param_heatmap_mabw.png)
-
-- **Broad plateau:** Strategy is robust (stable)
-- **Narrow spike:** Strategy is fragile (unstable)
-- **Multiple peaks:** Multiple regimes or overfitting
-
----
-
-### 3. Drawdown Sensitivity
-
-```python
-def plot_drawdown_sensitivity(
-    param_name: str,
-    param_values: List[float],
-    max_drawdowns: List[float]
-) -> None:
-    """
-    How does worst-case risk vary with parameter?
-    
-    Stable strategies have flat drawdown curves.
-    """
-    fig, ax = plt.subplots(figsize=(10, 6))
-    
-    ax.plot(param_values, [-dd * 100 for dd in max_drawdowns],
-            'o-', linewidth=2, markersize=8, color='red')
-    
-    # Reference line at median
-    median_dd = np.median(max_drawdowns)
-    ax.axhline(-median_dd * 100, color='blue', 
-               linestyle='--', label=f'Median DD ({-median_dd*100:.1f}%)')
-    
-    ax.set_xlabel(f'{param_name} Value', fontsize=12)
-    ax.set_ylabel('Maximum Drawdown (%)', fontsize=12)
-    ax.set_title(f'Drawdown Sensitivity to {param_name}', 
-                 fontsize=14, fontweight='bold')
-    ax.grid(True, alpha=0.3)
-    ax.legend()
-    plt.tight_layout()
-    plt.show()
-```
-
-**Key Question:** Does a small parameter change cause catastrophic drawdowns?
-
----
-
-## What to Do When Parameters Are Unstable
-
-### Strategy 1: Simplify the Model
-
-**Occam's Razor:** The simplest model that explains the data is usually best.
-
-```python
-# Before: 7 parameters
-def complex_strategy(fast_ma, slow_ma, bb_period, bb_std, 
-                     rsi_period, rsi_ob, rsi_os):
-    ...
-
-# After: 3 parameters (remove RSI component)
-def simplified_strategy(fast_ma, slow_ma, bb_period):
-    ...
-```
-
-**Result:** Fewer parameters → lower optimization space → less overfitting
-
----
-
-### Strategy 2: Fix Structural Parameters
-
-If a parameter has known theoretical value, don't optimize it:
-
-```python
-# Bollinger Bands: 2.0 std is canonical (covers 95% of distribution)
-bb_std = 2.0  # Fixed, not optimized
-
-# Only optimize periods
-optimizable_params = {
-    'bb_period': (15, 30),
-    'fast_period': (8, 20)
-}
-```
-
----
-
-### Strategy 3: Adaptive Parameter Smoothing
-
-```python
-def adaptive_parameter(
-    recent_optimal: float,
-    historical_median: float,
-    confidence: float = 0.7
-) -> float:
-    """
-    Exponentially weighted blend of recent and historical parameters.
-    
-    confidence=0.7 means 70% weight on recent optimization.
-    """
-    return confidence * recent_optimal + (1 - confidence) * historical_median
-```
-
-**Example:** 
-- Historical median `bb_period` = 20
-- Recent optimal = 26
-- Adaptive = 0.7 × 26 + 0.3 × 20 = 24.2 ≈ 24
-
----
-
-### Strategy 4: Ensemble Approach
-
-```python
-def create_ensemble_parameters(
-    param_history: List[Dict[str, Any]],
-    method: str = 'median'
-) -> Dict[str, Any]:
-    """
-    Aggregate parameters across all windows.
-    
-    Methods:
-        - 'median': Robust to outliers
-        - 'mean': Simple average
-        - 'trimmed_mean': Remove top/bottom 10%
-        - 'weighted': Recent windows weighted higher
-    """
-    ensemble = {}
-    
-    for param in param_history[0].keys():
-        values = [p[param] for p in param_history]
-        
-        if method == 'median':
-            ensemble[param] = np.median(values)
-        elif method == 'mean':
-            ensemble[param] = np.mean(values)
-        elif method == 'trimmed_mean':
-            ensemble[param] = trim_mean(values, proportiontocut=0.1)
-        elif method == 'weighted':
-            weights = np.exp(np.linspace(-1, 0, len(values)))  # Exponential decay
-            ensemble[param] = np.average(values, weights=weights)
-    
-    return ensemble
-```
-
----
-
-### Strategy 5: Regime-Based Parameters
-
-```python
-class RegimeAdaptiveStrategy:
-    """Use different parameters for different market regimes."""
-    
-    def __init__(self):
-        self.regime_params = {
-            'trending': {'fast_period': 10, 'slow_period': 30},
-            'ranging': {'fast_period': 15, 'slow_period': 45},
-            'high_vol': {'fast_period': 20, 'slow_period': 50}
-        }
-    
-    def select_parameters(self, current_regime: str) -> Dict:
-        """Select parameters based on detected regime."""
-        return self.regime_params.get(current_regime, self.default_params)
-```
-
-**Requires:** Robust regime detection (separate research)
-
----
-
-## Connection to Market Regimes
-
-### Regime-Dependent Parameter Drift
-
-**Hypothesis:** Parameters drift because market structure changes.
-
-```python
-def analyze_regime_correlation(
-    param_history: List[Dict[str, Any]],
-    regime_history: List[str]  # ['trending', 'ranging', ...]
-) -> pd.DataFrame:
-    """
-    Correlate parameter values with market regimes.
-    """
-    results = []
-    
-    for param in param_history[0].keys():
-        values = [p[param] for p in param_history]
-        
-        # Group by regime
-        regime_stats = {}
-        for regime in set(regime_history):
-            regime_values = [v for v, r in zip(values, regime_history) 
-                            if r == regime]
-            regime_stats[regime] = {
-                'mean': np.mean(regime_values),
-                'std': np.std(regime_values),
-                'n': len(regime_values)
-            }
-        
-        results.append({
-            'parameter': param,
-            'regime_stats': regime_stats,
-            'anova_p': calculate_anova_p(values, regime_history)
-        })
-    
-    return pd.DataFrame(results)
-```
-
-### Example: MABW `bb_period` vs. Regime
-
-| Regime | Mean bb_period | Std | n |
-|--------|----------------|-----|---|
-| **Trending** | 23.5 | 1.8 | 12 |
-| **Ranging** | 17.2 | 2.1 | 8 |
-| **High Vol** | 15.8 | 2.5 | 6 |
-
-**ANOVA p-value: 0.003** (significant difference across regimes)
-
-**Interpretation:** `bb_period` is **regime-adaptive**, not unstable. In trending markets, longer periods smooth noise. In choppy markets, shorter periods respond faster.
-
-**Action:** This is actually **desirable behavior**—implement regime detection and switch parameters accordingly.
-
----
-
-## Real-World Example: 2023 Market Transition
-
-### Case: MABW Strategy January-June 2023
-
-**Context:** Market transitioned from trending (2021-2022) to range-bound (2023)
-
-| Month | Optimal bb_period | Market Regime | Rationale |
-|-------|-------------------|---------------|-----------|
-| Jan 2023 | 24 | Trending down | Smooth volatility in clear trend |
-| Feb 2023 | 22 | Transition | Uncertainty increasing |
-| Mar 2023 | 18 | Banking crisis | Respond faster to volatility |
-| Apr 2023 | 16 | Range-bound | Capture shorter cycles |
-| May 2023 | 17 | Range-bound | Stable regime |
-| Jun 2023 | 16 | Range-bound | Stable regime |
-
-**CV over period:** 0.18 (moderate)
-
-**But:** When segmented by regime:
-- **Trending regime CV:** 0.08 (stable)
-- **Range-bound regime CV:** 0.06 (stable)
-
-**Key Insight:** Apparent instability was actually **appropriate adaptation** to regime change.
-
----
-
-## Statistical Significance Testing
-
-### Bootstrap Confidence Intervals
-
-```python
-def bootstrap_parameter_ci(
-    param_values: List[float],
-    n_bootstrap: int = 10000,
-    confidence: float = 0.95
-) -> Tuple[float, float]:
-    """
-    Calculate confidence interval for parameter mean using bootstrap.
-    
-    Helps distinguish genuine drift from random variation.
-    """
-    bootstrap_means = []
-    
-    for _ in range(n_bootstrap):
-        sample = np.random.choice(param_values, size=len(param_values), 
-                                 replace=True)
-        bootstrap_means.append(np.mean(sample))
-    
-    alpha = 1 - confidence
-    lower = np.percentile(bootstrap_means, alpha/2 * 100)
-    upper = np.percentile(bootstrap_means, (1-alpha/2) * 100)
-    
-    return lower, upper
-```
-
-**Example:**
-- Observed mean `fast_period` = 12.3
-- 95% CI: [11.4, 13.2]
-- Historical "optimal" = 12
-
-**Interpretation:** Mean is statistically consistent with traditional value—no evidence of drift.
-
----
-
-## Production Monitoring
-
-### Real-Time Stability Tracking
-
-```python
-class ParameterStabilityMonitor:
-    """Monitor parameter stability in production."""
-    
-    def __init__(self, baseline_params: Dict, alert_threshold: float = 0.25):
-        self.baseline = baseline_params
-        self.history = []
-        self.alert_threshold = alert_threshold
-    
-    def update(self, new_params: Dict) -> Optional[str]:
-        """
-        Add new parameter optimization result.
-        
-        Returns alert message if stability degrades.
-        """
-        self.history.append(new_params)
-        
-        if len(self.history) < 4:
-            return None  # Need minimum data
-        
-        # Check recent CV
-        recent_cv = {}
-        for param in new_params.keys():
-            recent_values = [p[param] for p in self.history[-4:]]
-            cv = np.std(recent_values) / np.mean(recent_values)
-            recent_cv[param] = cv
-            
-            # Alert if CV exceeds threshold
-            if cv > self.alert_threshold:
-                return (f"⚠️ ALERT: Parameter '{param}' instability detected!\n"
-                       f"Recent CV: {cv:.3f} (threshold: {self.alert_threshold})\n"
-                       f"Consider: regime analysis or parameter simplification")
-        
-        return None
-```
-
----
-
-## Comprehensive Stability Report
-
-### Automated Analysis
-
-```python
-def generate_stability_report(
-    param_history: List[Dict[str, Any]],
-    window_dates: List[str],
-    save_path: str = './stability_report.html'
-) -> None:
-    """
-    Generate comprehensive HTML stability report.
-    """
-    stability_df = analyze_parameter_stability(param_history)
-    
-    report = f"""
-    <html>
-    <head><title>Parameter Stability Report</title></head>
-    <body>
-        <h1>Parameter Stability Analysis</h1>
-        <p>Analysis Period: {window_dates[0]} to {window_dates[-1]}</p>
-        <p>Number of Windows: {len(window_dates)}</p>
-        
-        <h2>Overall Assessment</h2>
-        {generate_summary_table(stability_df)}
-        
-        <h2>Detailed Metrics</h2>
-        {stability_df.to_html()}
-        
-        <h2>Visual Analysis</h2>
-        {embed_plots(param_history, window_dates)}
-        
-        <h2>Recommendations</h2>
-        {generate_recommendations(stability_df)}
-    </body>
-    </html>
-    """
-    
-    with open(save_path, 'w') as f:
-        f.write(report)
-```
-
----
-
-## Key Takeaways
-
-### The Stability Hierarchy
-
-```
-1. EXCELLENT (CV < 0.10, Range < 0.30)
-   → Deploy with confidence
-   → Parameters are structural
-
-2. GOOD (CV < 0.15, Range < 0.60)
-   → Production-ready
-   → Monitor quarterly
-
-3. MODERATE (CV < 0.25, Range < 1.00)
-   → Investigate regime sensitivity
-   → Consider adaptive approach
-   → Monitor monthly
-
-4. POOR (CV > 0.25, Range > 1.00)
-   → High overfitting risk
-   → Simplify or abandon
-```
-
-### Practical Guidelines
-
-✅ **Target:** 80%+ of parameters in "Good" or better category
-
-✅ **Monitor:** CV and range ratio across walk-forward windows
-
-✅ **Adapt:** Use ensemble or adaptive parameters for CV > 0.20
-
-✅ **Investigate:** Regime correlation before declaring instability
-
-✅ **Simplify:** Remove parameters with consistently poor stability
-
----
-
-## Further Research
-
-### Open Questions
-
-1. **Optimal smoothing weight** for adaptive parameters?
-2. **Regime detection robustness** vs. parameter stability?
-3. **Multi-objective optimization** (Sharpe + Stability)?
-4. **Non-parametric approaches** to reduce parameter count?
-
-### Recommended Reading
-
-- **Pardo, R.** (2008). *The Evaluation and Optimization of Trading Strategies*. Chapter 8: Robustness Testing.
-- **Aronson, D.** (2007). *Evidence-Based Technical Analysis*. Chapter 9: Overfitting.
-- **de Prado, M.L.** (2018). *Advances in Financial Machine Learning*. Chapter 11: Overfitting.
-
----
-
-## Code Repository
-
-Full implementation:
-- [`backtester/stability_analysis.py`](https://github.com/yourusername/repo) - Complete analysis framework
-- [`examples/parameter_stability_demo.py
-
-
-Here is a summary of the implementations for **Parameter Stability Analysis** within your Walk-Forward Optimization framework:
-
-### 1. **Purpose of Parameter Stability Analysis**
-The objective is to evaluate how consistently the chosen parameters perform across different historical windows. This analysis helps to identify whether a model is robust or if it is overfitting to specific periods of data.
-
-### 2. **Mean Decrease Impurity (MDI) Assessment**
-- **Shift from fANOVA to MDI:** 
-  - The analysis now utilizes **Mean Decrease Impurity** from Random Forest models to assess the importance of parameters. This approach is more robust and less prone to errors compared to previous methods that faced issues with mixed data types.
-- **Importance Calculation:**
-  - Each parameter's influence on predictions is quantified, allowing for effective ranking and comparison of their stability across multiple iterations.
-
-### 3. **Cluster Analysis**
-- **Visual Stability Assessment:**
-  - A clustering technique is implemented to visually analyze whether the best-performing parameters form a stable cluster or a sharp peak. This helps in determining the robustness of the selected parameters:
-    - **Stable Cluster:** Indicates that the parameters perform consistently well across different training windows.
-    - **Sharp Peak:** Suggests that the parameters might be overfitting, as they perform well only in a narrow range of historical data.
-
-### 4. **Degradation Measurement**
-- **Performance Drop Evaluation:**
-  - The analysis calculates the degradation of performance metrics (e.g., Sharpe Ratio, Total Return) when moving from training (in-sample) to testing (out-of-sample). 
-  - This degradation metric helps to identify how much the model's performance changes when applied to unseen data, providing insights into the robustness of the parameters.
-
-### 5. **Visualization and Reporting**
-- **Graphical Representation:**
-  - Stability analysis results are represented visually, allowing for easier interpretation of parameter performance across different windows.
-  - A comprehensive report summarizes findings, highlighting key parameters, their importance, and the overall stability of the model.
-
-### 6. **Iterative Feedback Loop**
-- **Adaptive Refinement:**
-  - The analysis is integrated into an iterative feedback loop where insights gained from stability assessments can inform further adjustments to parameter tuning and model refinement.
-
-### Conclusion
-The Parameter Stability Analysis provides a multidimensional approach to evaluate and ensure that the selected parameters in the Walk-Forward Analysis are not only optimized for historical data but are also robust and reliable for future predictions. This enhances the overall credibility and effectiveness of the trading strategy.
-
-
-Based on the implementation of **Method 2 (Global Optimization)**, the Parameter Stability Analysis is designed to distinguish between "lucky" parameter sets and those that are genuinely robust across different market regimes.
-
-Here is a summary of the specific components implemented for this analysis:
-
-### 1. Intrinsic Stability (The Objective Function)
-Unlike standard optimization which maximizes the *average* return, the objective function itself is engineered to enforce stability during the search process.
-*   **Conservative Scoring (5th Percentile):** The optimizer does not maximize the mean score of the windows. Instead, it calculates the **5th percentile** of the performance metrics (Sharpe Ratio + Win Rate) across the 3 historical windows. This forces the optimizer to find parameters that survive the "worst-case" historical scenario rather than those that overperform in just one bull market.
-*   **Volatility Penalty:** The scoring metric explicitly penalizes volatility and deep drawdowns, filtering out parameters that generate high returns but with unacceptable risk variance.
-
-### 2. Degradation Analysis (Overfitting Detection)
-Before a trial is even considered "successful," it undergoes a degradation check.
-*   **IS vs. OOS Comparison:** The system calculates the performance drop-off between the **Training Window** (In-Sample) and the **Testing Window** (Out-of-Sample).
-*   **Pruning Logic:** If the degradation exceeds a specific threshold (e.g., Performance drops by >50%), the trial is flagged as "Overfit" and penalized, preventing these unstable parameters from becoming candidates for the final selection.
-
-### 3. Cluster Analysis (The "Broad Peak" Theory)
-Once the optimization loop completes, the script analyzes the distribution of the top-performing trials (e.g., the top 50 parameter sets).
-*   **Clustering Algorithms:** It employs clustering techniques (like **DBSCAN** or **K-Means**) to determine if the best parameters are grouped tightly together (indicating a "Broad Peak" of stability) or scattered randomly (indicating "Narrow Peaks" or noise).
-*   **Interpretation:** A tight cluster implies that slight deviations in parameters (slippage or execution lag) will not break the strategy. Scattered results imply the strategy is fragile.
-
-### 4. Parameter Sensitivity & Importance
-The system identifies which parameters actually drive performance and which are noise.
-*   **MDI (Mean Decrease Impurity):** Used to calculate parameter importance. This quantifies how much each specific parameter (e.g., Lookback Period, Threshold) contributes to the variance in the objective score.
-*   **Dimensionality Reduction:** This helps in simplifying the model by fixing "unimportant" parameters to constants in future iterations, reducing the risk of overfitting.
-
-### 5. Visualizations for Stability
-Several visualizations are generated to allow for human inspection of stability:
-*   **Parameter Evolution Plots:** Visualizes how the "optimal" parameter range shifts (or remains constant) across the rolling windows.
-*   **Optimization Heatmaps:** 2D contour plots showing the interaction between two high-importance parameters. We look for large "hot zones" (stable regions) rather than tiny "hot spots."
-*   **Drawdown Sensitivity Surface:** A 3D or contour view showing how parameter changes impact maximum drawdown.
-
-### Summary Workflow
 $$
-\text{Raw Trials} \xrightarrow{\text{Degradation Filter}} \text{Valid Trials} \xrightarrow{\text{5th \% Objective}} \text{Top Candidates} \xrightarrow{\text{Cluster Analysis}} \text{Final Robust Set}
+\text{Degradation} = \frac{\text{Metric}_{Test} - \text{Metric}_{Train}}{\text{Metric}_{Train}}
 $$
 
-This multi-layered approach ensures that when the final parameters are unlocked for the **Global OOS Vault (2023–2025)**, they represent a statistically robust strategy rather than a curve-fitted anomaly.
+*   **Acceptable Degradation:** A moderate drop in performance (e.g., -10% to -20%) is expected and statistically normal.
+*   **Critical Failure:** A sharp decoupling (e.g., > -50% drop) or a sign inversion (profit becoming loss) flags the parameter set as overfit, regardless of its raw score. These sets are pruned from the candidate list.
+
+---
+
+## 5. Visual Confirmation Methods
+
+Quantitative metrics are supplemented by visual inspection of the solution space to confirm the "Broad Peak" hypothesis.
+
+### Parameter Heatmaps
+2D contour plots visualize the interaction between two high-importance parameters (e.g., Lookback Period vs. Entry Threshold).
+*   **Target:** A large, contiguous "hot zone" (green/yellow) indicating a wide region of profitability.
+*   **Avoid:** "Islands" of profitability surrounded by poor performance, indicating a fragile fit.
+
+### Drawdown Sensitivity Surfaces
+These plots map how Maximum Drawdown changes as a function of parameter variation. A robust strategy should show a flat or gently sloping surface. Steep cliffs in the drawdown surface indicate that a small parameter shift (e.g., market behavior changing slightly) could lead to catastrophic risk.
