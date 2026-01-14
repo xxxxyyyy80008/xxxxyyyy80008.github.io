@@ -572,4 +572,40 @@ Full implementation available:
 
 ---
 
-*Last updated: January 2026*
+Based on the code changes and discussions we have implemented, here is the summary of the **Walk-Forward Optimization & Analysis (Method 2 - Global Optimization)** currently in your script:
+
+### 1. Optimization Methodology: "Global Robustness"
+Unlike standard Walk-Forward (which re-optimizes every window), this script implements **Method 2**.
+*   **Concept:** It searches for a **single, static set of parameters** that performs consistently well across *all* historical rolling windows.
+*   **Goal:** To find parameters that are robust to regime changes, rather than chasing the "best" parameters for the immediate past.
+*   **Engine:** Uses **Optuna** with the TPESampler (Tree-structured Parzen Estimator).
+
+### 2. The "Robust" Objective Function (Option 3)
+The logic for scoring a trial has been significantly upgraded to prevent overfitting and penalize volatility.
+*   **Formula:** Instead of a simple average, the score is calculated as:
+    $$ \text{Score} = 0.7 \times (\text{Mean} - 0.5 \times \text{StdDev}) + 0.3 \times \text{MinScore} $$
+    *   *Mean - 0.5 StdDev:* Penalizes "Boom and Bust" strategies that have high variance between windows.
+    *   *MinScore:* Heavily weights the "worst-case scenario" window.
+*   **Risk Penalty:** The raw Sharpe Ratio is deflated by the Maximum Drawdown:
+    $$ \text{Adjusted} = \frac{\text{Sharpe} \times 0.6 + \text{WinRate} \times 0.4}{1 + (2 \times \text{MaxDD})} $$
+*   **Hard Cap:** If Max Drawdown > 25% in *any* window, the score is penalized by -1.0.
+
+### 3. Degradation Analysis (Overfitting Detection)
+We implemented a specific module to quantify how much performance drops when moving from known data (Train) to unknown data (Test).
+*   **Metric:**
+    $$ \text{Degradation} = \frac{\text{Train Metric} - \text{Test Metric}}{\text{Train Metric}} $$
+*   **Integration:** Calculated for Sharpe Ratio and Total Return on every window side-by-side.
+*   **Thresholds:**
+    *   < 10%: Excellent/Robust.
+    *   > 50%: High Overfitting (Strategy likely memorized noise).
+
+### 4. Parameter Stability & Importance
+*   **MDI Importance:** Replaced the crashing fANOVA evaluator with **Mean Decrease Impurity (Random Forest)**. This handles static parameters and mixed data types without error.
+*   **Cluster Analysis:** The script (from previous context) includes logic to visualize if the "Best Parameter" sits in a broad, stable plateau or a sharp, dangerous peak (though this is part of the visualization suite).
+
+### 5. Execution Logic
+*   **Pruning:** Optuna's `HyperbandPruner` (or similar) is active. It compares the intermediate `conservative_score` of the current trial against previous trials at the same step (window index) and stops bad trials early to save time.
+*   **Data Partitioning:**
+    *   **Train:** Used for optimization.
+    *   **Test:** Used immediately after training to measure Degradation.
+    *   **Holdout:** A pristine slice of data reserved for the final validation, completely unseen by the optimizer.
