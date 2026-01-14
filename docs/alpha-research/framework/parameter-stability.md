@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Walk-Forward Analysis"
+title: "Parameter Stability Analysis"
 parent: Methodology
 grand_parent: Alpha Research & Signal Generation
 nav_order: 4
