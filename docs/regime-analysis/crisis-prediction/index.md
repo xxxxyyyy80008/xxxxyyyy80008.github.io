@@ -22,15 +22,6 @@ Equity markets are modeled as having two regimes:
 - **Normal regime (0):** Typical market conditions, where the equity risk premium is dominant.
 - **Crisis regime (1):** Stress or crash conditions, where risk management actions may be warranted.
 
-The core objective is to produce a daily signal:
-
-$$
-p_{t,H} = \mathbb{P}(y_{t+H}=1 \mid X_t)
-$$
-
-where $$H$$ is the prediction horizon (e.g., 1/3/5/10 trading days).
-
-
 ### Target Definition 
 Using S&P 500 data (Yahoo `^GSPC`), a crisis indicator is defined from the 15-day return:
 
@@ -47,6 +38,15 @@ $$
 **Forward targets** are then constructed by shifting the crisis indicator:
 - `target_1d`, `target_3d`, `target_5d`, `target_10d`
 - The default modeling target is **`target = target_3d`**.
+
+The core objective is to produce a daily signal:
+
+$$
+p_{t,H} = \mathbb{P}(y_{t+H}=1 \mid X_t)
+$$
+
+where $$H$$ is the prediction horizon (e.g., 1/3/5/10 trading days).
+
 
 ---
 
