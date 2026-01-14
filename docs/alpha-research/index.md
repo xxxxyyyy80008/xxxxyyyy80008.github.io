@@ -8,10 +8,11 @@ permalink: /docs/alpha-research/
 ---
 
 # Systematic Alpha Research Framework
-{: .fs-9 }
+{: .fs-7 }
 
-A rigorous pipeline for the identification, implementation, and validation of market anomalies.
-{: .fs-6 .fw-300 }
+A rigorous pipeline for the identification, implementation, and validation of systematic trading strategies.
+
+{: .fs-5 .fw-300 }
 
 [View Indicators](/docs/alpha-research/indicators/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [View Strategies](/docs/alpha-research/strategies/){: .btn .fs-5 .mb-4 .mb-md-0 }
