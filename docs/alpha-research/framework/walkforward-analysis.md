@@ -5,7 +5,7 @@ parent: Methodology
 grand_parent: Alpha Research & Signal Generation
 nav_order: 3
 has_children: false
-permalink: /docs/alpha-research/methodology/walkforward-analysis
+permalink: /docs/alpha-research/framework/walkforward-analysis
 ---
 
 

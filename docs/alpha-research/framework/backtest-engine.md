@@ -3,9 +3,9 @@ layout: default
 title: "Backtest Engine Architecture"
 parent: Methodology
 grand_parent: Alpha Research & Signal Generation
-nav_order: 4
+nav_order: 5
 has_children: false
-permalink: /docs/alpha-research/methodology/backteset-engine
+permalink: /docs/alpha-research/framework/backteset-engine
 ---
 
 # Backtest Engine Architecture
