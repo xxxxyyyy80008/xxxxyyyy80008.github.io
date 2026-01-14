@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Equity Market Crisis Regime Prediction"
+title: "Part I: Introduction"
 parent: Crisis Prediction
 grand_parent: Market Regime Analysis
 has_children: false
@@ -13,15 +13,26 @@ permalink: /docs/regime-analysis/crisis-prediction/crash-ml-models
 {: .fs-7 }
 
 
-## Predict Stock Market Crashes
+## Part I: Introduction
 
-This series is based on the following papers:
+This project builds an **equity crisis regime classifier** using **gradient-boosted decision trees (GBDT)**, with a data pipeline that combines:
 
-- Benhamou, Eric and Ohana, Jean-Jacques and Saltiel, David and Guez, Beatrice, *Planning in Financial Markets in Presence of Spikes: Using Machine Learning GBDT* (June 8, 2021). Université Paris-Dauphine Research Paper No. 3862428. Available at [SSRN](https://ssrn.com/abstract=3862428)  
-- Benhamou, Eric and Saltiel, David and Tabachnik, Serge and Bourdeix, Corentin and Chareyron, François and Guez, Beatrice, *Adaptive Supervised Learning for Volatility Targeting Models (Ecml Pkdd Midas 2021 Presentation Slides)* (September 18, 2021). Available at [SSRN](https://ssrn.com/abstract=3926218)
-- Ungari, Sandrine and Benhamou, Eric, *Deep Reinforcement Learning for Portfolio Allocation* (July 14, 2021). Risk Magazine Global Quant Network 2021. Available at [SSRN](https://ssrn.com/abstract=3886804)
+- **Yahoo Finance** market data (via `yfinance`)
+- **FRED** macro/financial conditions series (via `fredapi`)
+- A reproducible **feature engineering** layer (changes, vol, z-scores, Sharpe, RSI, interactions)
+- A binary **crisis vs normal** target derived from S&P 500 dynamics
 
----
+
+### Navigation
+
+- **Part I:** Introduction  
+- **Part II:** Data Preparation  
+- **Part III:** Exploratory Data Analysis  
+- **Part IV:** Feature Selection, Hyperparameter Tuning (LightGBM)  
+- **Part V:** Model Evaluation and Interpretation (LightGBM)  
+- **Part VI:** SVM and Neural Networks (MLP and 1D-CNN) — SVM \| MLP \| 1D-CNN  
+- **Part VII:** Compare GBDT Models: XGBoost and LightGBM  
+- **Part VIII:** Deployment of LightGBM Models (end-to-end process)  
 
 ## Define the target variable
 
