@@ -56,7 +56,7 @@ The development lifecycle adheres to an institutional-grade workflow, strictly s
 ```mermaid
 graph TD
     subgraph "I. Ideation & Design"
-        A[Economic Hypothesis] -->|Quantify| B[Signal Specification]
+        A[Hypothesis] -->|Quantify| B[Signal Specification]
         B -->|Vectorization| C[Prototype Implementation]
     end
 
