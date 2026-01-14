@@ -54,32 +54,6 @@ $$
 
 ## Implementation Details
 
-### Core Logic Snippet
-The logic is fully vectorized using pure boolean series operations.
-
-```python
-def generate_signals(self, data: pd.DataFrame) -> List[Signal]:
-    """
-    Entry: EMA crosses above MAB_UPPER + MAB_WIDTH is at LLV
-    Exit: MAB_WIDTH crosses above critical level
-    """
-    # 1. Detect Volatility Squeeze
-    # Check if current width is effectively at the N-day low
-    is_squeeze = (data['MAB_WIDTH'] <= data['MAB_LLV'] + 1e-6)
-
-    # 2. Detect Momentum Breakout
-    # EMA(20) crossing above the Upper MABW Band
-    is_breakout = detect_crossover_above(data, 'EMA', 'MAB_UPPER')
-
-    # Combine for Entry
-    entry_cond = is_breakout & is_squeeze
-    
-    # 3. Detect Volatility Blow-off (Exit)
-    exit_cond = detect_threshold_cross_above(data, 'MAB_WIDTH', self.mab_width_critical)
-    
-    return self._compile_signals(data, entry_cond, exit_cond)
-```
-
 ### Configuration Parameters
 
 | Parameter | Default | Description |
