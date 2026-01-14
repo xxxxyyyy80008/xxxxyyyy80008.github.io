@@ -8,13 +8,13 @@ has_children: false
 permalink: /docs/alpha-research/framework/backtest-engine
 ---
 
-
 # Backtest Engine Architecture
 {: .fs-7 }
 
 A hybrid simulation environment combining vectorized signal generation with event-driven execution.
 {: .fs-5 .fw-300 }
 
+[View Source Code](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
 ---
 
 ## System Abstract
