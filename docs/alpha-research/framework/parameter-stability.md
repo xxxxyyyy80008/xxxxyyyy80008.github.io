@@ -12,7 +12,7 @@ permalink: /docs/alpha-research/methodology/parameter-stability
 
 ## The Robustness Objective
 
-In the context of the Global Optimization framework (Method 2), parameter stability is defined not by how parameters evolve over time, but by the topological properties of the solution space itself. A strategy is considered robust if the selected global parameter set resides within a "broad peak" of performance rather than a "narrow spike."
+In the context of the Global Optimization framework, parameter stability is defined not by how parameters evolve over time, but by the topological properties of the solution space itself. A strategy is considered robust if the selected global parameter set resides within a "broad peak" of performance rather than a "narrow spike."
 
 The objective of this analysis is to distinguish between parameters that capture genuine market inefficiencies (structural alpha) and those that are merely artifacts of curve-fitting to specific historical noise (spurious alpha).
 
