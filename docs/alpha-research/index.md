@@ -10,94 +10,99 @@ permalink: /docs/alpha-research/
 # Systematic Alpha Research Framework
 {: .fs-7 }
 
-A rigorous pipeline for the identification, implementation, and validation of systematic trading strategies.
-
+A rigorous pipeline for the engineering, calibration, and stress-testing of systematic trading strategies.
 {: .fs-5 .fw-300 }
 
-[View Indicators](/docs/alpha-research/indicators/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[View Strategies](/docs/alpha-research/strategies/){: .btn .fs-5 .mb-4 .mb-md-0 }
+---
+
+## Overview
+
+This section documents the quantitative methodologies used to develop tradeable systematic strategies: constructing robust execution systems that can capture theoretical edges while withstanding market friction and regime shifts.
+
+The research framework prioritizes **generalization** over raw performance. It employs a **Global Optimization** protocol designed to identify a single, stable parameter configuration that functions effectively across diverse historical periods, rather than overfitting parameters to specific market cycles.
 
 ---
 
-## Abstract
+## Research Pipeline
 
-This section details the quantitative methodologies used to isolate persistent market signals from statistical noise. The research framework operates on the principle of **scientific falsification**: the primary objective is to reject strategies that fail to demonstrate structural robustness across diverse market regimes.
-
-The pipeline integrates **Functional Programming (FP)** principles for signal generation with a **Bayesian Optimization** engine (Optuna TPE) for parameter tuning, ensuring that all findings are reproducible and statistically significant.
-
----
-
-## The Research Pipeline
-
-The development lifecycle follows a strict demarcation between hypothesis formulation, in-sample optimization, and out-of-sample validation to mitigate look-ahead bias.
+The development lifecycle adheres to an institutional-grade workflow, strictly separating the **Calibration Phase** (Signal Design & Optimization) from the **Validation Phase** (Walk-Forward & Stress Testing).
 
 ```mermaid
 graph TD
-    subgraph "Phase 1: Formulation"
-        A[Market Anomaly Hypothesis] --> B[Signal Construction]
-        B -->|Pure Functions| C[Vectorized Implementation]
+    subgraph "I. Ideation & Design"
+        A[Economic Hypothesis] -->|Quantify| B[Signal Specification]
+        B -->|Vectorization| C[Prototype Implementation]
     end
 
-    subgraph "Phase 2: Optimization (In-Sample)"
-        C --> D{Global Robustness Search}
-        D -->|Optuna TPE| E[Parameter Space Traversal]
-        E --> F[Objective Function Minimization]
+    subgraph "II. Calibration (In-Sample)"
+        C --> D{Global Parameter Search}
+        D -->|Optuna TPE| E[Cross-Window Optimization]
+        E -->|Select| F[Candidate Parameter Set]
+        F -->|Constraint| G[Maximize Regime Stability]
     end
 
-    subgraph "Phase 3: Validation (Out-of-Sample)"
-        F --> G[Walk-Forward Analysis]
-        G --> H{Stability Assessment}
-        H -->|Fail: High Degradation| I[Reject Strategy]
-        H -->|Pass: Low CV| J[Holdout Confirmation]
+    subgraph "III. Validation (Out-of-Sample)"
+        G --> H[Walk-Forward Analysis]
+        H -->|Check| I{Degradation Assessment}
+        I -->|High Decay| J[Reject: Overfitted]
+        I -->|Stable| K[Parameter Sensitivity Check]
+        K --> L[Final Holdout Test]
     end
 
     style D fill:#f9f,stroke:#333,stroke-width:2px
-    style H fill:#bfb,stroke:#333,stroke-width:2px
+    style I fill:#bfb,stroke:#333,stroke-width:2px
 ```
+
+### Phase Details
+
+1.  **Hypothesis & Design:** Strategies begin with a structural market premise (e.g., volatility clustering, mean reversion constraints). Signals are implemented using pure functions to ensure stateless reproducibility.
+2.  **Global Parameter Search:** Instead of optimizing each window individually (which leads to curve-fitting), we search for a **single parameter set** that maximizes the robust objective function across *all* training windows simultaneously.
+3.  **Walk-Forward Validation:** The candidate parameters are applied to unseen data. We measure **Performance Degradation**—the gap between In-Sample training results and Out-of-Sample test results—to quantify the strategy's "optimism bias."
 
 ---
 
+
 ## Strategy Universe
 
-The following strategies represent distinct "Logic Classes," each targeting a specific structural inefficiency in asset pricing. Performance metrics reflect **Out-of-Sample (OOS)** results derived from the Walk-Forward Analysis engine.
+Strategies are classified by their underlying logic class and validated based on their Out-of-Sample (OOS) stability.
 
 ### Volatility & Regime Detection
 
 | Strategy ID | Logic Class | Mathematical Premise | Validation Status |
 | :--- | :--- | :--- | :--- |
-| **[MABW](./strategies/mabw)** | **volatility_expansion** | Markets exhibit volatility clustering (GARCH effects); periods of low variance ($$\sigma^2$$) statistically precede high-variance expansion. | **Production** <br> *(Low Parameter Drift)* |
-| **[VPN](./strategies/vpn)** | **volume_divergence** | Price displacement normalized by volume ($$P \times V$$) and volatility ($$ATR$$) reveals institutional flow conviction. | **Validation** <br> *(Stable OOS Sharpe)* |
+| **[MABW](./strategies/mabw)** | **Volatility_Expansion** | Periods of low variance ($$\sigma^2$$) statistically precede high-variance expansion. Trends are captured via expansion thresholds. | **Production** <br> *(Low Degradation)* |
+| **[VPN](./strategies/vpn)** | **Volume_Divergence** | Price displacement normalized by volume ($$P \times V$$) and volatility ($$ATR$$) isolates institutional flow from retail noise. | **Validation** <br> *(Stable OOS Sharpe)* |
 
 ### Adaptive Momentum
 
 | Strategy ID | Logic Class | Mathematical Premise | Validation Status |
 | :--- | :--- | :--- | :--- |
-| **[AMA](./strategies/ama)** | **fractal_efficiency** | Trend persistence is a function of "noise." Lag parameters dynamically adjust based on the Efficiency Ratio ($$ER$$). | **Production** <br> *(High Regime Adaptation)* |
-| **[RS-EMA](./strategies/rsema)** | **relative_strength** | Assets exhibiting relative strength vs. a benchmark ($$\beta > 1$$) demonstrate momentum persistence during trend continuations. | **Review** <br> *(High Drawdown Sensitivity)* |
+| **[AMA](./strategies/ama)** | **Fractal_Efficiency** | Trend persistence is a function of path efficiency. Lag parameters ($$\alpha$$) are dynamically adjusted based on the Efficiency Ratio ($$ER$$). | **Production** <br> *(High Regime Adaptation)* |
+| **[RS-EMA](./strategies/rsema)** | **Relative_Strength** | Assets exhibiting relative strength ($$\beta > 1$$) vs. a benchmark demonstrate momentum persistence during trend continuations. | **Review** <br> *(Drawdown Sensitivity)* |
 
 ### Mean Reversion
 
 | Strategy ID | Logic Class | Mathematical Premise | Validation Status |
 | :--- | :--- | :--- | :--- |
-| **[Stoch-MACD](./strategies/stmacd)** | **oscillator_confluence** | Reversal probability maximizes when unbounded momentum (MACD) diverges from bounded oscillation (Stochastic) at statistical extremes. | **Validation** <br> *(High Win Rate / Low R:R)* |
+| **[Stoch-MACD](./strategies/stmacd)** | **Oscillator_Confluence** | Reversal probability is maximized when unbounded momentum (MACD) diverges from bounded oscillation (Stochastic) at statistical extremes. | **Validation** <br> *(High Win Rate)* |
 
 ---
 
 ## Infrastructure & Methodology
 
-The credibility of the alpha signals above relies on the integrity of the validation engine.
+The reliability of these strategies relies on the integrity of the underlying validation engine.
 
-### 1. [Walk-Forward Methodology](./framework/walk-forward-methodology)
-A detailed breakdown of the rolling-window validation protocol.
-*   **Global Optimization:** Unlike standard walk-forward which re-optimizes every step, this framework seeks a *single* robust parameter set that performs consistently across all historical windows.
-*   **Degradation Analysis:** Quantifying the "Optimization Tax" ($$ \Delta_{Sharpe} $$) between training and testing data.
+### 1. [Walk-Forward Methodology](./framework/walkforward-analysis)
+A detailed breakdown of the validation protocol.
+*   **Global Robustness:** Searching for parameter sets that survive diverse market conditions.
+*   **Degradation Analysis:** A quantitative check to reject strategies where $$ \text{Sharpe}_{IS} \gg \text{Sharpe}_{OOS} $$.
 
 ### 2. [Parameter Stability Analysis](./framework/parameter-stability)
-A statistical approach to avoiding "edge peaks" in the optimization surface.
-*   **Coefficient of Variation (CV):** Metrics for determining if a parameter is structurally sound or a result of curve-fitting.
-*   **Heatmap Visualization:** Identification of convex stability regions.
+Ensuring the strategy is not poised on a "knife-edge" of optimization.
+*   **Sensitivity Mapping:** Verifying that small changes in inputs do not cause catastrophic failures in outputs.
+*   **Convexity Check:** Prioritizing broad, flat regions of the solution space over narrow, high peaks.
 
-### 3. [Backtest Engine Architecture](./framework/backtest-engine-architecture)
+### 3. [Backtest Engine Architecture](./framework/backtest-engine)
 Technical documentation of the Python-based simulation engine.
 *   **Hybrid Architecture:** Vectorized signal calculation for throughput ($$ O(1) $$) + Event-driven execution for path-dependent accuracy.
 *   **Friction Modeling:** Implementation of slippage, commission, and stale-data pruning.
@@ -111,3 +116,4 @@ Technical documentation of the Python-based simulation engine.
 *   **Optimization:** Optuna (Tree-structured Parzen Estimator)
 *   **Validation:** Custom Walk-Forward Engine
 *   **Visualization:** Matplotlib, Seaborn
+
