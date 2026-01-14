@@ -54,7 +54,47 @@ gantt
     OOS Equity Curve   :crit,    done, 2021-01-01, 2021-09-30
 ```
 
+gantt
+    title Walk-Forward Rolling Window Protocol with Global OOS
+    dateFormat  YYYY-MM-DD
+    axisFormat  %Y
+    
+    section Iteration 1
+    Train (Optimize)   :done,    des1, 2020-01-01, 2020-12-31
+    Test (Validate)    :active,  des2, 2021-01-01, 2021-03-31
+    
+    section Iteration 2
+    Train (Optimize)   :done,    des3, 2020-04-01, 2021-03-31
+    Test (Validate)    :active,  des4, 2021-04-01, 2021-06-30
+    
+    section Iteration 3
+    Train (Optimize)   :done,    des5, 2020-07-01, 2021-06-30
+    Test (Validate)    :active,  des6, 2021-07-01, 2021-09-30
+    
+    section Global Out-of-Sample
+    OOS Validation     :crit,    done, 2021-10-01, 2021-12-31
+
 ---
+
+```mermaid
+gantt
+    title Rolling Window Progression (Example)
+    dateFormat YYYY-MM-DD
+    axisFormat %Y-%m
+    
+    section Window 1
+    Training (IS)      :a1, 2020-01-01, 252d
+    Testing (OOS)      :a2, after a1, 63d
+    Holdout            :a3, after a2, 21d
+    
+    section Window 2
+    Training (IS)      :b1, 2020-04-01, 252d
+    Testing (OOS)      :b2, after b1, 63d
+    Holdout            :b3, after b2, 21d  
+      
+    section Global Out-of-Sample
+    OOS Validation     :crit,    done, 2021-10-01, 2021-12-31
+```
 
 ## 3. Optimization Logic
 
