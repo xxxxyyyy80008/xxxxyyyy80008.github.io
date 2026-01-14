@@ -20,12 +20,12 @@ A hybrid simulation environment combining vectorized signal generation with even
 
 ## System Abstract
 
-The backtesting framework is designed to balance the computational efficiency of vectorized operations with the granular accuracy of event-driven systems. Unlike pure vectorized backtesters (which often suffer from look-ahead bias) or pure event-driven systems (which are computationally expensive), this engine separates **Signal Generation** from **Trade Execution**.
+The backtesting framework is designed to balance the computational efficiency of vectorized operations with the granular accuracy of event-driven systems. This engine separates **Signal Generation** from **Trade Execution**.
 
 The core architecture adheres to **Functional Programming (FP)** principles:
 *   **Immutability:** Core data structures (`Signal`, `Trade`, `Position`) are frozen dataclasses.
 *   **Pure Functions:** Metric calculations and portfolio logic are stateless.
-*   **Strict Causality:** The execution loop processes data sequentially to prevent future data leakage.
+*   **Leakage Prevention:** The execution loop processes data sequentially to prevent future data leakage.
 
 ---
 
