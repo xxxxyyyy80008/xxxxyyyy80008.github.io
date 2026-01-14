@@ -25,7 +25,7 @@ The validation engine utilizes a **Rolling Window** approach. The historical tim
 
 ### Temporal Segmentation
 
-The dataset is strictly partitioned into an **Optimization Universe (5 Years: 2018–2022)** and a **Global Out-of-Sample Vault (3 Years: 2023–2025)**. Within the Optimization Universe, the strategy is validated across 3 rolling windows.
+The dataset is divided into an **Optimization Universe (5 Years: 2018–2022)** and a **Global Out-of-Sample Vault (3 Years: 2023–2025)**. Within the Optimization Universe, the strategy is validated across 3 rolling windows.
 
 For each window iteration $$ i $$:
 
@@ -153,22 +153,48 @@ Performance convergence between the **Walk-Forward Test Set** and the **Holdout 
 
 ## 7. Process Flow
 
+Here is the revised **Process Flow** reflecting the **Method 2 (Global Optimization)** architecture.
+
+In this approach, the optimization loop **wraps** the rolling windows. For every single "Trial" (set of parameters), the system iterates through *all* history windows to calculate a composite score, rather than optimizing each window individually.
+
+## 7. Process Flow
+
 ```mermaid
 flowchart TD
-    A[Start] --> B[Define Data Set]
-    B --> C[Global OOS Window]
-    C -->|Not Used for Walk-Forward| D[Generate Rolling Windows]
-    D --> E[Window 1: Train & Test]
-    D --> F[Window 2: Train & Test]
-    D --> G[Window 3: Train & Test]
-    F -->|Evaluate Performance| H[Calculate Metrics]
-    G -->|Evaluate Performance| H
-    E -->|Evaluate Performance| H
-    H --> I[Degradation Analysis]
-    I --> J[Parameter Optimization]
-    J --> K[Store Best Parameters]
-    K -->|Repeat for All Windows| L[Finalize Parameters]
-    L --> M[Global Out-of-Sample Validation]
-    M -->|Final Validation| N[Evaluate on Global OOS]
-    N --> O[End]
+    A([Start]) --> B[Data Split]
+    B --> C[Optimization Universe<br/>2018-2022]
+    B --> D[Global OOS Vault<br/>2023-2025]
+    
+    %% The Locked Vault
+    D -.->|LOCKED| Z([Unused until End])
+
+    %% The Optuna Loop
+    subgraph Optimization Loop [Optuna Global Optimization]
+        direction TB
+        E{Suggest Parameters}
+        C --> E
+        
+        E --> F[Window 1 Evaluation]
+        F --> G{Pruning Check<br/>Is W1 Bad?}
+        
+        G -- Yes --> E
+        G -- No --> H[Window 2 Evaluation]
+        H --> I{Pruning Check<br/>Is W2 Bad?}
+        
+        I -- Yes --> E
+        I -- No --> J[Window 3 Evaluation]
+        
+        J --> K[Calculate Aggregate Score]
+        K -->|Feedback Score| E
+    end
+
+    F -.-> Evaluation Logic
+    H -.-> Evaluation Logic
+    J -.-> Evaluation Logic
+
+    %% Final Output
+    Optimization Loop -->|Best Robust Params Found| O[Finalize Parameters]
+    O --> P[Unlock Global OOS Vault]
+    P --> Q[Final Validation Run]
+    Q --> R([End / Deployment])
 ```
