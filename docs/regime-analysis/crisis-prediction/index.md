@@ -5,6 +5,7 @@ parent: Market Regime Analysis
 nav_order: 2
 has_toc: false
 has_children: true
+permalink: /docs/regime-analysis/crisis-prediction
 ---
 
 # Crisis & Crash Prediction Models
@@ -14,9 +15,12 @@ Machine learning approaches to market crash detection and early warning systems.
 {: .fs-5 .fw-300 }
 
 
-# Crisis Prediction
+## Definition of "Crisis"
 
-This section documents the **crisis regime prediction** component of the project: how we define “crisis”, build a model to estimate **forward-looking crash probability**, and evaluate it under **time-series constraints**.
+Equity markets are modeled as having two regimes:
+
+- **Normal regime (0):** Typical market conditions, where the equity risk premium is dominant.
+- **Crisis regime (1):** Stress or crash conditions, where risk management actions may be warranted.
 
 The core objective is to produce a daily signal:
 
@@ -26,48 +30,39 @@ $$
 
 where $$H$$ is the prediction horizon (e.g., 1/3/5/10 trading days).
 
----
 
-## What “crisis” means here
-
-We model equity markets as having two regimes:
-
-- **Normal regime (0):** typical market conditions; equity risk premium dominates.
-- **Crisis regime (1):** stress/crash conditions; risk management actions may be warranted.
-
-### Target definition (implemented)
-Using S&P 500 (Yahoo `^GSPC`), we define a crisis indicator from the 15-day return:
+### Target Definition 
+Using S&P 500 data (Yahoo `^GSPC`), a crisis indicator is defined from the 15-day return:
 
 $$
 r^{(15)}_t = \frac{P_t}{P_{t-15}} - 1
 $$
 
-Within a long rolling window, we flag crisis when the latest 15-day return falls below the rolling 5th percentile:
+Within a long rolling window, a crisis is flagged when the latest 15-day return falls below the rolling 5th percentile:
 
 $$
 y_t = \mathbb{1}\Big[r^{(15)}_t < q_{0.05}\big(r^{(15)}_{t-2150:t-1}\big)\Big]
 $$
 
-We then build **forward targets** by shifting the crisis indicator:
-
-- `target_1d`, `target_3d`, `target_5d`, `target_10d`  
-- Default modeling target: **`target = target_3d`**
+**Forward targets** are then constructed by shifting the crisis indicator:
+- `target_1d`, `target_3d`, `target_5d`, `target_10d`
+- The default modeling target is **`target = target_3d`**.
 
 ---
 
-## Data sources (high level)
+## Data Sources
 
-### Market data (Yahoo Finance)
-Daily adjusted market series across:
-- US equities and volatility (S&P 500, Nasdaq, VIX, etc.)
+### Market Data (Yahoo Finance)
+Daily adjusted market series are used across the following categories:
+- US equities and volatility (S&P 500, Nasdaq, VIX)
 - US yields (2Y/5Y/10Y proxies)
 - FX proxies (USD index, JPY)
 - Global equities (EU/Asia indices, EM ETFs)
 - Commodities (Gold, WTI oil)
 
-### Macro / financial conditions (FRED)
-Daily-aligned macro/financial indicators including:
-- Financial stress / conditions (e.g., NFCI, STLFSI)
+### Macro / Financial Conditions (FRED)
+Daily-aligned indicators are included, such as:
+- Financial stress/conditions indices (e.g., NFCI, STLFSI)
 - Rates and spreads (e.g., term spreads, funding spreads)
 - Growth/inflation proxies and USD indices
 - Energy price series (e.g., WTI)
@@ -76,68 +71,53 @@ Daily-aligned macro/financial indicators including:
 
 ---
 
-## Features (high level)
+## Features
 
-We generate a structured feature set designed to capture:
+A structured feature set is generated to capture the following:
+- **Trend & momentum:** Multi-horizon changes, rate-of-change, moving-average distances
+- **Risk & uncertainty:** Rolling volatility proxies, VIX-related interactions
+- **Normalization:** Rolling z-scores
+- **Risk-adjusted behavior:** Rolling Sharpe-style ratios
+- **Cross-asset relationships:** Curated interaction features (e.g., equity vs VIX, equity vs yields, gold/oil ratio)
 
-- **Trend & momentum:** multi-horizon changes, ROC, moving-average distances
-- **Risk & uncertainty:** rolling volatility proxies, VIX-related interactions
-- **Normalization:** rolling z-scores
-- **Risk-adjusted behavior:** rolling Sharpe-style ratios
-- **Cross-asset relationships:** curated interaction features (e.g., equity vs VIX, equity vs yields, gold/oil ratio)
-
-Examples of engineered feature families:
+Examples of engineered feature families include:
 - `*_pct_chg{5,10,20,60,120,250}`
 - `*_std{60,125}`, `*_volat{60,125}`
 - `*_zscore{60,120,200,250}`
-- `*_sharpe{120,250}`
-- Interactions like `{market}_div_VIX`, `Gold_Oil_Ratio`, `SP500_div_NFCI`
+- Interactions such as `{market}_div_VIX`, `Gold_Oil_Ratio`, `SP500_div_NFCI`
 
 ---
 
-## Modeling approach
+## Modeling Approach
 
-We frame crisis prediction as **binary classification with severe class imbalance**:
-
+Crisis prediction is framed as **binary classification with severe class imbalance**.
 - Primary model family: **GBDT** (LightGBM / XGBoost)
-- Outputs: calibrated probabilities $$p_{t,H}$$ and threshold-based alerts
+- Outputs: Calibrated probabilities $$p_{t,H}$$ and threshold-based alerts
 
-Key ideas:
-- Avoid leakage via strict time-based splits
-- Prefer probability quality (calibration) over accuracy
-- Evaluate operational trade-offs (false alarms vs missed crises)
+Modeling priorities:
+- Leakage is avoided through strict time-based splits.
+- Probability quality (calibration) is prioritized over accuracy.
+- Operational trade-offs (false alarms vs missed crises) are evaluated.
 
 ---
 
-## Evaluation (time-series first)
+## Evaluation (Time-Series)
 
-We use **walk-forward / expanding window** validation rather than random splits to reflect real-world deployment.
+**Walk-forward / expanding window** validation is used instead of random splits to reflect real-world deployment.
 
-Common metrics:
-- PR-AUC (robust under imbalance)
+Common metrics include:
+- PR-AUC (selected for robustness under imbalance)
 - ROC-AUC (supplementary)
-- Brier score (probability quality)
-- Recall at fixed false-positive rate (alerting usability)
+- Brier score (for probability quality)
+- Recall at a fixed false-positive rate (for alerting usability)
 
 ---
 
 ## Outputs
 
-Typical artifacts produced by this section:
-
-- A model-ready dataset (Parquet)
-- Trained model + feature list + config snapshot
-- Daily crisis probability time series
-- Evaluation report (metrics + plots)
-
----
-
-## How to navigate this section
-
-- **Data Prep:** how raw data is downloaded, aligned, and saved
-- **Feature Engineering:** feature families and interactions
-- **Training:** model configs, hyperparameters, class weighting
-- **Interpretation:** feature importance / diagnostics
-- **Deployment:** end-to-end scoring pipeline and monitoring
-
+The following artifacts are produced:
+- A model-ready dataset (Parquet format)
+- A trained model, feature list, and configuration snapshot
+- A daily time series of crisis probabilities
+- An evaluation report (metrics and plots)
 

@@ -2,11 +2,11 @@
 layout: default
 title: "Equity Market Crisis Regime Prediction"
 parent: Crisis Prediction
-grand_parent: Regime Analysis
+grand_parent: Market Regime Analysis
 has_children: false
 has_toc: false
-permalink: /docs/regime-analysis/crisis-prediction
 nav_order: 2
+permalink: /docs/regime-analysis/crisis-prediction/crash-ml-models
 ---
 
 # Equity Market Crisis Regime Prediction using Machine Learning GBDT
