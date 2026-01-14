@@ -23,18 +23,59 @@ To address this structural flaw, this framework utilizes **Walk-Forward Analysis
 
 The validation engine utilizes a **Rolling Window** approach. The historical timeline is segmented into a series of iterations, each consisting of a training period and a subsequent testing period.
 
+
+```mermaid
+gantt
+    title Method 2: Step Size = Test (9m) + Holdout (6m)
+    dateFormat  YYYY-MM
+    axisFormat  %Y
+    
+    %% --- SECTIONS ---
+    section 1. GLOBAL PHASES
+    Optimization Universe (2018-2022)      :active, opt_period, 2017-04, 2023-01
+    LOCKED VAULT (Global OOS)              :crit,   oos_period, 2023-01, 2026-01
+
+    %% --- WINDOW 1 ---
+    section Window 1
+    W1 Train (2 Years)                     :a1, 2017-04, 2019-04
+    W1 Test (9 Months)                     :b1, 2019-04, 2020-01
+    W1 Holdout (6 Months)                  :done, c1, 2020-01, 2020-07
+
+    %% --- WINDOW 2 ---
+    section Window 2 (Step +15m)
+    W2 Train (2 Years)                     :a2, 2018-07, 2020-07
+    W2 Test (9 Months)                     :b2, 2020-07, 2021-04
+    W2 Holdout (6 Months)                  :done, c2, 2021-04, 2021-10
+
+    %% --- WINDOW 3 ---
+    section Window 3 (Step +15m)
+    W3 Train (2 Years)                     :a3, 2019-10, 2021-10
+    W3 Test (9 Months)                     :b3, 2021-10, 2022-07
+    W3 Holdout (6 Months)                  :done, c3, 2022-07, 2023-01
+
+    %% --- METHOD 2 EXECUTION ---
+    section Optimization Process
+    Optuna Trial (Evaluating Params)       :active, 2018-01, 2023-01
+    Aggregation & Selection                :milestone, 2023-01, 0d
+    
+    section Final Validation
+    Unlock Global OOS (2023-2025)          :crit, milestone, 2023-01, 0d
+```
+
 ### Temporal Segmentation
 
-The dataset is divided into an **Optimization Universe (5 Years: 2018–2022)** and a **Global Out-of-Sample Vault (3 Years: 2023–2025)**. Within the Optimization Universe, the strategy is validated across 3 rolling windows.
+The dataset is divided into an **Optimization Universe (Ending 2022)** and a **Global Out-of-Sample Vault (2023–2025)**. Within the Optimization Universe, the strategy is validated across 3 rolling windows.
 
 For each window iteration $$ i $$:
 
 1.  **Training Window ($$ T_{train} $$):** A **2-year (24-month)** period used by the optimization engine (Optuna) to identify optimal parameters.
 2.  **Testing Window ($$ T_{test} $$):** A **9-month** period immediately following $$ T_{train} $$. This segment is used to calculate **degradation metrics** (comparing In-Sample vs. Out-of-Sample performance) to filter out overfit trials.
 3.  **Holdout Window ($$ T_{holdout} $$):** A **6-month** period immediately following $$ T_{test} $$. The performance in this "safe" segment is used to calculate the final **Objective Score**, ensuring the optimizer is rewarded for stability on unseen data.
+4.  **Step Forward (15 Months):** The next window shifts forward by exactly $$ T_{test} + T_{holdout} $$. This creates a **contiguous chain of validation blocks** (Test + Holdout) spanning from mid-2019 to the end of 2022, ensuring no unseen period is double-counted in the validation score.
 
 **Global Validation:**
 Once a robust parameter set is identified across the 3 rolling windows, it is locked and applied to the **Global OOS Vault (2023–2025)**. This final step serves as the ultimate "sanity check," ensuring the strategy performs well on data completely untouched by the optimization process.
+
 
 ```mermaid
 gantt
@@ -150,57 +191,3 @@ Following the Walk-Forward process, the final selected parameter configuration i
 
 Performance convergence between the **Walk-Forward Test Set** and the **Holdout Set** serves as the final confirmation of strategy validity. A significant divergence in the Holdout period indicates that the Walk-Forward process itself was implicitly tuned (a phenomenon known as "meta-overfitting"), and the strategy is discarded.
 
-
-## 7. Process Flow
-
-Here is the revised **Process Flow** reflecting the **Method 2 (Global Optimization)** architecture.
-
-In this approach, the optimization loop **wraps** the rolling windows. For every single "Trial" (set of parameters), the system iterates through *all* history windows to calculate a composite score, rather than optimizing each window individually.
-
-## 7. Process Flow
-
-```mermaid
-flowchart TD
-    A([Start]) --> B[Data Split]
-    B --> C[Optimization Universe<br/>2018-2022]
-    B --> D[Global OOS Vault<br/>2023-2025]
-    
-    %% The Locked Vault
-    D -.->|LOCKED| Z([Unused until End])
-
-    %% The Optuna Loop
-    subgraph Optimization Loop [Optuna Global Optimization]
-        direction TB
-        E{Suggest Parameters}
-        C --> E
-        
-        E --> F[Window 1 Evaluation]
-        F --> G{Pruning Check<br/>Is W1 Bad?}
-        
-        G -- Yes --> E
-        G -- No --> H[Window 2 Evaluation]
-        H --> I{Pruning Check<br/>Is W2 Bad?}
-        
-        I -- Yes --> E
-        I -- No --> J[Window 3 Evaluation]
-        
-        J --> K[Calculate Aggregate Score]
-        K -->|Feedback Score| E
-    end
-
-    %% Internal details of Evaluation
-    subgraph Evaluation Logic [Inside Each Window]
-        L[Train: Fit Model] --> M[Test: Check Degradation]
-        M --> N[Holdout: Calculate Objective Score]
-    end
-
-    F -.-> Evaluation Logic
-    H -.-> Evaluation Logic
-    J -.-> Evaluation Logic
-
-    %% Final Output
-    Optimization Loop -->|Best Robust Params Found| O[Finalize Parameters]
-    O --> P[Unlock Global OOS Vault]
-    P --> Q[Final Validation Run]
-    Q --> R([End / Deployment])
-```
