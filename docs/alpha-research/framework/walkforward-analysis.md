@@ -26,13 +26,13 @@ The validation engine utilizes a **Rolling Window** approach. The historical tim
 
 ```mermaid
 gantt
-    title Method 2: Step Size = Test (9m) + Holdout (6m)
+    title Window Rolling Walk-Forward + 3-Year Global OOS
     dateFormat  YYYY-MM
     axisFormat  %Y
     
     %% --- SECTIONS ---
     section 1. GLOBAL PHASES
-    Optimization Universe (2018-2022)      :active, opt_period, 2017-04, 2023-01
+    Optimization Universe (2017-2022)      :active, opt_period, 2017-04, 2023-01
     LOCKED VAULT (Global OOS)              :crit,   oos_period, 2023-01, 2026-01
 
     %% --- WINDOW 1 ---
@@ -55,7 +55,7 @@ gantt
 
     %% --- METHOD 2 EXECUTION ---
     section Optimization Process
-    Optuna Trial (Evaluating Params)       :active, 2018-01, 2023-01
+    Optuna Trial (Evaluating Params)       :active, 2017-04, 2023-01
     Aggregation & Selection                :milestone, 2023-01, 0d
     
     section Final Validation
@@ -75,51 +75,6 @@ For each window iteration $$ i $$:
 
 **Global Validation:**
 Once a robust parameter set is identified across the 3 rolling windows, it is locked and applied to the **Global OOS Vault (2023–2025)**. This final step serves as the ultimate "sanity check," ensuring the strategy performs well on data completely untouched by the optimization process.
-
-
-```mermaid
-gantt
-    title Method 2: 3-Window Rolling Walk-Forward + 3-Year Global OOS
-    dateFormat  YYYY-MM
-    axisFormat  %Y
-    
-    %% --- SECTIONS ---
-    section 1. GLOBAL PHASES
-    Optimization Universe (2018-2022)      :active, opt_period, 2018-01, 2023-01
-    LOCKED VAULT (Global OOS)              :crit,   oos_period, 2023-01, 2026-01
-
-    %% --- WINDOW 1 ---
-    section Window 1
-    W1 Train (2 Years)                     :a1, 2018-01, 2020-01
-    W1 Test (9 Months)                     :b1, 2020-01, 2020-10
-    W1 Holdout (6 Months)                  :done, c1, 2020-10, 2021-04
-
-    %% --- WINDOW 2 ---
-    section Window 2
-    W2 Train (2 Years)                     :a2, 2019-01, 2021-01
-    W2 Test (9 Months)                     :b2, 2021-01, 2021-10
-    W2 Holdout (6 Months)                  :done, c2, 2021-10, 2022-04
-
-    %% --- WINDOW 3 ---
-    section Window 3
-    W3 Train (2 Years)                     :a3, 2019-10, 2021-10
-    W3 Test (9 Months)                     :b3, 2021-10, 2022-07
-    W3 Holdout (6 Months)                  :done, c3, 2022-07, 2023-01
-
-    %% --- METHOD 2 EXECUTION ---
-    section Optimization Process
-    Optuna Trial (Single Param Set)        :active, 2018-01, 2023-01
-    Analyze W1+W2+W3 Scores                :milestone, 2023-01, 0d
-    
-    section Final Validation
-    Unlock Global OOS (2023-2025)          :crit, milestone, 2023-02, 0d
-```
-
-
-1.  **Blue Bars (Train):** Optuna uses this data to find patterns.
-2.  **Purple Bars (Test):** Used to check for **Degradation**. If *Train* performance is great but *Test* performance drops > 50%, the parameter set is rejected (Overfitting).
-3.  **Grey Bars (Internal Holdout):** The "Safe" score. This is used to calculate the final objective value for Optuna (e.g., the "Robust Score").
-4.  **Red Bar (Global OOS):** The **Vault**. The script **never** touches this data until the very end. If the strategy works here, it is ready for deployment.
 
 
 ## 3. Optimization Logic
@@ -182,5 +137,3 @@ To ensure the backtest is a realistic proxy for live execution, the engine incor
 *   **Execution Lag:** Signals generated at the close of day $$ T $$ are executed at the Open of day $$ T+1 $$. This eliminates look-ahead bias.
 *   **Transaction Costs:** A linear cost model ($$ 10 \text{bps} $$) is applied to all turnover to account for commissions and spread.
 *   **Stale Data Pruning:** Orders are automatically cancelled if market data is missing for a specific timestamp, preventing "ghost fills" on stale quotes.
-
----
