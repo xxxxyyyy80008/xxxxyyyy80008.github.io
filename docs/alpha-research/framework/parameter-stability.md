@@ -876,3 +876,41 @@ The objective is to evaluate how consistently the chosen parameters perform acro
 
 ### Conclusion
 The Parameter Stability Analysis provides a multidimensional approach to evaluate and ensure that the selected parameters in the Walk-Forward Analysis are not only optimized for historical data but are also robust and reliable for future predictions. This enhances the overall credibility and effectiveness of the trading strategy.
+
+
+Based on the implementation of **Method 2 (Global Optimization)**, the Parameter Stability Analysis is designed to distinguish between "lucky" parameter sets and those that are genuinely robust across different market regimes.
+
+Here is a summary of the specific components implemented for this analysis:
+
+### 1. Intrinsic Stability (The Objective Function)
+Unlike standard optimization which maximizes the *average* return, the objective function itself is engineered to enforce stability during the search process.
+*   **Conservative Scoring (5th Percentile):** The optimizer does not maximize the mean score of the windows. Instead, it calculates the **5th percentile** of the performance metrics (Sharpe Ratio + Win Rate) across the 3 historical windows. This forces the optimizer to find parameters that survive the "worst-case" historical scenario rather than those that overperform in just one bull market.
+*   **Volatility Penalty:** The scoring metric explicitly penalizes volatility and deep drawdowns, filtering out parameters that generate high returns but with unacceptable risk variance.
+
+### 2. Degradation Analysis (Overfitting Detection)
+Before a trial is even considered "successful," it undergoes a degradation check.
+*   **IS vs. OOS Comparison:** The system calculates the performance drop-off between the **Training Window** (In-Sample) and the **Testing Window** (Out-of-Sample).
+*   **Pruning Logic:** If the degradation exceeds a specific threshold (e.g., Performance drops by >50%), the trial is flagged as "Overfit" and penalized, preventing these unstable parameters from becoming candidates for the final selection.
+
+### 3. Cluster Analysis (The "Broad Peak" Theory)
+Once the optimization loop completes, the script analyzes the distribution of the top-performing trials (e.g., the top 50 parameter sets).
+*   **Clustering Algorithms:** It employs clustering techniques (like **DBSCAN** or **K-Means**) to determine if the best parameters are grouped tightly together (indicating a "Broad Peak" of stability) or scattered randomly (indicating "Narrow Peaks" or noise).
+*   **Interpretation:** A tight cluster implies that slight deviations in parameters (slippage or execution lag) will not break the strategy. Scattered results imply the strategy is fragile.
+
+### 4. Parameter Sensitivity & Importance
+The system identifies which parameters actually drive performance and which are noise.
+*   **MDI (Mean Decrease Impurity):** Used to calculate parameter importance. This quantifies how much each specific parameter (e.g., Lookback Period, Threshold) contributes to the variance in the objective score.
+*   **Dimensionality Reduction:** This helps in simplifying the model by fixing "unimportant" parameters to constants in future iterations, reducing the risk of overfitting.
+
+### 5. Visualizations for Stability
+Several visualizations are generated to allow for human inspection of stability:
+*   **Parameter Evolution Plots:** Visualizes how the "optimal" parameter range shifts (or remains constant) across the rolling windows.
+*   **Optimization Heatmaps:** 2D contour plots showing the interaction between two high-importance parameters. We look for large "hot zones" (stable regions) rather than tiny "hot spots."
+*   **Drawdown Sensitivity Surface:** A 3D or contour view showing how parameter changes impact maximum drawdown.
+
+### Summary Workflow
+$$
+\text{Raw Trials} \xrightarrow{\text{Degradation Filter}} \text{Valid Trials} \xrightarrow{\text{5th \% Objective}} \text{Top Candidates} \xrightarrow{\text{Cluster Analysis}} \text{Final Robust Set}
+$$
+
+This multi-layered approach ensures that when the final parameters are unlocked for the **Global OOS Vault (2023–2025)**, they represent a statistically robust strategy rather than a curve-fitted anomaly.

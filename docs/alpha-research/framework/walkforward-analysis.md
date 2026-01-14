@@ -53,7 +53,7 @@ gantt
     W3 Test (9 Months)                     :b3, 2021-10, 2022-07
     W3 Holdout (6 Months)                  :done, c3, 2022-07, 2023-01
 
-    %% --- METHOD 2 EXECUTION ---
+    %% --- EXECUTION ---
     section Optimization Process
     Optuna Trial (Evaluating Params)       :active, 2017-04, 2023-01
     Aggregation & Selection                :milestone, 2023-01, 0d
