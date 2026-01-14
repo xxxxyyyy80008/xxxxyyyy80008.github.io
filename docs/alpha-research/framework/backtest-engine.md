@@ -5,7 +5,7 @@ parent: Methodology
 grand_parent: Alpha Research & Signal Generation
 nav_order: 5
 has_children: false
-permalink: /docs/alpha-research/framework/backteset-engine
+permalink: /docs/alpha-research/framework/backtest-engine
 ---
 
 # Backtest Engine Architecture
