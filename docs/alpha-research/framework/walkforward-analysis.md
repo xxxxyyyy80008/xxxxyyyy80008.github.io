@@ -184,10 +184,3 @@ To ensure the backtest is a realistic proxy for live execution, the engine incor
 *   **Stale Data Pruning:** Orders are automatically cancelled if market data is missing for a specific timestamp, preventing "ghost fills" on stale quotes.
 
 ---
-
-## 6. Holdout Validation
-
-Following the Walk-Forward process, the final selected parameter configuration is tested on a **Holdout Dataset**. This data is strictly quarantined and is never exposed to the optimization engine.
-
-Performance convergence between the **Walk-Forward Test Set** and the **Holdout Set** serves as the final confirmation of strategy validity. A significant divergence in the Holdout period indicates that the Walk-Forward process itself was implicitly tuned (a phenomenon known as "meta-overfitting"), and the strategy is discarded.
-
