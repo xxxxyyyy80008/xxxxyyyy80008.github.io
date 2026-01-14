@@ -1,49 +1,101 @@
 ---
 layout: default
-title:  MABW Volatility Breakout & Momentum Strategy
-parent: Strategies & Backtests
+title:  "MABW Volatility Breakout & Momentum Strategy"
+parent: Strategies
 nav_order: 1
+permalink: /docs/alpha-research/strategies/mabw/
 ---
 
+# MABW: Volatility Breakout Strategy
+{: .fs-7 }
 
-### **MABW Volatility Breakout & Momentum Strategy**
+A systematic trend-following strategy that exploits volatility clustering by entering trends during periods of extreme compression and exiting during excessive expansion.
+{: .fs-5 .fw-300 }
 
-This script implements, backtests, and analyzes a quantitative trading strategy designed to capitalize on volatility compression (squeezes) followed by momentum breakouts across a portfolio of equities.
+---
 
-[View](/notebooks/alpha-research/strategies/01_strategy_mabw.html)
+## Strategy Abstract
 
-### **1. Core Strategy Logic**
-The strategy utilizes the **Moving Average Band Width (MABW)** to detect market phases.
-*   **Indicators:** Calculates Fast (10) and Slow (60) Moving Averages to create bands. The "Width" is the percentage difference between the Upper and Lower bands.
-*   **Entry Signal (Long Only):**
-    *   **Momentum:** The 20-period EMA crosses *above* the Upper MABW Band.
-    *   **Volatility Squeeze:** The `MAB_WIDTH` is at its lowest point over a specific lookback period (`MAB_LLV` - Lowest Low Value).
-*   **Exit Signal:**
-    *   **Volatility Expansion:** The `MAB_WIDTH` expands beyond a critical threshold (set to 30), indicating the move is over-extended or volatility has peaked.
+**Logic Class:** Volatility Expansion / Breakout  
+**Timeframe:** Daily  
+**Universe:** Large-cap Equities & Indices (QQQ, SPY, NVDA, etc.)
 
-### **2. Backtesting Engine**
-The script contains a custom-built, event-driven backtesting engine with the following features:
-*   **Data Source:** Fetches historical data via `yfinance` (Tickers: QQQ, JPM, AMD, JNJ, AAPL).
-*   **Execution Simulation:** Uses **Next-Day Open** execution. Signals generated on Day $$T$$ result in trades executed at the Open of Day $$T+1$$.
-*   **Capital Management:** Uses a "Fixed Capital per Ticker" approach. The initial capital ($100,000) is split equally among the tickers.
-*   **Cost Modeling:** Simulates real-world friction with Commission (0.1%) and Slippage (0.05% + Fixed component).
+The MABW strategy is predicated on the **Volatility Clustering** hypothesis (Mandelbrot, 1963), which posits that large changes in asset prices tend to be followed by large changes, and small changes by small changes. This strategy identifies "Squeeze" regimes—periods where the spread between fast and slow moving averages is at a historical low—and enters when momentum (EMA) breaks out of this compression zone.
 
-### **3. Mathematical Components**
-The MABW deviation is calculated using the root mean square of the difference between slow and fast moving averages:
+---
+
+## Signal Logic
+
+The strategy utilizes a functional, state-free logic flow to generate signals.
+
+### 1. Indicator Construction
+*   **MABW Bands:** Constructed from the spread between a Fast MA (10) and Slow MA (60).
+    *   $$ \text{Width} = \text{MA}_{fast} - \text{MA}_{slow} $$ (Normalized)
+*   **Regime Filter (LLV):** The Lowest Low Value of the Width over a lookback period (10 days).
+*   **Signal Line:** An EMA (20) of the Close price.
+
+### 2. Entry Signal (Long Only)
+A buy signal is generated if and only if **both** conditions are met simultaneously:
+1.  **Compression:** The current `MAB_WIDTH` is equal to its $$N$$-day low ($$ \text{Width}_t \approx \text{LLV}_N $$).
+2.  **Breakout:** The `EMA` crosses *above* the `MAB_UPPER` band.
 
 $$
-\text{Dev} = \sqrt{\text{Mean}((\text{MA}_{slow} - \text{MA}_{fast})^2)} \times \text{Multiplier}
+\text{Signal}_{Entry} = (\text{EMA}_t > \text{Upper}_t) \land (\text{Width}_t \le \text{LLV}_{10})
 $$
 
-The Width is derived as:
+### 3. Exit Signal
+The trade is closed when volatility expands beyond a sustainable threshold, indicating potential trend exhaustion or reversal risk.
 
 $$
-\text{Width} = \frac{\text{Upper Band} - \text{Lower Band}}{\text{MA}_{slow}} \times 100
+\text{Signal}_{Exit} = \text{Width}_t > \text{Critical Threshold}_{30}
 $$
 
-### **4. Reporting & Visualization**
-The script generates extensive performance metrics and visualizations:
-*   **Performance Metrics:** Sharpe Ratio, Max Drawdown, Win Rate, Profit Factor.
-*   **Visuals:** Equity curves, drawdown charts, monthly return heatmaps, and signal plots overlaying price data.
-*   **Reporting:** Integrates `quantstats` to generate an HTML tear sheet comparing performance against a benchmark (SPY).
-*   **Exports:** Saves trade logs, daily portfolio values, and metrics to CSV files.
+---
+
+## Implementation Details
+
+### Core Logic Snippet
+The logic is fully vectorized using pure boolean series operations.
+
+```python
+def generate_signals(self, data: pd.DataFrame) -> List[Signal]:
+    """
+    Entry: EMA crosses above MAB_UPPER + MAB_WIDTH is at LLV
+    Exit: MAB_WIDTH crosses above critical level
+    """
+    # 1. Detect Volatility Squeeze
+    # Check if current width is effectively at the N-day low
+    is_squeeze = (data['MAB_WIDTH'] <= data['MAB_LLV'] + 1e-6)
+
+    # 2. Detect Momentum Breakout
+    # EMA(20) crossing above the Upper MABW Band
+    is_breakout = detect_crossover_above(data, 'EMA', 'MAB_UPPER')
+
+    # Combine for Entry
+    entry_cond = is_breakout & is_squeeze
+    
+    # 3. Detect Volatility Blow-off (Exit)
+    exit_cond = detect_threshold_cross_above(data, 'MAB_WIDTH', self.mab_width_critical)
+    
+    return self._compile_signals(data, entry_cond, exit_cond)
+```
+
+### Configuration Parameters
+
+| Parameter | Default | Description |
+| :--- | :--- | :--- |
+| `fast_period` | 10 | Lookback for the fast component of the band. |
+| `slow_period` | 60 | Lookback for the slow component of the band. |
+| `ema_period` | 20 | The signal line used to confirm the breakout direction. |
+| `mabw_llv_period` | 10 | The "Squeeze" lookback; defines how long volatility must be low. |
+| `mab_width_critical` | 30 | The "Blow-off" threshold; forces an exit when bands widen too far. |
+
+---
+
+## Market Hypothesis Validation
+
+*   **Why it works:** Markets spend the majority of time in noise (mean reversion). By filtering for "Squeezes" (Width at LLV), the strategy avoids trading during choppy, high-volatility sideways markets.
+*   **Risk Factors:**
+    *   **Fakeouts:** In prolonged low-volatility regimes, price may breach the bands without sustaining a trend.
+    *   **Lag:** Using moving averages inherently introduces lag; the breakout is identified after the move has begun.
+```
