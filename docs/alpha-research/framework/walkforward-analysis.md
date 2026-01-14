@@ -91,7 +91,12 @@ gantt
     Training (IS)      :b1, 2020-04-01, 252d
     Testing (OOS)      :b2, after b1, 63d
     Holdout            :b3, after b2, 21d  
-      
+    
+    section Window 3
+    Training (IS)      :b1, 2020-04-01, 252d
+    Testing (OOS)      :b2, after b1, 63d
+    Holdout            :b3, after b2, 21d  
+
     section Global Out-of-Sample
     OOS Validation     :crit,    done, 2021-10-01, 2021-12-31
 ```
