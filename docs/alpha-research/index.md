@@ -23,7 +23,28 @@ The research framework prioritizes **generalization** over raw performance. It e
 
 ---
 
-## Research Pipeline
+## Infrastructure & Methodology
+
+The reliability of these strategies relies on the integrity of the underlying validation engine.
+
+### 1. [Walk-Forward Methodology](./framework/walkforward-analysis)
+A detailed breakdown of the validation protocol.
+*   **Global Robustness:** Searching for parameter sets that survive diverse market conditions.
+*   **Degradation Analysis:** A quantitative check to reject strategies where $$ \text{Sharpe}_{IS} \gg \text{Sharpe}_{OOS} $$.
+
+### 2. [Parameter Stability Analysis](./framework/parameter-stability)
+Ensuring the strategy is not poised on a "knife-edge" of optimization.
+*   **Sensitivity Mapping:** Verifying that small changes in inputs do not cause catastrophic failures in outputs.
+*   **Convexity Check:** Prioritizing broad, flat regions of the solution space over narrow, high peaks.
+
+### 3. [Backtest Engine Architecture](./framework/backtest-engine)
+Technical documentation of the Python-based simulation engine.
+*   **Hybrid Architecture:** Vectorized signal calculation for throughput ($$ O(1) $$) + Event-driven execution for path-dependent accuracy.
+*   **Friction Modeling:** Implementation of slippage, commission, and stale-data pruning.
+
+---
+
+## Strategy Research Pipeline
 
 The development lifecycle adheres to an institutional-grade workflow, strictly separating the **Calibration Phase** (Signal Design & Optimization) from the **Validation Phase** (Walk-Forward & Stress Testing).
 
@@ -61,7 +82,6 @@ graph TD
 
 ---
 
-
 ## Strategy Universe
 
 Strategies are classified by their underlying logic class and validated based on their Out-of-Sample (OOS) stability.
@@ -88,26 +108,7 @@ Strategies are classified by their underlying logic class and validated based on
 
 ---
 
-## Infrastructure & Methodology
 
-The reliability of these strategies relies on the integrity of the underlying validation engine.
-
-### 1. [Walk-Forward Methodology](./framework/walkforward-analysis)
-A detailed breakdown of the validation protocol.
-*   **Global Robustness:** Searching for parameter sets that survive diverse market conditions.
-*   **Degradation Analysis:** A quantitative check to reject strategies where $$ \text{Sharpe}_{IS} \gg \text{Sharpe}_{OOS} $$.
-
-### 2. [Parameter Stability Analysis](./framework/parameter-stability)
-Ensuring the strategy is not poised on a "knife-edge" of optimization.
-*   **Sensitivity Mapping:** Verifying that small changes in inputs do not cause catastrophic failures in outputs.
-*   **Convexity Check:** Prioritizing broad, flat regions of the solution space over narrow, high peaks.
-
-### 3. [Backtest Engine Architecture](./framework/backtest-engine)
-Technical documentation of the Python-based simulation engine.
-*   **Hybrid Architecture:** Vectorized signal calculation for throughput ($$ O(1) $$) + Event-driven execution for path-dependent accuracy.
-*   **Friction Modeling:** Implementation of slippage, commission, and stale-data pruning.
-
----
 
 ### Tech Stack
 
