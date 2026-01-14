@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Walk-Forward Analysis"
+title: "Backtest Engine Architecture"
 parent: Methodology
 grand_parent: Alpha Research & Signal Generation
 nav_order: 4
