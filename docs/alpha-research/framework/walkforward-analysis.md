@@ -188,6 +188,12 @@ flowchart TD
         K -->|Feedback Score| E
     end
 
+    %% Internal details of Evaluation
+    subgraph Evaluation Logic [Inside Each Window]
+        L[Train: Fit Model] --> M[Test: Check Degradation]
+        M --> N[Holdout: Calculate Objective Score]
+    end
+
     F -.-> Evaluation Logic
     H -.-> Evaluation Logic
     J -.-> Evaluation Logic
