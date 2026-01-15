@@ -69,30 +69,53 @@ The current portfolio of strategies, categorized by logic class and their valida
 
 The development lifecycle adheres to an institutional-grade workflow, strictly separating the **Calibration Phase** (Signal Design & Optimization) from the **Validation Phase** (Walk-Forward & Stress Testing).
 
+
+
 ```mermaid
 graph TD
-    subgraph "I. Ideation & Design"
-        A[Hypothesis] -->|Quantify| B[Signal Specification]
-        B -->|Vectorization| C[Prototype Implementation]
+    %% Color Definitions
+    classDef ideation fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    classDef calibration fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef validation fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef decision fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    classDef outcome fill:#ffebee,stroke:#c62828,stroke-width:2px
+    classDef success fill:#e8f5e8,stroke:#2e7d32,stroke-width:3px
+    
+    %% Process Flow
+    subgraph "Phase I: Ideation & Design"
+        A[Hypothesis Formulation] --> B[Signal Specification<br/>• Define metrics<br/>• Set thresholds]
+        B --> C[Prototype Implementation<br/>• Vectorized backtest<br/>• Initial validation]
     end
-
-    subgraph "II. Calibration (In-Sample)"
-        C --> D{Global Parameter Search}
-        D -->|Optuna TPE| E[Cross-Window Optimization]
-        E -->|Select| F[Candidate Parameter Set]
-        F -->|Constraint| G[Maximize Regime Stability]
+    
+    subgraph "Phase II: Calibration (In-Sample)"
+        C --> D{Global Parameter Search<br/>Optuna TPE Sampler}
+        D --> E[Cross-Window Optimization<br/>• Rolling windows<br/>• Stability scoring]
+        E --> F[Candidate Parameter Set]
+        F --> G[Regime Stability Constraint<br/>Maximize consistency across regimes]
     end
-
-    subgraph "III. Validation (Out-of-Sample)"
-        G --> H[Walk-Forward Analysis]
-        H -->|Check| I{Degradation Assessment}
-        I -->|High Decay| J[Reject: Overfitted]
-        I -->|Stable| K[Parameter Sensitivity Check]
-        K --> L[Final Holdout Test]
+    
+    subgraph "Phase III: Validation (Out-of-Sample)"
+        G --> H[Walk-Forward Analysis<br/>• Expanding windows<br/>• Out-of-sample testing]
+        H --> I{Model Degradation Assessment}
+        
+        I -->|Significant Decay| J[⛔ REJECT<br/>Overfitting Detected]
+        I -->|Stable Performance| K[Parameter Sensitivity Analysis<br/>• Local robustness<br/>• Gradient checking]
+        
+        K --> L[Final Holdout Validation<br/>• Unseen data<br/>• Final performance metrics]
+        L --> M[✅ ACCEPT<br/>Model Validated]
     end
-
-    style D fill:#f9f,stroke:#333,stroke-width:2px
-    style I fill:#bfb,stroke:#333,stroke-width:2px
+    
+    %% Styling
+    class A,B,C ideation
+    class D,E,F,G calibration
+    class H,K,L validation
+    class D,I decision
+    class J outcome
+    class M success
+    
+    %% Additional Relationships
+    J -.->|Return to Phase I| A
+    K -->|If unstable| J
 ```
 
 ### Phase Details
