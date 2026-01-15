@@ -100,11 +100,16 @@ Feature importance analysis reveals which parameters drive the strategy's alpha:
 *   **Primary Drivers:** `k_period` (**44%**) and `oversold_threshold` (**34%**) account for nearly 80% of the strategy's performance variance. Both parameters exhibit "Excellent" stability, reinforcing confidence in the core logic.
 *   **Secondary Drivers:** The exit threshold and smoothing factor are less critical to the strategy's overall edge.
 
+### 3. Sensitivity Surface (`k_period` (**44%**) and `oversold_threshold` (**34%**))
+
+
 ---
 
 ## Global Holdout Results (2023–2025)
 
 The strategy was tested on a pristine holdout dataset (post-optimization).
+
+### 1. Performance Summary
 
 | Metric | Result |
 | :--- | :--- |
@@ -115,10 +120,16 @@ The strategy was tested on a pristine holdout dataset (post-optimization).
 | **Win Rate** | **84.62%** |
 | **Profit Factor** | **7.89** |
 
-### Trade Statistics
+### 2. Trade Statistics
 *   **Total Trades:** 39
 *   **Avg Trade:** $1,776.94
 *   **Best/Worst:** +$7,929 / -$4,016
+
+### 3. Portfolio Equity Curve
+
+### 4. Portfolio Drawdown 
+
+### 5. Strategy Signals (Ticker - `k_period`)  
 
 ## Conclusion
 The SMI strategy demonstrates **high statistical robustness**. The shift to a lower `overbought_threshold` (37) has resulted in a system that captures mean-reversion profits more reliably (84% win rate). The negative degradation score strongly suggests the model is capturing a persistent market anomaly rather than fitting to noise.
