@@ -128,9 +128,15 @@ The strategy was tested on a pristine holdout dataset (post-optimization).
 
 ### 3. Portfolio Equity Curve
 
+![png](images/smi/output_4_0.png) 
+
 ### 4. Portfolio Drawdown 
 
-### 5. Strategy Signals (Ticker - `k_period`)  
+![png](images/smi/output_4_1.png) 
+
+### 5. Strategy Signals (Ticker - `V`)  
+
+![png](images/smi/output_6_7.png) 
 
 ## Conclusion
 The SMI strategy demonstrates **high statistical robustness**. The shift to a lower `overbought_threshold` (37) has resulted in a system that captures mean-reversion profits more reliably (84% win rate). The negative degradation score strongly suggests the model is capturing a persistent market anomaly rather than fitting to noise.
