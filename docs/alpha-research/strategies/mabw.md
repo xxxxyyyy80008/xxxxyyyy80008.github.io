@@ -13,7 +13,7 @@ A systematic trend-following strategy that exploits volatility clustering by ent
 {: .fs-5 .fw-300 }
 
 
-[View Script](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"} -  [Github Repository](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
+[View Script](/notebooks/alpha-research/strategies/01-strategy-mabw.html){:target="_blank" rel="noopener noreferrer"} -  [Github Repository](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
 {: .fs-2 .fw-300 }
 
 
@@ -130,7 +130,7 @@ The extremely high Profit Factor (6.97) coupled with very low trade count (9 tra
 
 ![png](images/mabw/output_28_7.png) 
 
-[View Strategy Signals Script for All Tickers](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"}
+[View Strategy Signals Script for All Tickers](/notebooks/alpha-research/strategies/01-strategy-mabw.html){:target="_blank" rel="noopener noreferrer"}
 {: .fs-2 .fw-300 }
 
 ## Conclusion 
