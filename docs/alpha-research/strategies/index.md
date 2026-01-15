@@ -11,7 +11,7 @@ permalink: /docs/alpha-research/strategies/
 # Systematic Trading Strategies & Backtesting
 {: .fs-7 }
 
-Systematic trading algorithms validated through Walk-Forward Analysis and Regime Stress Testing.
+Systematic trading algorithms validated through Walk-Forward Analysis.
 {: .fs-5 .fw-300 }
 
 [Github Repository](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
