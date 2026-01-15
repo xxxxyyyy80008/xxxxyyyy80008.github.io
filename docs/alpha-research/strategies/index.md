@@ -4,7 +4,7 @@ title: Strategies
 parent: Alpha Research & Signal Generation
 nav_order: 3
 has_children: true
-has_toc: true
+has_toc: false
 permalink: /docs/alpha-research/strategies/
 ---
 
