@@ -71,17 +71,6 @@ The following configuration was identified during the global search but is consi
 | `mabw_llv_period` | **15** | Squeeze Definition Lookback |
 | `mab_width_critical` | **20** | Exit Threshold |
 
-### Global Holdout Results (2023–2025)
-*   **Total Return:** 29.19%
-*   **Sharpe Ratio:** 0.92
-*   **Max Drawdown:** -14.43%
-*   **Win Rate:** 77.78%
-*   **Profit Factor:** 6.97
-*   **Total Trades:** 9
-
-> **Observation:** The extremely high Profit Factor (6.97) coupled with very low trade count (9 trades across 9 tickers over ~3 years) confirms the strategy is "cherry-picking" specific high-magnitude trends (likely in MSFT or CAT) rather than exploiting a recurring market inefficiency.
-
----
 
 ## Robustness & Validation Analysis
 
@@ -103,9 +92,48 @@ The optimization surface is chaotic. The Coefficient of Variation (CV) is high f
 | `mabw_llv_period` | 0.547 | <span style="color:red">**Poor**</span> |
 
 ### 3. Parameter Importance
-*   **Note:** The importance analysis returned `0.0` for all parameters. This statistical anomaly typically occurs when the "Performance vs Parameter" relationship is non-linear or random, further confirming that the strategy's success in the backtest was random chance rather than structural edge.
 
-### Conclusion & Recommendation
+The importance analysis returned `0.0` for all parameters. This statistical anomaly typically occurs when the "Performance vs Parameter" relationship is non-linear or random, further confirming that the strategy's success in the backtest was random chance rather than structural edge.
+
+**Sensitivity Surface:**
+
+[View Script with Full Output](/notebooks/alpha-research/strategies/01-strategy-mabw.html){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
+
+![png](images/mabw/output_13_3.png) 
+
+
+## Global Holdout Results (2023–2025)
+
+### 1. Performance Summary
+
+*   **Total Return:** 29.19%
+*   **Sharpe Ratio:** 0.92
+*   **Max Drawdown:** -14.43%
+*   **Win Rate:** 77.78%
+*   **Profit Factor:** 6.97
+*   **Total Trades:** 9
+
+### 2. Observation
+
+The extremely high Profit Factor (6.97) coupled with very low trade count (9 trades across 9 tickers over ~3 years) confirms the strategy is "cherry-picking" specific high-magnitude trends (likely in MSFT or CAT) rather than exploiting a recurring market inefficiency.
+
+### 3. Portfolio Equity Curve
+
+![png](images/mabw/output_25_0.png) 
+
+### 4. Portfolio Drawdown 
+
+![png](images/mabw/output_25_1.png) 
+
+### 5. Strategy Signals (Ticker - `V`)  
+
+![png](images/mabw/output_28_7.png) 
+
+[View Strategy Signals Script for All Tickers](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
+
+## Conclusion 
 **REJECT FOR PRODUCTION.**
 
 The MABW strategy is a classic example of **Curve Fitting**.
