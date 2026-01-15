@@ -12,6 +12,9 @@ permalink: /docs/alpha-research/strategies/smi/
 A highly robust mean-reversion system that identifies deep value entries within medium-term volatility cycles.
 {: .fs-5 .fw-300 }
 
+[View Script](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"} -  [Github Repository](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
+
 ---
 
 ## Strategy Profile
