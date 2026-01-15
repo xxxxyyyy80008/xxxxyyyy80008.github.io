@@ -14,7 +14,8 @@ permalink: /docs/alpha-research/strategies/
 Systematic trading algorithms validated through Walk-Forward Analysis and Regime Stress Testing.
 {: .fs-5 .fw-300 }
 
-
+[Github Repository](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
 
 ## Performance Matrix
 
@@ -26,25 +27,27 @@ The following table summarizes the current status of the strategy pipeline. Stra
 | **[AMA-KAMA](./ama-kama/)** | Dual Adaptive Trend / Mean Reversion | <span class="label label-green">Robust (35.66% Degradation)</span> | Conservative  |[View Script](/notebooks/alpha-research/strategies/05-strategy-ama-kama.html){:target="_blank" rel="noopener noreferrer"}|
 | **[MABW](./mabw/)** | Volatility Expansion / Breakout | <span class="label label-red">Rejected (100% Degradation)</span> | Aggressive / Unstable |[View Script](/notebooks/alpha-research/strategies/01-strategy-mabw.html){:target="_blank" rel="noopener noreferrer"}|
 
+
 ---
 
 ## Strategy Summaries
 
-### 1. AMA-KAMA (Dual Adaptive Momentum)
-The flagship robust strategy of this suite. It utilizes two variations of Perry Kaufman's Adaptive Moving Average (AMA) to create a dynamic crossover system.
-*   **Concept:** Uses a "Fast" AMA to detect signal and a "Slow" KAMA as a baseline. The system adapts its speed based on market efficiency (noise), reducing trades during chop.
-*   **Key Feature:** Integrates an RSI "Value" filter, entering trends only when the asset is locally oversold, effectively combining trend following with mean reversion.
-*   **Status:** High robustness with low parameter degradation (35%).
+### 1. SMI (Stochastic Momentum Index)
+A highly robust mean-reversion system that identifies deep value entries within medium-term volatility cycles.
+*   **Concept:** This strategy filters for "Deep Oversold" regimes—where price deviates significantly below the midpoint—and triggers entries only when momentum confirms a reversal (signal line crossover). Recent optimization suggests a preference for **medium-term lookbacks** (approx. 2 months) combined with **early profit taking** (lower exit thresholds), resulting in high win rates in recent market regimes.
+*   **Status:** High win rate with low parameter degradation (-19.4%).
+*   **Strategy Signals :** Example ticker - `V`
+![png](images/smi/output_6_7.png) 
 
-### 2. SMI (Stochastic Momentum Index)
-A classic momentum oscillator strategy used as a performance benchmark.
-*   **Concept:** derived from the Stochastic Oscillator, the SMI creates a cleaner signal by using the distance of the close relative to the midpoint of the high/low range.
-*   **Key Feature:** Identifies inflection points in momentum to capture the "meat" of a swing trade.
-*   **Status:** Serves as the baseline for comparing complex adaptive logic.
+### 2. AMA-KAMA (Dual Adaptive Momentum)
+A trend-reversion system that pairs two variations of Perry Kaufman's Adaptive Moving Average to identify high-fidelity entries, filtered by volatility regimes.
+*   **Concept:** By using two adaptive averages, the strategy dynamically adjusts its crossover sensitivity. In chop/noise, both lines flatten, reducing false signals. The system enters on momentum crossovers (AMA > KAMA) strictly when the asset is in a "value" state (RSI < 43) and exits on **either** trend reversal or significant overextension (RSI > 74).
+*   **Status:** High robustness with low parameter degradation (35%).
+*   **Strategy Signals :** Example ticker - `V`
+![png](images/ama-kama/output_28_11.png) 
+
 
 ### 3. MABW (Moving Average Band Width)
-A volatility expansion system based on the Mandelbrot "clustering" hypothesis.
-*   **Concept:** Monitors the spread between a Fast and Slow MA. When the spread compresses to historical lows (a "Squeeze"), it anticipates an explosive breakout.
-*   **Key Feature:** Pure regime-based entry (Squeeze + Momentum Trigger).
-*   **Status:** <span style="color:red">**Failed Validation.**</span> The strategy exhibited 100% performance degradation in out-of-sample testing, indicating severe overfitting to historical anomalies. It is documented here for research transparency but is not recommended for production.
-```
+A systematic trend-following strategy that exploits volatility clustering by entering trends during periods of extreme compression and exiting during excessive expansion.
+*   **Concept:** The MABW (Moving Average Band Width) strategy is predicated on the **Volatility Clustering** hypothesis. It posits that extended periods of low volatility are structural precursors to significant price expansions. The strategy identifies "Regime Squeezes"—where the spread between a Fast and Slow Moving Average hits a historical low—and enters positions only when a momentum trigger (EMA) confirms a breakout from this compression.
+*   **Status:** <span style="color:red">**Failed Validation.**</span> The strategy exhibited 100% performance degradation in out-of-sample testing, indicating severe overfitting to historical anomalies. 
