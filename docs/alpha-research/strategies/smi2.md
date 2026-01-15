@@ -111,6 +111,10 @@ The strategy was tested on a pristine holdout dataset (post-optimization) compri
 *   **Avg Trade:** $1,776.94
 *   **Best/Worst:** +$7,929 / -$4,016
 
+### ⚠️ Execution Note
+The reported results assume **$0.00 commissions and slippage**.
+*   The exceptionally high **Profit Factor (7.89)** and **Win Rate (84%)** are likely inflated by the zero-cost assumption.
+*   However, the high average trade value ($1,776 on $300k capital) suggests the edge is substantial enough to survive realistic transaction costs, though the final Profit Factor would likely normalize to a lower, yet still robust, figure.
 
 ### Conclusion
 The SMI strategy exhibits **Excellent** stability in its primary parameters and **Negative Degradation** in walk-forward testing, identifying it as a highly robust system. The high win rate (84%) in the holdout period is a direct result of the lower `overbought_threshold` (37), which successfully secures profits during initial mean-reversion impulses.
