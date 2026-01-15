@@ -2,7 +2,7 @@
 layout: default
 title: "Walk-Forward Analysis"
 parent: Methodology
-grand_parent: Alpha Research & Signal Generation
+grand_parent: Systematic Alpha Research
 nav_order: 3
 has_children: false
 permalink: /docs/alpha-research/framework/walkforward-analysis
@@ -10,6 +10,10 @@ permalink: /docs/alpha-research/framework/walkforward-analysis
 
 
 # Walk-Forward Analysis & Validation Methodology
+
+
+[View Source Code](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
 
 ## 1. Methodological Necessity
 

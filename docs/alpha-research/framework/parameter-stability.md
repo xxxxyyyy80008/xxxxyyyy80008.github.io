@@ -2,13 +2,17 @@
 layout: default
 title: "Parameter Stability Analysis"
 parent: Methodology
-grand_parent: Alpha Research & Signal Generation
+grand_parent: Systematic Alpha Research
 nav_order: 4
 has_children: false
 permalink: /docs/alpha-research/framework/parameter-stability
 ---
 
 # Parameter Stability Analysis
+
+
+[View Source Code](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
 
 ## The Robustness Objective
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Strategies
-parent: Alpha Research & Signal Generation
+parent: Systematic Alpha Research
 nav_order: 3
 has_children: true
 has_toc: false

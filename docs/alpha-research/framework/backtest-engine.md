@@ -2,7 +2,7 @@
 layout: default
 title: "Backtest Engine Architecture"
 parent: Methodology
-grand_parent: Alpha Research & Signal Generation
+grand_parent: Systematic Alpha Research
 nav_order: 5
 has_children: false
 permalink: /docs/alpha-research/framework/backtest-engine

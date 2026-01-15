@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Methodology
-parent: Alpha Research & Signal Generation
+parent: Systematic Alpha Research
 nav_order: 2
 has_children: true
 has_toc: true
