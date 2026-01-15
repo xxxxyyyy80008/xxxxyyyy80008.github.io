@@ -53,16 +53,16 @@ The current portfolio of strategies, categorized by logic class and their valida
 
 ### Adaptive & Momentum
 
-| Strategy ID | Logic Class | Mathematical Premise | Validation Status |Risk Profile |Script|
-| :--- | :--- | :--- | :--- |:--- | :--- |
-| **[SMI Momentum](./strategies/smi/)** | Mean Reversion / Oscillator | Uses the distance of the close relative to the midpoint of the high/low range to identify "cleaner" momentum inflection points than standard Stochastics. | <span class="label label-green">Very Robust (-19.4% Degradation)</span>|  Moderate (High Win Rate) |[View Script](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"}|
-| **[AMA-KAMA](./strategies/ama-kama/)** | Dual Adaptive Trend / Mean Reversion |Trends are identified by the interaction of two efficiency-adjusted moving averages ($$ER$$). The primary signal is filtered by a "Value" regime ($$RSI < 43$$). | <span class="label label-green">Robust (35.66% Degradation)</span> | Conservative  |[View Script](/notebooks/alpha-research/strategies/05-strategy-ama-kama.html){:target="_blank" rel="noopener noreferrer"}|
+| Strategy ID | Logic Class | Validation Status |Risk Profile |Script|
+| :--- | :--- | :--- | :--- |:--- | 
+| **[SMI Momentum](./strategies/smi/)** | Mean Reversion / Oscillator |  <span class="label label-green">Very Robust (-19.4% Degradation)</span>|  Moderate (High Win Rate) |[View Script](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"}|
+| **[AMA-KAMA](./strategies/ama-kama/)** | Dual Adaptive Trend / Mean Reversion | <span class="label label-green">Robust (35.66% Degradation)</span> | Conservative  |[View Script](/notebooks/alpha-research/strategies/05-strategy-ama-kama.html){:target="_blank" rel="noopener noreferrer"}|
 
 ### Volatility Breakout
 
-| Strategy ID | Logic Class | Mathematical Premise | Validation Status |Risk Profile |Script|
-| :--- | :--- | :--- | :--- |:--- | :--- |
-| **[MABW](./strategies/mabw/)** | Volatility Expansion / Breakout | Identifies regime squeezes ($$\text{Width} \approx \text{LLV}$$) and enters on momentum breakouts. | <span class="label label-red">Rejected (100% Degradation)</span> | Aggressive / Unstable |[View Script](/notebooks/alpha-research/strategies/01-strategy-mabw.html){:target="_blank" rel="noopener noreferrer"}|
+| Strategy ID | Logic Class | Validation Status |Risk Profile |Script|
+| :--- | :--- | :--- | :--- |:--- |
+| **[MABW](./strategies/mabw/)** | Volatility Expansion / Breakout | <span class="label label-red">Rejected (100% Degradation)</span> | Aggressive / Unstable |[View Script](/notebooks/alpha-research/strategies/01-strategy-mabw.html){:target="_blank" rel="noopener noreferrer"}|
 
 
 ---
