@@ -85,18 +85,7 @@ graph TD
 2.  **Global Parameter Search:** Instead of optimizing each window individually (which leads to curve-fitting), we search for a **single parameter set** that maximizes the robust objective function across *all* training windows simultaneously.
 3.  **Walk-Forward Validation:** The candidate parameters are applied to unseen data. We measure **Performance Degradation**—the gap between In-Sample training results and Out-of-Sample test results—to quantify the strategy's "optimism bias."
 
----
-Here is the refined documentation for the **Alpha Research & Signal Generation** index page. I have updated the **Strategy Universe** section to exclusively reflect the three strategies analyzed (AMA-KAMA, SMI, and MABW) and accurately reported their validation statuses based on your recent backtest results.
 
-```markdown
----
-layout: default
-title: Alpha Research & Signal Generation
-nav_order: 5
-has_children: true
-has_toc: false
-permalink: /docs/alpha-research/
----
 
 # Systematic Alpha Research Framework
 {: .fs-7 }
