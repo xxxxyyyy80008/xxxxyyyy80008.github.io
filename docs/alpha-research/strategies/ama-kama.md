@@ -12,7 +12,7 @@ permalink: /docs/alpha-research/strategies/ama-kama/
 A trend-reversion system that pairs two variations of Perry Kaufman's Adaptive Moving Average to identify high-fidelity entries, filtered by volatility regimes.
 {: .fs-5 .fw-300 }
 
-[View Script](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"} -  [Github Repository](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
+[View Script](/notebooks/alpha-research/strategies/05-strategy-ama-kama.html){:target="_blank" rel="noopener noreferrer"} -  [Github Repository](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
 {: .fs-2 .fw-300 }
 
 ---
@@ -96,26 +96,20 @@ Feature importance analysis reveals the strategy is dominated by the entry state
 | **kama_er_period** | 8.68% | The efficiency ratio lookback is a distant second. |
 | **kama_fast** | 6.39% | The reaction speed of the baseline. |
 
-### 3. Portfolio Equity Curve
+### 3. Sensitivity Surface 
 
-![png](images/smi/output_4_0.png) 
-
-### 4. Portfolio Drawdown 
-
-![png](images/smi/output_4_1.png) 
-
-### 5. Strategy Signals (Ticker - `V`)  
-
-![png](images/smi/output_6_7.png) 
-
-[View Strategy Signals Script for All Tickers](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"}
+[View Script with Full Output](/notebooks/alpha-research/strategies/05-strategy-ama-kama.html){:target="_blank" rel="noopener noreferrer"}
 {: .fs-2 .fw-300 }
+
+![png](images/ama-kama/output_13_2.png) 
 
 ---
 
 ## Global Holdout Performance (2023–2025)
 
 The strategy delivered solid, low-volatility returns in the holdout period.
+
+### 1. Performance Summary
 
 | Metric | Result |
 | :--- | :--- |
@@ -126,10 +120,26 @@ The strategy delivered solid, low-volatility returns in the holdout period.
 | **Win Rate** | **65.43%** |
 | **Profit Factor** | **2.87** |
 
-### Trade Statistics
+### 2. Trade Statistics
 *   **Total Trades:** 81 (Moderate Frequency)
 *   **Avg Trade:** $807.79
 *   **Best/Worst:** +$7,455 / -$7,558
+
+
+### 3. Portfolio Equity Curve
+
+![png](images/ama-kama/output_25_0.png) 
+
+### 4. Portfolio Drawdown 
+
+![png](images/ama-kama/output_25_1.png) 
+
+### 5. Strategy Signals (Ticker - `CAT`)  
+
+![png](images/ama-kama/output_28_11.png) 
+
+[View Strategy Signals Script for All Tickers](/notebooks/alpha-research/strategies/05-strategy-ama-kama.html){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
 
 ### Conclusion
 The AMA-KAMA strategy has evolved into a **conservative mean-reversion system**. With a Max Drawdown of only **-4.92%** over two years and a Profit Factor of **2.87**, it prioritizes capital preservation. The high trade count (81) compared to previous versions indicates the relaxed AMA period (14) allows for more opportunities, while the strict RSI entry filter (43) ensures quality control.
