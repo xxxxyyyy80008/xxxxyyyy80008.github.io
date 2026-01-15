@@ -102,6 +102,9 @@ Feature importance analysis reveals which parameters drive the strategy's alpha:
 
 ### 3. Sensitivity Surface (`k_period` (**44%**) and `oversold_threshold` (**34%**))
 
+[View Script with Full Output](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
+
 ![png](images/smi/output_1_2.png) 
 
 ---
@@ -137,6 +140,10 @@ The strategy was tested on a pristine holdout dataset (post-optimization).
 ### 5. Strategy Signals (Ticker - `V`)  
 
 ![png](images/smi/output_6_7.png) 
+
+[View Strategy Signals Script for All Tickers](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
+
 
 ## Conclusion
 The SMI strategy demonstrates **high statistical robustness**. The shift to a lower `overbought_threshold` (37) has resulted in a system that captures mean-reversion profits more reliably (84% win rate). The negative degradation score strongly suggests the model is capturing a persistent market anomaly rather than fitting to noise.
