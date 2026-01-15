@@ -102,6 +102,7 @@ Feature importance analysis reveals which parameters drive the strategy's alpha:
 
 ### 3. Sensitivity Surface (`k_period` (**44%**) and `oversold_threshold` (**34%**))
 
+![png](images/smi/output_1_2.png) 
 
 ---
 
