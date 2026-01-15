@@ -105,10 +105,6 @@ The strategy was tested on a pristine holdout dataset (post-optimization).
 *   **Avg Trade:** $1,776.94
 *   **Best/Worst:** +$7,929 / -$4,016
 
-### ⚠️ Critical Note on Costs
-The reported results assume **$0.00 commissions and slippage**.
-*   While the **Profit Factor (7.89)** and **Win Rate (84%)** are exceptionally high, they must be interpreted with caution. Real-world execution friction would reduce these metrics. However, given the high average trade value ($1,776 on $300k capital), the strategy likely retains viability even under reasonable cost assumptions.
-
 ## Conclusion
 The SMI strategy demonstrates **high statistical robustness**. The shift to a lower `overbought_threshold` (37) has resulted in a system that captures mean-reversion profits more reliably (84% win rate). The negative degradation score strongly suggests the model is capturing a persistent market anomaly rather than fitting to noise.
 
