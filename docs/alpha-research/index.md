@@ -101,46 +101,6 @@ graph TD
 2.  **Global Parameter Search:** Instead of optimizing each window individually (which leads to curve-fitting), we search for a **single parameter set** that maximizes the robust objective function across *all* training windows simultaneously.
 3.  **Walk-Forward Validation:** The candidate parameters are applied to unseen data. We measure **Performance Degradation**—the gap between In-Sample training results and Out-of-Sample test results—to quantify the strategy's "optimism bias."
 
-
-
----
-
-## Strategy Research Pipeline
-
-The development lifecycle adheres to an institutional-grade workflow, strictly separating the **Calibration Phase** (Signal Design & Optimization) from the **Validation Phase** (Walk-Forward & Stress Testing).
-
-```mermaid
-graph TD
-    subgraph "I. Ideation & Design"
-        A[Hypothesis] -->|Quantify| B[Signal Specification]
-        B -->|Vectorization| C[Prototype Implementation]
-    end
-
-    subgraph "II. Calibration (In-Sample)"
-        C --> D{Global Parameter Search}
-        D -->|Optuna TPE| E[Cross-Window Optimization]
-        E -->|Select| F[Candidate Parameter Set]
-        F -->|Constraint| G[Maximize Regime Stability]
-    end
-
-    subgraph "III. Validation (Out-of-Sample)"
-        G --> H[Walk-Forward Analysis]
-        H -->|Check| I{Degradation Assessment}
-        I -->|High Decay| J[Reject: Overfitted]
-        I -->|Stable| K[Parameter Sensitivity Check]
-        K --> L[Final Holdout Test]
-    end
-
-    style D fill:#f9f,stroke:#333,stroke-width:2px
-    style I fill:#bfb,stroke:#333,stroke-width:2px
-```
-
-### Phase Details
-
-1.  **Hypothesis & Design:** Strategies begin with a structural market premise (e.g., volatility clustering, mean reversion constraints). Signals are implemented using pure functions to ensure stateless reproducibility.
-2.  **Global Parameter Search:** Instead of optimizing each window individually (which leads to curve-fitting), we search for a **single parameter set** that maximizes the robust objective function across *all* training windows simultaneously.
-3.  **Walk-Forward Validation:** The candidate parameters are applied to unseen data. We measure **Performance Degradation**—the gap between In-Sample training results and Out-of-Sample test results—to quantify the strategy's "optimism bias."
-
 ---
 
 
