@@ -1,8 +1,8 @@
 ---
 layout: default
-title:  "MABW Volatility Breakout & Momentum Strategy"
+title:  "MABW Strategy"
 parent: Strategies
-nav_order: 1
+nav_order: 4
 permalink: /docs/alpha-research/strategies/mabw/
 ---
 
@@ -12,9 +12,13 @@ permalink: /docs/alpha-research/strategies/mabw/
 A systematic trend-following strategy that exploits volatility clustering by entering trends during periods of extreme compression and exiting during excessive expansion.
 {: .fs-5 .fw-300 }
 
+
+[View Script](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"} -  [Github Repository](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
+
 ---
 
-## Strategy Abstract
+## Strategy Overview
 
 **Logic Class:** Volatility Expansion / Breakout  
 **Timeframe:** Daily  

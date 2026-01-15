@@ -12,6 +12,9 @@ permalink: /docs/alpha-research/strategies/ama-kama/
 A trend-reversion system that pairs two variations of Perry Kaufman's Adaptive Moving Average to identify high-fidelity entries, filtered by volatility regimes.
 {: .fs-5 .fw-300 }
 
+[View Script](/notebooks/alpha-research/strategies/02-strategy-smi.html){:target="_blank" rel="noopener noreferrer"} -  [Github Repository](https://github.com/xxxxyyyy80008/systematic-trading-strategies){:target="_blank" rel="noopener noreferrer"}
+{: .fs-2 .fw-300 }
+
 ---
 
 ## Strategy Profile
