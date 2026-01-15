@@ -86,8 +86,6 @@ The strategy was optimized using a Walk-Forward framework. The best-performing c
 *   **Assessment:** **Very Robust.**
     *   A negative degradation indicates that the strategy performed significantly *better* in the Out-of-Sample (OOS) periods than in the In-Sample optimization. This suggests the logic is not overfit and adapts well to unseen data.
 
-### 2. Parameter Importance
-
 ### 2. Parameter Importance (MDI)
 Feature importance analysis reveals which parameters drive the strategy's alpha:
 
