@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Systematic Alpha Research
-nav_order: 5
+nav_order: 2
 has_children: true
 has_toc: false
 permalink: /docs/alpha-research/
