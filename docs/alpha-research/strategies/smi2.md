@@ -2,8 +2,8 @@
 layout: default
 title: SMI Strategy
 parent: Strategies
-nav_order: 2
-permalink: /docs/alpha-research/strategies/smi/
+nav_order: 4
+permalink: /docs/alpha-research/strategies/smi2/
 ---
 
 # SMI: Stochastic Momentum Reversion
