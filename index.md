@@ -62,4 +62,4 @@ Time series forecasting and regime shift detection using Hidden Markov Models (H
 
 ## Contact
 
-- **GitHub**: [github.com/xxxxyyyy80008](https://github.com/xxxxyyyy80008)
+- **GitHub**: [github.com/xxxxyyyy80008](https://github.com/xxxxyyyy80008){:target="_blank" rel="noopener noreferrer"}
