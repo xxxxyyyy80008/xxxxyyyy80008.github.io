@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Alpha Research & Signal Generation
+title: Systematic Alpha Research
 nav_order: 5
 has_children: true
 has_toc: false
