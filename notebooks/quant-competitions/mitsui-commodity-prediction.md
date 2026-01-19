@@ -1,11 +1,4 @@
----
-layout: default
-title: "MITSUI&CO. Commodity Prediction Challenge"
-parent: Quant Competitions
-nav_order: 2
-has_children: false
-permalink: /docs/quant-competitions/mitsui-commodity-prediction
----
+
 
 # MITSUI&CO. Commodity Prediction Challenge (Kaggle)
 

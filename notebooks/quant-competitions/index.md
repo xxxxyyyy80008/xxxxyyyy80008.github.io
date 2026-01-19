@@ -1,12 +1,3 @@
----
-layout: default
-title: "Quant Competitions"
-nav_order: 6
-has_children: true
-has_toc: false
-permalink: /docs/quant-competitions/
----
-
 # Quant Competitions
 
 Competition projects focused on **market microstructure**, **feature engineering**,  **model evaluation** and inference workflows.

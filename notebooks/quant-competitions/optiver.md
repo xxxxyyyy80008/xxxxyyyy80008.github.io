@@ -1,11 +1,4 @@
----
-layout: default
-title: "Optiver Realized Volatility Prediction"
-parent: Quant Competitions
-nav_order: 1
-has_children: false
-permalink: /docs/quant-competitions/optiver
----
+
 
 # Optiver Realized Volatility Prediction (Kaggle)
 
